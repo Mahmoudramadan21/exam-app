@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist_Mono, Inter } from "next/font/google";
 import "./globals.css";
-import { cn } from "@/features/auth/lib/utils/{scope-name}.util";
+import { cn } from "@/shared/lib/utils/tailwind-cn";
 import Providers from "@/shared/providers";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });

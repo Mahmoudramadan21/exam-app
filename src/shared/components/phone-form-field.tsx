@@ -45,8 +45,11 @@ function PhoneFormField<T extends FieldValues>({
             inputClass={`!w-full !h-12 !rounded-none !border-gray-200 ${
               fieldState.invalid ? "!border-red-500" : ""
             }`}
-            buttonClass="!border-gray-200 !rounded-none"
+            buttonClass={`!border-gray-200 !rounded-none ${
+              fieldState.invalid ? "!border-red-500 !border-r-gray-200" : ""
+            }`}
             dropdownClass="!z-50"
+            aria-invalid={fieldState.invalid}
           />
 
           {/* Error */}
