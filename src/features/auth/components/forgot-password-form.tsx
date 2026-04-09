@@ -1,56 +1,31 @@
-import FormField from "@/shared/components/form-field";
-import FormError from "@/shared/components/form-error";
-import { Button } from "@/shared/components/ui/button";
-import { FieldError } from "@/shared/components/ui/field";
+"use client";
 
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useMutation } from "@tanstack/react-query";
+import { FormField, FormError } from "@/shared/components";
+import { Button } from "@/shared/components/ui/button";
+
 import { ChevronRight } from "lucide-react";
-import Link from "next/link";
-import { Dispatch, memo, SetStateAction } from "react";
-import { useForm } from "react-hook-form";
-import { IEmailStepSchema } from "../lib/types/auth";
-import { emailStepSchema } from "../lib/schemas/email-step.schema";
-import { forgotPasswordSteps } from "@/app/(auth)/forgot-password/page";
+import { memo } from "react";
+
+import { useForgotPasswordForm } from "@/features/auth/hooks/use-forgot-password-form";
+import { forgotPasswordSteps } from "@/features/auth/lib/types/auth";
 
 interface IForgotPasswordFormProps {
-  setStep: Dispatch<SetStateAction<forgotPasswordSteps>>;
-  setEmail: Dispatch<SetStateAction<string>>;
+  setStep: React.Dispatch<React.SetStateAction<forgotPasswordSteps>>;
+  setEmail: React.Dispatch<React.SetStateAction<string>>;
 }
 
 function ForgotPasswordForm({ setStep, setEmail }: IForgotPasswordFormProps) {
-  const form = useForm<IEmailStepSchema>({
-    resolver: zodResolver(emailStepSchema),
-    defaultValues: { email: "" },
+  // Handles form state, validation, and API request
+  const { form, mutation, onSubmit } = useForgotPasswordForm({
+    setStep,
+    setEmail,
   });
-
-  const mutation = useMutation({
-    mutationFn: async (values: IEmailStepSchema) => {
-      const data = await fetch("/api/auth/forgot-password", {
-        method: "POST",
-        body: JSON.stringify(values),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }).then((res) => res.json());
-
-      if (!data.status) {
-        throw new Error(data.message);
-      }
-
-      return data;
-    },
-    onSuccess: () => setStep("successSentCode"),
-  });
-
-  function onSubmit(values: IEmailStepSchema) {
-    setEmail(values.email);
-    mutation.mutate(values);
-  }
 
   return (
     <>
-      <form onSubmit={form.handleSubmit(onSubmit)}>
+      {/* ===== Forgot Password Form ===== */}
+      <form onSubmit={form.handleSubmit(onSubmit)} className="mt-8">
+        {/* Email Input */}
         <FormField
           name="email"
           control={form.control}
@@ -58,11 +33,12 @@ function ForgotPasswordForm({ setStep, setEmail }: IForgotPasswordFormProps) {
           placeholder="user@example.com"
         />
 
+        {/* ===== Error Feedback ===== */}
         {mutation.isError && (
           <FormError message={(mutation.error as Error).message} />
         )}
 
-        {/* Next Button */}
+        {/* ===== Submit Action ===== */}
         <Button
           type="submit"
           className="mt-10 mb-9 w-full bg-blue-600 hover:bg-blue-500 transition-colors hover:cursor-pointer h-12 text-base rounded-none"
