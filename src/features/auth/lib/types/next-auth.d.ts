@@ -1,15 +1,33 @@
-import { User } from "next-auth";
 import { IUser } from "./user";
 
+/**
+ * NextAuth module augmentation
+ * Extends default auth types with custom app user structure
+ */
+
 declare module "next-auth" {
+  /**
+   * Extended User object returned from auth callbacks
+   */
   interface User {
     user: IUser;
     token: string;
   }
 
-  type Session = IUser; 
+  /**
+   * Session shape used across the app
+   * (simplified to directly expose IUser)
+   */
+  type Session = IUser;
 }
 
 declare module "next-auth/jwt" {
-  type JWT = User;
+  /**
+   * JWT payload structure
+   * Mirrors extended User type
+   */
+  type JWT = {
+    user: IUser;
+    token: string;
+  };
 }
