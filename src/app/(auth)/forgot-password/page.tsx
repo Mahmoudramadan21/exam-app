@@ -9,7 +9,7 @@ import { forgotPasswordSteps } from "@/features/auth/lib/types/auth";
 
 import { cn } from "@/shared/lib/utils/tailwind-cn";
 
-function ForgotPassword() {
+export default function ForgotPassword() {
   // ===== Auth flow state (step-based UI) =====
   const [step, setStep] = useState<forgotPasswordSteps>("email");
 
@@ -72,5 +72,3 @@ function ForgotPassword() {
     </AuthFormLayout>
   );
 }
-
-export default ForgotPassword;
