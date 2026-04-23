@@ -33,18 +33,37 @@ const buttonVariants = cva(
           "size-7 rounded-[min(var(--radius-md),12px)] in-data-[slot=button-group]:rounded-lg",
         "icon-lg": "size-9",
       },
+      ui: {
+        default: "",
+        fullWidth: "w-full mt-10 mb-9 h-12 rounded-none transition-colors hover:cursor-pointer",
+        halfWidth: "w-1/2 mt-10 mb-9 h-12 rounded-none transition-colors hover:cursor-pointer",
+        fitContent: "w-fit px-4 h-12 rounded-none transition-colors hover:cursor-pointer",
+      },
+
+      theme: {
+        default: "",
+        primary: "bg-blue-600 hover:bg-blue-500 text-base",
+        secondary: "bg-gray-200 hover:bg-gray-300 disabled:text-gray-400 text-gray-800 text-base",
+        outlineCustom:
+          "text-gray-800 border-blue-600 bg-blue-50 hover:bg-blue-100/60 text-sm font-medium",
+      },
     },
+
     defaultVariants: {
       variant: "default",
       size: "default",
+      ui: "fullWidth",
+      theme: "default",
     },
-  },
+  }
 );
 
 function Button({
   className,
   variant = "default",
   size = "default",
+  ui,
+  theme,
   asChild = false,
   ...props
 }: React.ComponentProps<"button"> &
@@ -58,7 +77,7 @@ function Button({
       data-slot="button"
       data-variant={variant}
       data-size={size}
-      className={cn(buttonVariants({ variant, size, className }))}
+      className={cn(buttonVariants({ variant, size, ui, theme, className }))}
       {...props}
     />
   );
