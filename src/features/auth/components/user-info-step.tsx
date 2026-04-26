@@ -15,8 +15,13 @@ import { useUserInfoStep } from "../hooks/use-user-info-step";
 import { memo } from "react";
 
 function UserInfoStep({ email }: { email: string }) {
-  const { form, mutation, showPasswordStep, handleNextStep, onSubmit } =
-    useUserInfoStep({ email });
+  const {
+    form,
+    mutation,
+    showPasswordStep,
+    handleNextStep,
+    onSubmit,
+  } = useUserInfoStep({ email });
 
   return (
     <>
@@ -74,8 +79,7 @@ function UserInfoStep({ email }: { email: string }) {
             {/* Go to Step 2 */}
             <Button
               type="button"
-              variant="outline"
-              className="mt-10 mb-9 w-full text-gray-800 border-blue-600 bg-blue-50 hover:bg-blue-100/60 transition-colors hover:cursor-pointer h-12 text-sm font-medium rounded-none"
+              theme="outlineCustom"
               disabled={mutation.isPending}
               onClick={handleNextStep}
             >
@@ -114,8 +118,7 @@ function UserInfoStep({ email }: { email: string }) {
             {/* Final Submit */}
             <Button
               type="submit"
-              variant="outline"
-              className="mt-10 mb-9 w-full bg-blue-600 hover:bg-blue-500 transition-colors hover:cursor-pointer h-12 text-base rounded-none"
+              theme="outlineCustom"
               disabled={mutation.isPending}
             >
               Create Account
