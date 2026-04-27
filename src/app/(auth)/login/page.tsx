@@ -3,7 +3,7 @@ import Link from "next/link";
 import LoginForm from "@/features/auth/components/login-form";
 import AuthFormLayout from "@/features/auth/layout/auth-form-layout";
 
-function Login() {
+export default function Login() {
   return (
     <AuthFormLayout title="Login">
       {/* ===== Login Form ===== */}
@@ -22,5 +22,3 @@ function Login() {
     </AuthFormLayout>
   );
 }
-
-export default Login;

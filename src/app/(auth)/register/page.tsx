@@ -10,7 +10,7 @@ import AuthFormLayout from "@/features/auth/layout/auth-form-layout";
 
 import { registerStep } from "@/features/auth/lib/types/auth";
 
-function Register() {
+export default function Register() {
   // ===== Registration flow state (step-based wizard) =====
   const [step, setStep] = useState<registerStep>("email");
 
@@ -40,5 +40,3 @@ function Register() {
     </div>
   );
 }
-
-export default Register;
