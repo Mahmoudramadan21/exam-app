@@ -4,15 +4,13 @@ import AuthFormLayout from "@/features/auth/layout/auth-form-layout";
 import ResetPasswordForm from "@/features/auth/components/reset-password-form";
 
 interface ResetPasswordPageProps {
-  searchParams: {
-    token?: string;
-  };
+  searchParams: Promise<{ token?: string }>;
 }
 
-export default function ResetPasswordPage({
+export default async function ResetPasswordPage({
   searchParams,
 }: ResetPasswordPageProps) {
-  const token = searchParams.token;
+  const token = (await searchParams).token;
 
   // ===== Security guard: ensure token exists before rendering page =====
   if (!token) {
