@@ -1,13 +1,15 @@
+import Link from "next/link";
+
 import LoginForm from "@/features/auth/components/login-form";
 import AuthFormLayout from "@/features/auth/layout/auth-form-layout";
-import { CircleX } from "lucide-react";
-import Link from "next/link";
 
 function Login() {
   return (
     <AuthFormLayout title="Login">
+      {/* ===== Login Form ===== */}
       <LoginForm />
 
+      {/* ===== Footer Link ===== */}
       <div className="w-fit mx-auto text-sm text-muted-foreground font-medium">
         Don't have an account?{" "}
         <Link
