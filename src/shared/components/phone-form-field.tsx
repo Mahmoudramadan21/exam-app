@@ -1,7 +1,8 @@
 "use client";
 
-import React from "react";
+import React, { memo } from "react";
 import { Control, Controller, FieldValues, Path } from "react-hook-form";
+
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 
@@ -23,43 +24,50 @@ function PhoneFormField<T extends FieldValues>({
       name={name}
       control={control}
       render={({ field, fieldState }) => (
-        <Field data-invalid={fieldState.invalid}>
-          {/* Label */}
-          <FieldLabel
-            htmlFor={String(name)}
-            className="text-gray-800 font-medium text-base"
-          >
-            {label}
-          </FieldLabel>
+        <>
+          {/* ===== Field Wrapper ===== */}
+          <Field data-invalid={fieldState.invalid}>
+            {/* ===== Label ===== */}
+            <FieldLabel
+              htmlFor={String(name)}
+              className="text-gray-800 font-medium text-base"
+            >
+              {label}
+            </FieldLabel>
 
-          {/* Phone Input */}
-          <PhoneInput
-            country={"eg"} // default Egypt
-            value={field.value?.replace("+", "")}
-            onChange={(phone) => field.onChange("+" + phone)}
-            onBlur={field.onBlur}
-            inputProps={{
-              name: field.name,
-              required: true,
-            }}
-            inputClass={`!w-full !h-12 !rounded-none !border-gray-200 ${
-              fieldState.invalid ? "!border-red-500" : ""
-            }`}
-            buttonClass={`!border-gray-200 !rounded-none ${
-              fieldState.invalid ? "!border-red-500 !border-r-gray-200" : ""
-            }`}
-            dropdownClass="!z-50"
-            aria-invalid={fieldState.invalid}
-          />
-
-          {/* Error */}
-          {fieldState.invalid && (
-            <FieldError
-              id={`${String(name)}-error`}
-              errors={[fieldState.error]}
+            {/* ===== Phone Input ===== */}
+            <PhoneInput
+              country="eg" // Default country (Egypt)
+              // Normalize value (remove + for library compatibility)
+              value={field.value?.replace("+", "")}
+              // Always store value in E.164 format
+              onChange={(phone) => field.onChange("+" + phone)}
+              onBlur={field.onBlur}
+              inputProps={{
+                name: field.name,
+                required: true,
+              }}
+              // ===== Input Styling =====
+              inputClass={`!w-full !h-12 !rounded-none !border-gray-200 ${
+                fieldState.invalid ? "!border-red-500" : ""
+              }`}
+              // ===== Button Styling =====
+              buttonClass={`!border-gray-200 !rounded-none ${
+                fieldState.invalid ? "!border-red-500 !border-r-gray-200" : ""
+              }`}
+              dropdownClass="!z-50"
+              aria-invalid={fieldState.invalid}
             />
-          )}
-        </Field>
+
+            {/* ===== Validation Error ===== */}
+            {fieldState.invalid && (
+              <FieldError
+                id={`${String(name)}-error`}
+                errors={[fieldState.error]}
+              />
+            )}
+          </Field>
+        </>
       )}
     />
   );
