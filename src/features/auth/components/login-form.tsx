@@ -1,62 +1,19 @@
 "use client";
 
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-
-// shadcn v4 components
+import { FormField, FormError, PasswordFormField } from "@/shared/components";
 import { Button } from "@/shared/components/ui/button";
 import { FieldGroup } from "@/shared/components/ui/field";
-import Link from "next/link";
-
-import { useMutation } from "@tanstack/react-query";
-import { useRouter } from "next/navigation";
-import { signIn } from "next-auth/react";
-import { loginSchema } from "../lib/schemas/login.schema";
-import FormField from "@/shared/components/form-field";
-import PasswordFormField from "@/shared/components/password-form-field";
-import FormError from "@/shared/components/form-error";
-import { ILoginSchema } from "../lib/types/auth";
+import { useLoginForm } from "@/features/auth/hooks/use-login-form";
 
 function LoginForm() {
-  const router = useRouter();
-
-  const form = useForm<ILoginSchema>({
-    resolver: zodResolver(loginSchema),
-    defaultValues: {
-      username: "",
-      password: "",
-    },
-  });
-
-  // React Query mutation
-  const mutation = useMutation({
-    mutationFn: async (values: ILoginSchema) => {
-      const res = await signIn("credentials", {
-        username: values.username,
-        password: values.password,
-        redirect: false,
-      });
-
-      if (!res?.ok) {
-        throw new Error(res?.error || "Invalid credentials");
-      }
-
-      return res;
-    },
-
-    onSuccess: () => {
-      router.replace("/");
-    },
-  });
-
-  async function onSubmit(values: ILoginSchema) {
-    mutation.mutate(values);
-  }
+  // Handles form state, validation, and login mutation
+  const { form, onSubmit, mutation } = useLoginForm();
 
   return (
-    <form onSubmit={form.handleSubmit(onSubmit)} className="mt-6">
+    <form onSubmit={form.handleSubmit(onSubmit)} className="mt-8">
+      {/* ===== Form Fields ===== */}
       <FieldGroup className="gap-4">
-        {/* Username */}
+        {/* Username input */}
         <FormField
           name="username"
           control={form.control}
@@ -64,7 +21,7 @@ function LoginForm() {
           placeholder="user123"
         />
 
-        {/* Password */}
+        {/* Password input */}
         <PasswordFormField
           name="password"
           control={form.control}
@@ -74,12 +31,12 @@ function LoginForm() {
         />
       </FieldGroup>
 
-      {/* Error Message */}
+      {/* ===== Error Feedback ===== */}
       {mutation.isError && (
         <FormError message={(mutation.error as Error).message} />
       )}
 
-      {/* Submit Button */}
+      {/* ===== Submit Action ===== */}
       <Button
         type="submit"
         className="mt-10 mb-9 w-full bg-blue-600 hover:bg-blue-500 transition-colors hover:cursor-pointer h-12 text-base rounded-none"

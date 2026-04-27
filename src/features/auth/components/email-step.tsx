@@ -1,18 +1,12 @@
-import FormField from "@/shared/components/form-field";
-import FormError from "@/shared/components/form-error";
+import { FormField, FormError } from "@/shared/components";
 import { Button } from "@/shared/components/ui/button";
-import { FieldError } from "@/shared/components/ui/field";
 
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useMutation } from "@tanstack/react-query";
 import { ChevronRight } from "lucide-react";
 import Link from "next/link";
 import { Dispatch, memo, SetStateAction } from "react";
-import { useForm } from "react-hook-form";
-import { IEmailStepSchema, registerStep } from "../lib/types/auth";
-import {
-  emailStepSchema,
-} from "../lib/schemas/email-step.schema";
+
+import { registerStep } from "../lib/types/auth";
+import { useEmailStep } from "../hooks/use-email-step";
 
 interface IEmailStep {
   setStep: Dispatch<SetStateAction<registerStep>>;
@@ -20,38 +14,17 @@ interface IEmailStep {
 }
 
 function EmailStep({ setStep, setEmail }: IEmailStep) {
-  const form = useForm<IEmailStepSchema>({
-    resolver: zodResolver(emailStepSchema),
-    defaultValues: { email: "" },
+  // Handles form state, validation, and API request
+  const { form, mutation, onSubmit } = useEmailStep({
+    setStep,
+    setEmail,
   });
-
-  const mutation = useMutation({
-    mutationFn: async (values: IEmailStepSchema) => {
-      const data = await fetch("/api/auth/register/send-email-step", {
-        method: "POST",
-        body: JSON.stringify(values),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }).then((res) => res.json());
-
-      if (!data.status) {
-        throw new Error(data.message);
-      }
-
-      return data;
-    },
-    onSuccess: () => setStep("otp"),
-  });
-
-  function onSubmit(values: IEmailStepSchema) {
-    setEmail(values.email);
-    mutation.mutate(values);
-  }
 
   return (
     <>
-      <form onSubmit={form.handleSubmit(onSubmit)}>
+      {/* ===== Email Form ===== */}
+      <form onSubmit={form.handleSubmit(onSubmit)} className="mt-4">
+        {/* Email input */}
         <FormField
           name="email"
           control={form.control}
@@ -59,11 +32,12 @@ function EmailStep({ setStep, setEmail }: IEmailStep) {
           placeholder="user@example.com"
         />
 
+        {/* ===== Error Feedback ===== */}
         {mutation.isError && (
           <FormError message={(mutation.error as Error).message} />
         )}
 
-        {/* Next Button */}
+        {/* ===== Submit Action ===== */}
         <Button
           type="submit"
           variant="outline"
@@ -75,6 +49,7 @@ function EmailStep({ setStep, setEmail }: IEmailStep) {
         </Button>
       </form>
 
+      {/* ===== Secondary Action (Login Redirect) ===== */}
       <div className="w-fit mx-auto text-sm text-muted-foreground font-medium">
         Already have an account?{" "}
         <Link
