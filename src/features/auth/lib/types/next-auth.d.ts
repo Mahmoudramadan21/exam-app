@@ -16,9 +16,11 @@ declare module "next-auth" {
 
   /**
    * Session shape used across the app
-   * (simplified to directly expose IUser)
    */
-  type Session = IUser;
+  interface Session {
+    user: IUser;
+    token: string;
+  }
 }
 
 declare module "next-auth/jwt" {

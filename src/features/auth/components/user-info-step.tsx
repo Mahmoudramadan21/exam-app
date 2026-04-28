@@ -15,13 +15,8 @@ import { useUserInfoStep } from "../hooks/use-user-info-step";
 import { memo } from "react";
 
 function UserInfoStep({ email }: { email: string }) {
-  const {
-    form,
-    mutation,
-    showPasswordStep,
-    handleNextStep,
-    onSubmit,
-  } = useUserInfoStep({ email });
+  const { form, mutation, showPasswordStep, handleNextStep, onSubmit } =
+    useUserInfoStep({ email });
 
   return (
     <>
