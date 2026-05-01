@@ -1,5 +1,5 @@
 import "server-only";
-import { emailStepSchema } from "../schemas/email-step.schema";
+import { emailStepSchema } from "@/features/auth/lib/schemas/email-step.schema";
 import { authRequest } from "@/shared/lib/utils/request.util";
 import { BACKEND_URL } from "@/shared/lib/constants/api.constant";
 

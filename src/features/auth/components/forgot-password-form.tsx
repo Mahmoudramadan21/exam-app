@@ -39,7 +39,13 @@ function ForgotPasswordForm({ setStep, setEmail }: IForgotPasswordFormProps) {
         )}
 
         {/* ===== Submit Action ===== */}
-        <Button type="submit" theme="primary" disabled={mutation.isPending}>
+        <Button
+          type="submit"
+          theme="primary"
+          ui="fullWidth"
+          size="xl"
+          disabled={mutation.isPending}
+        >
           {mutation.isPending ? "Loading..." : "Next"}
           <ChevronRight width={16} height={16} className="shrink-0 w-4 h-4" />
         </Button>

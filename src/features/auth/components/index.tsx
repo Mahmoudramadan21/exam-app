@@ -3,7 +3,7 @@ export { default as LoginForm } from "./login-form";
 
 /* =========================== Register Steps =========================== */
 export { default as EmailStep } from "./email-step";
-export { default as OTPStep } from "./otp-step";
+export { default as OTPStep } from "./register-otp-step";
 export { default as UserInfoStep } from "./user-info-step";
 
 /* =========================== Register Progress Steps =========================== */

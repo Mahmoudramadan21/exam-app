@@ -17,12 +17,7 @@ function ProgressSteps({ steps, currentStep, className }: ProgressStepsProps) {
   return (
     <>
       {/* ===== Progress Container ===== */}
-      <div
-        className={clsx(
-          "progress flex items-center px-20 xl:px-38 mb-2.5",
-          className,
-        )}
-      >
+      <div className={clsx("progress flex items-center mb-2.5", className)}>
         {/* ===== Steps Renderer ===== */}
         {steps.map((step, index) => (
           <React.Fragment key={step}>

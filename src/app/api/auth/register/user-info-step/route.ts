@@ -7,6 +7,8 @@ export async function POST(req: NextRequest) {
     // ===== Parse user registration final step payload =====
     const payload = await req.json();
 
+    console.log(payload);
+
     // ===== Create user / complete registration process =====
     const message = await userInfoStepAction(payload);
 

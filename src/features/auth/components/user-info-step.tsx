@@ -80,6 +80,8 @@ function UserInfoStep({ email }: { email: string }) {
             <Button
               type="button"
               theme="outlineCustom"
+              ui="fullWidth"
+              size="xl"
               disabled={mutation.isPending}
               onClick={handleNextStep}
             >
@@ -119,6 +121,8 @@ function UserInfoStep({ email }: { email: string }) {
             <Button
               type="submit"
               theme="outlineCustom"
+              ui="fullWidth"
+              size="xl"
               disabled={mutation.isPending}
             >
               Create Account

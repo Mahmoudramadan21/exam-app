@@ -37,7 +37,13 @@ function LoginForm() {
       )}
 
       {/* ===== Submit Action ===== */}
-      <Button type="submit" theme="primary" disabled={mutation.isPending}>
+      <Button
+        type="submit"
+        theme="primary"
+        ui="fullWidth"
+        size="xl"
+        disabled={mutation.isPending}
+      >
         {mutation.isPending ? "Logging in..." : "Login"}
       </Button>
     </form>

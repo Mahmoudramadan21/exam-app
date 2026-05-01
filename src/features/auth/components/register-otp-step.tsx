@@ -11,23 +11,26 @@ import { Dispatch, memo, SetStateAction } from "react";
 import { Controller } from "react-hook-form";
 
 import { registerStep } from "@/features/auth/lib/types/auth";
-import { useOtpStep } from "@/features/auth/hooks/use-otp-step";
+import { useRegisterOtpStep } from "@/features/auth/hooks/use-register-otp-step";
 
-interface IOTPStepProps {
+interface IRegisterOtpStepProps {
   setStep: Dispatch<SetStateAction<registerStep>>;
   email: string;
 }
 
-function OTPStep({ setStep, email }: IOTPStepProps) {
+function RegisterOtpStep({ setStep, email }: IRegisterOtpStepProps) {
   // Custom hook handles form, API calls, timer & retry logic
   const {
     form,
-    mutation,
-    onSubmit,
-    handleRetry,
     timer,
+    onSubmit,
     errorMessage,
-  } = useOtpStep({ email, setStep });
+    verifyOtpMutation,
+    resendOtpMutation,
+  } = useRegisterOtpStep({
+    email,
+    setStep,
+  });
 
   return (
     <>
@@ -74,20 +77,20 @@ function OTPStep({ setStep, email }: IOTPStepProps) {
         />
 
         {/* ===== Timer / Resend Section ===== */}
-        {timer !== 0 ? (
-          <p className="text-gray-500 w-fit mx-auto">
-            You can Request another code in: {timer}s
+        {timer > 0 ? (
+          <p className="mx-auto w-fit text-gray-500">
+            You can request another code in: {timer}s
           </p>
         ) : (
-          <p className="text-gray-500 w-fit mx-auto">
-            Didn't receive a code?{" "}
+          <p className="mx-auto w-fit text-gray-500">
+            Didn&apos;t receive a code?{" "}
             <button
               type="button"
-              className="text-blue-600 cursor-pointer"
-              onClick={handleRetry} // resend OTP
-              disabled={mutation.isPending}
+              className="cursor-pointer text-blue-600"
+              onClick={() => resendOtpMutation.mutate()}
+              disabled={resendOtpMutation.isPending}
             >
-              Resend Code
+              {resendOtpMutation.isPending ? "Resending..." : "Resend Code"}
             </button>
           </p>
         )}
@@ -99,14 +102,17 @@ function OTPStep({ setStep, email }: IOTPStepProps) {
         <Button
           type="submit"
           theme="outlineCustom"
-          disabled={mutation.isPending}
+          ui="fullWidth"
+          size="xl"
+          disabled={verifyOtpMutation.isPending}
         >
-          {mutation.isPending ? "Verifying..." : "Verify Code"}
-          <ChevronRight width={16} height={16} className="shrink-0 w-4 h-4" />
+          {verifyOtpMutation.isPending ? "Verifying..." : "Verify Code"}
+
+          <ChevronRight className="h-4 w-4 shrink-0" />
         </Button>
       </form>
     </>
   );
 }
 
-export default memo(OTPStep);
+export default memo(RegisterOtpStep);

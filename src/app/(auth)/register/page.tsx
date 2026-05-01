@@ -3,7 +3,7 @@
 import { useState } from "react";
 
 import EmailStep from "@/features/auth/components/email-step";
-import OtpStep from "@/features/auth/components/otp-step";
+import RegisterOtpStep from "@/features/auth/components/register-otp-step";
 import UserInfoStep from "@/features/auth/components/user-info-step";
 import ProgressSteps from "@/features/auth/components/progress-steps";
 import AuthFormLayout from "@/features/auth/layout/auth-form-layout";
@@ -22,7 +22,13 @@ export default function Register() {
   return (
     <div className="flex flex-col justify-center gap-3">
       {/* ===== Progress Steps ===== */}
-      {step !== "email" && <ProgressSteps steps={steps} currentStep={step} />}
+      {step !== "email" && (
+        <ProgressSteps
+          steps={steps}
+          currentStep={step}
+          className="px-20 xl:px-38"
+        />
+      )}
 
       {/* ===== Auth Form Layout ===== */}
       <AuthFormLayout title="Create Account">
@@ -32,7 +38,7 @@ export default function Register() {
         )}
 
         {/* ===== OTP Step ===== */}
-        {step === "otp" && <OtpStep setStep={setStep} email={email} />}
+        {step === "otp" && <RegisterOtpStep setStep={setStep} email={email} />}
 
         {/* ===== User Info Step ===== */}
         {step === "userInfo" && <UserInfoStep email={email} />}

@@ -38,7 +38,7 @@ function EmailStep({ setStep, setEmail }: IEmailStep) {
         )}
 
         {/* ===== Submit Action ===== */}
-        <Button theme="outlineCustom" disabled={mutation.isPending}>
+        <Button theme="outlineCustom" ui="fullWidth" size="xl" disabled={mutation.isPending}>
           {mutation.isPending ? "Loading..." : "Next"}
           <ChevronRight width={16} height={16} className="shrink-0 w-4 h-4" />
         </Button>
