@@ -25,6 +25,7 @@ export default function ExamNavigation({
       <Button
         theme="secondary"
         ui="halfWidth"
+        size="xl"
         onClick={onPrev}
         disabled={isFirst || isDisabled}
       >
@@ -41,6 +42,7 @@ export default function ExamNavigation({
       <Button
         theme="primary"
         ui="halfWidth"
+        size="xl"
         onClick={onNextOrSubmit}
         disabled={isSubmitting}
       >

@@ -5,12 +5,11 @@ import { Field, FieldError, FieldLabel } from "@/shared/components/ui/field";
 
 import { Input } from "@/shared/components/ui/input";
 
-interface IFormFieldsProps<
-  T extends FieldValues,
-> extends React.InputHTMLAttributes<HTMLInputElement> {
+interface IFormFieldsProps<T extends FieldValues>
+  extends React.InputHTMLAttributes<HTMLInputElement> {
   name: Path<T>;
   control: Control<T>;
-  label: string;
+  label: string | React.ReactNode;
 }
 
 function FormField<T extends FieldValues>({
@@ -30,7 +29,7 @@ function FormField<T extends FieldValues>({
             {/* ===== Label ===== */}
             <FieldLabel
               htmlFor={String(name)}
-              className="text-gray-800 font-medium text-base"
+              className="text-gray-800 font-medium text-base flex justify-between items-center gap-2"
             >
               {label}
             </FieldLabel>

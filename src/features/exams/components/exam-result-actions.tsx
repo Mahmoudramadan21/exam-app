@@ -20,6 +20,7 @@ export default function ExamResultActions() {
       <Button
         theme="primary"
         ui="halfWidth"
+        size="xl"
         onClick={() => router.replace(path.slice(0, path.lastIndexOf("/")))}
       >
         Explore Diploma

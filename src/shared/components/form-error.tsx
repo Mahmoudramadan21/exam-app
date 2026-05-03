@@ -1,5 +1,6 @@
 import { CircleX } from "lucide-react";
 import { memo } from "react";
+import { cn } from "@/shared/lib/utils/tailwind-cn";
 
 interface FormErrorProps {
   message?: string;
@@ -11,17 +12,15 @@ function FormError({ message, className = "" }: FormErrorProps) {
   if (!message) return null;
 
   return (
-    <>
+    <div className={cn("w-full", className)}>
       {/* ===== Error Container ===== */}
-      <p
-        className={`border border-red-600 bg-red-50 py-2.5 text-center text-red-500 text-sm mt-10 relative ${className}`}
-      >
+      <p className="border border-red-600 bg-red-50 py-2.5 text-center text-red-500 text-sm mt-7 md:mt-10 relative">
         {message}
 
         {/* Error Icon */}
         <CircleX className="bg-white absolute -top-2.5 right-1/2 -translate-x-1/2 w-5 h-5" />
       </p>
-    </>
+    </div>
   );
 }
 

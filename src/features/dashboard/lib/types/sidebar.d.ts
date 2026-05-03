@@ -5,6 +5,7 @@ export interface ISidebarLink {
   label: string;
   href: string;
   icon: LucideIcon;
+  onClick?: () => void;
 }
 
 // Sidebar Dropdown Item Interface
