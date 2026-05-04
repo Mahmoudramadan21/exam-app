@@ -168,7 +168,7 @@ function Sidebar({
       <div
         data-slot="sidebar"
         className={cn(
-          "flex h-full w-(--sidebar-width) flex-col bg-sidebar text-sidebar-foreground",
+          "flex h-full w-(--sidebar-width) max-w-[33%] flex-col bg-sidebar text-sidebar-foreground",
           className,
         )}
         {...props}
@@ -263,6 +263,7 @@ function SidebarTrigger({
       data-slot="sidebar-trigger"
       variant="ghost"
       size="icon-sm"
+      ui="fitContent"
       className={cn(className)}
       onClick={(event) => {
         onClick?.(event);

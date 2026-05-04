@@ -13,3 +13,15 @@ export interface ISuccessResponse<T = unknown> {
   message?: string;
   payload?: T;
 }
+
+export interface IPagination {
+  page: number;
+  limit: number;
+  totalItems: number;
+  totalPages: number;
+}
+
+export interface IDocumentFields {
+  createAt: string;
+  updatedAt: string;
+}
