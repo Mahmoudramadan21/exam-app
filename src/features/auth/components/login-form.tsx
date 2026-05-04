@@ -1,9 +1,8 @@
 "use client";
 
+import { useLoginForm } from "@/features/auth/hooks";
+import { Button, FieldGroup } from "@/shared/components/ui";
 import { FormField, FormError, PasswordFormField } from "@/shared/components";
-import { Button } from "@/shared/components/ui/button";
-import { FieldGroup } from "@/shared/components/ui/field";
-import { useLoginForm } from "@/features/auth/hooks/use-login-form";
 
 function LoginForm() {
   // Handles form state, validation, and login mutation
@@ -37,13 +36,7 @@ function LoginForm() {
       )}
 
       {/* ===== Submit Action ===== */}
-      <Button
-        type="submit"
-        theme="primary"
-        ui="fullWidth"
-        size="xl"
-        disabled={mutation.isPending}
-      >
+      <Button type="submit" size="xl" disabled={mutation.isPending}>
         {mutation.isPending ? "Logging in..." : "Login"}
       </Button>
     </form>

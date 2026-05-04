@@ -1,11 +1,9 @@
 "use client";
 
 import { memo } from "react";
-
+import { Button, FieldGroup } from "@/shared/components/ui";
 import { FormError, PasswordFormField } from "@/shared/components";
-import { Button } from "@/shared/components/ui/button";
-import { FieldGroup } from "@/shared/components/ui/field";
-import { useResetPasswordForm } from "@/features/auth/hooks/use-reset-password-form";
+import { useResetPasswordForm } from "@/features/auth/hooks";
 
 function ResetPasswordForm({ token }: { token: string }) {
   // Handles form state, validation, and API request
@@ -38,13 +36,7 @@ function ResetPasswordForm({ token }: { token: string }) {
         )}
 
         {/* ===== Submit Action ===== */}
-        <Button
-          type="submit"
-          theme="primary"
-          ui="fullWidth"
-          size="xl"
-          disabled={mutation.isPending}
-        >
+        <Button type="submit" size="xl" disabled={mutation.isPending}>
           {mutation.isPending ? "Resetting..." : "Reset Password"}
         </Button>
       </form>

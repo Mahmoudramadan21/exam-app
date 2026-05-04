@@ -2,12 +2,9 @@
 export { default as LoginForm } from "./login-form";
 
 /* =========================== Register Steps =========================== */
-export { default as EmailStep } from "./email-step";
-export { default as OTPStep } from "./register-otp-step";
-export { default as UserInfoStep } from "./user-info-step";
-
-/* =========================== Register Progress Steps =========================== */
-export { default as RegisterProgressSteps } from "./progress-steps";
+export { default as RegisterEmailStep } from "./register-email-step";
+export { default as RegisterOtpStep } from "./register-otp-step";
+export { default as RegisterUserInfoStep } from "./register-user-info-step";
 
 /* =========================== Forgot Password Form =========================== */
 export { default as ForgotPasswordForm } from "./forgot-password-form";

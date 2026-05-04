@@ -1,21 +1,19 @@
-import { FormField, FormError } from "@/shared/components";
-import { Button } from "@/shared/components/ui/button";
-
-import { ChevronRight } from "lucide-react";
 import Link from "next/link";
+import { ChevronRight } from "lucide-react";
+import { Button } from "@/shared/components/ui";
 import { Dispatch, memo, SetStateAction } from "react";
+import { FormField, FormError } from "@/shared/components";
+import { useRegisterEmailStep } from "@/features/auth/hooks";
+import { registerStep } from "@/features/auth/lib/types/auth";
 
-import { registerStep } from "../lib/types/auth";
-import { useEmailStep } from "../hooks/use-email-step";
-
-interface IEmailStep {
+interface IRegisterEmailStep {
   setStep: Dispatch<SetStateAction<registerStep>>;
   setEmail: Dispatch<SetStateAction<string>>;
 }
 
-function EmailStep({ setStep, setEmail }: IEmailStep) {
+function RegisterEmailStep({ setStep, setEmail }: IRegisterEmailStep) {
   // Handles form state, validation, and API request
-  const { form, mutation, onSubmit } = useEmailStep({
+  const { form, mutation, onSubmit } = useRegisterEmailStep({
     setStep,
     setEmail,
   });
@@ -38,7 +36,12 @@ function EmailStep({ setStep, setEmail }: IEmailStep) {
         )}
 
         {/* ===== Submit Action ===== */}
-        <Button theme="outlineCustom" ui="fullWidth" size="xl" disabled={mutation.isPending}>
+        <Button
+          variant="outline"
+          size="xl"
+          className="border-blue-600 bg-blue-50 text-gray-800 hover:bg-blue-100/60"
+          disabled={mutation.isPending}
+        >
           {mutation.isPending ? "Loading..." : "Next"}
           <ChevronRight width={16} height={16} className="shrink-0 w-4 h-4" />
         </Button>
@@ -58,4 +61,4 @@ function EmailStep({ setStep, setEmail }: IEmailStep) {
   );
 }
 
-export default memo(EmailStep);
+export default memo(RegisterEmailStep);

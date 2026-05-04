@@ -1,17 +1,17 @@
-import { FormError } from "@/shared/components";
-import { Button } from "@/shared/components/ui/button";
+"use client";
+
 import {
+  Button,
   InputOTP,
   InputOTPGroup,
   InputOTPSlot,
-} from "@/shared/components/ui/input-otp";
-
-import { ChevronRight } from "lucide-react";
-import { Dispatch, memo, SetStateAction } from "react";
+} from "@/shared/components/ui";
 import { Controller } from "react-hook-form";
-
+import { ChevronRight } from "lucide-react";
+import { FormError } from "@/shared/components";
+import { Dispatch, memo, SetStateAction } from "react";
+import { useRegisterOtpStep } from "@/features/auth/hooks";
 import { registerStep } from "@/features/auth/lib/types/auth";
-import { useRegisterOtpStep } from "@/features/auth/hooks/use-register-otp-step";
 
 interface IRegisterOtpStepProps {
   setStep: Dispatch<SetStateAction<registerStep>>;
@@ -68,7 +68,8 @@ function RegisterOtpStep({ setStep, email }: IRegisterOtpStepProps) {
                 <InputOTPGroup key={i} className="flex-1">
                   <InputOTPSlot
                     index={i}
-                    className="mb-6 w-10 h-10 mx-auto text-center rounded border border-gray-300 focus:border-blue-500 focus:ring focus:ring-blue-200 first:rounded-none last:rounded-none"
+                    className=""
+                    aria-invalid={!!errorMessage}
                   />
                 </InputOTPGroup>
               ))}

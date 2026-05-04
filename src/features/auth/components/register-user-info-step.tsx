@@ -1,27 +1,24 @@
 "use client";
 
+import { memo } from "react";
 import {
   FormField,
   PhoneFormField,
   PasswordFormField,
   FormError,
 } from "@/shared/components";
-import { Button } from "@/shared/components/ui/button";
-import { FieldGroup } from "@/shared/components/ui/field";
-
 import { ChevronRight } from "lucide-react";
+import { Button, FieldGroup } from "@/shared/components/ui";
+import { useRegisterUserInfoStep } from "@/features/auth/hooks";
 
-import { useUserInfoStep } from "../hooks/use-user-info-step";
-import { memo } from "react";
-
-function UserInfoStep({ email }: { email: string }) {
+function RegisterUserInfoStep({ email }: { email: string }) {
   const {
     form,
     mutation,
     showPasswordStep,
     handleNextStep,
     onSubmit,
-  } = useUserInfoStep({ email });
+  } = useRegisterUserInfoStep({ email });
 
   return (
     <>
@@ -79,9 +76,9 @@ function UserInfoStep({ email }: { email: string }) {
             {/* Go to Step 2 */}
             <Button
               type="button"
-              theme="outlineCustom"
-              ui="fullWidth"
+              variant="outline"
               size="xl"
+              className="border-blue-600 bg-blue-50 text-gray-800 hover:bg-blue-100/60"
               disabled={mutation.isPending}
               onClick={handleNextStep}
             >
@@ -118,13 +115,7 @@ function UserInfoStep({ email }: { email: string }) {
             )}
 
             {/* Final Submit */}
-            <Button
-              type="submit"
-              theme="outlineCustom"
-              ui="fullWidth"
-              size="xl"
-              disabled={mutation.isPending}
-            >
+            <Button type="submit" size="xl" disabled={mutation.isPending}>
               Create Account
             </Button>
           </>
@@ -134,4 +125,4 @@ function UserInfoStep({ email }: { email: string }) {
   );
 }
 
-export default memo(UserInfoStep);
+export default memo(RegisterUserInfoStep);
