@@ -34,12 +34,6 @@ export const USER_SIDEBAR_DROPDOWN_ITEMS: SidebarDropdownItem[] = [
     action: "link",
   },
   {
-    label: "Dashboard",
-    href: "/dashboard",
-    icon: BoltIcon,
-    action: "link",
-  },
-  {
     label: "Logout",
     icon: LogOut,
     action: "logout",

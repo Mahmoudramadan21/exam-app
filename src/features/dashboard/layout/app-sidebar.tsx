@@ -30,16 +30,10 @@ import { memo } from "react";
 import { usePathname } from "next/navigation";
 
 function AppSidebar() {
-  const { user, links, dropdownItems, isLoading } = useSidebarAuth();
+  const { user, links, dropdownItems } = useSidebarAuth();
 
   // Get current route path
   const pathname = usePathname();
-
-  // Wait until session is loaded
-  if (isLoading) return null;
-
-  // Hide sidebar if user is not authenticated
-  if (!user) return null;
 
   return (
     <Sidebar>
@@ -100,9 +94,9 @@ function AppSidebar() {
             <DropdownMenu>
               {/* ===== User info trigger ===== */}
               <DropdownMenuTrigger asChild>
-                <div className="flex items-center gap-3 w-full cursor-pointer p-2 rounded-md hover:bg-blue-100/40 transition">
+                <button className="flex items-center gap-3 w-full cursor-pointer p-2 rounded-md hover:bg-blue-100/40 transition">
                   <Image
-                    src={user.profilePhoto ?? "/images/logo.svg"}
+                    src={user?.profilePhoto ?? "/images/logo.svg"}
                     alt="User"
                     width={54}
                     height={54}
@@ -110,13 +104,13 @@ function AppSidebar() {
 
                   <div className="flex flex-col leading-tight flex-1">
                     <span className="font-medium text-base text-blue-600">
-                      {user.firstName}
+                      {user?.firstName || user?.username}
                     </span>
-                    <span className="text-sm text-gray-500">{user.email}</span>
+                    <span className="text-sm text-gray-500">{user?.email}</span>
                   </div>
 
                   <FolderCode className="w-5 h-5 text-gray-500" />
-                </div>
+                </button>
               </DropdownMenuTrigger>
 
               {/* ===== Dropdown actions ===== */}
