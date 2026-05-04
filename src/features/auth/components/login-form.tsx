@@ -37,11 +37,7 @@ function LoginForm() {
       )}
 
       {/* ===== Submit Action ===== */}
-      <Button
-        type="submit"
-        className="mt-10 mb-9 w-full bg-blue-600 hover:bg-blue-500 transition-colors hover:cursor-pointer h-12 text-base rounded-none"
-        disabled={mutation.isPending}
-      >
+      <Button type="submit" theme="primary" disabled={mutation.isPending}>
         {mutation.isPending ? "Logging in..." : "Login"}
       </Button>
     </form>

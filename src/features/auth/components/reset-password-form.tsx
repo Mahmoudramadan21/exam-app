@@ -38,11 +38,7 @@ function ResetPasswordForm({ token }: { token: string }) {
         )}
 
         {/* ===== Submit Action ===== */}
-        <Button
-          type="submit"
-          className="mt-10 w-full bg-blue-600 hover:bg-blue-500 transition-colors h-12 text-base rounded-none"
-          disabled={mutation.isPending}
-        >
+        <Button type="submit" theme="primary" disabled={mutation.isPending}>
           {mutation.isPending ? "Resetting..." : "Reset Password"}
         </Button>
       </form>

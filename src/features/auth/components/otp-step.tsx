@@ -20,8 +20,14 @@ interface IOTPStepProps {
 
 function OTPStep({ setStep, email }: IOTPStepProps) {
   // Custom hook handles form, API calls, timer & retry logic
-  const { form, mutation, onSubmit, handleRetry, timer, errorMessage } =
-    useOtpStep({ email, setStep });
+  const {
+    form,
+    mutation,
+    onSubmit,
+    handleRetry,
+    timer,
+    errorMessage,
+  } = useOtpStep({ email, setStep });
 
   return (
     <>
@@ -92,8 +98,7 @@ function OTPStep({ setStep, email }: IOTPStepProps) {
         {/* ===== Submit Action ===== */}
         <Button
           type="submit"
-          variant="outline"
-          className="mt-10 mb-9 w-full text-gray-800 border-blue-600 bg-blue-50 hover:bg-blue-100/60 transition-colors hover:cursor-pointer h-12 text-sm font-medium rounded-none"
+          theme="outlineCustom"
           disabled={mutation.isPending}
         >
           {mutation.isPending ? "Verifying..." : "Verify Code"}

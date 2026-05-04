@@ -1,6 +1,6 @@
 // features/auth/actions/login.action.ts
 
-import "server-only";
+// import "server-only";
 import { loginSchema } from "../schemas/login.schema";
 import { ILoginResponse, ILoginSchema } from "../types/auth";
 import { authRequest } from "@/shared/lib/utils/request.util";
