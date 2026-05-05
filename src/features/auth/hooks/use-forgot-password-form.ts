@@ -1,15 +1,14 @@
 "use client";
 
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useMutation } from "@tanstack/react-query";
-import { Dispatch, SetStateAction } from "react";
-
 import {
   IEmailStepSchema,
   forgotPasswordSteps,
 } from "@/features/auth/lib/types/auth";
-import { emailStepSchema } from "@/features/auth/lib/schemas/email-step.schema";
+import { useForm } from "react-hook-form";
+import { Dispatch, SetStateAction } from "react";
+import { useMutation } from "@tanstack/react-query";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { emailStepSchema } from "@/features/auth/lib/schemas";
 
 interface UseForgotPasswordFormProps {
   setStep: Dispatch<SetStateAction<forgotPasswordSteps>>;

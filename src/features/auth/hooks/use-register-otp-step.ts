@@ -1,17 +1,14 @@
 "use client";
 
-import { Dispatch, SetStateAction } from "react";
-
 import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
+import { Dispatch, SetStateAction } from "react";
+import { useCountdownTimer } from "@/shared/hooks";
 import { useMutation } from "@tanstack/react-query";
-
-import { useCountdownTimer } from "@/shared/hooks/use-countdown-timer";
-
-import { otpStepSchema } from "@/features/auth/lib/schemas/otp-step.schema";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { otpStepSchema } from "@/features/auth/lib/schemas";
 import { IOtpStepSchema, registerStep } from "@/features/auth/lib/types/auth";
 
-interface UseRegisterOtpStepProps {
+interface IUseRegisterOtpStepProps {
   email: string;
   setStep: Dispatch<SetStateAction<registerStep>>;
 }
@@ -19,7 +16,7 @@ interface UseRegisterOtpStepProps {
 export function useRegisterOtpStep({
   email,
   setStep,
-}: UseRegisterOtpStepProps) {
+}: IUseRegisterOtpStepProps) {
   const { timer, resetTimer } = useCountdownTimer();
 
   // Initialize form

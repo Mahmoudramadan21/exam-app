@@ -1,19 +1,21 @@
 "use client";
 
 import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useMutation } from "@tanstack/react-query";
-
-import { IEmailStepSchema, registerStep } from "../lib/types/auth";
-import { emailStepSchema } from "../lib/schemas/email-step.schema";
 import { Dispatch, SetStateAction } from "react";
+import { useMutation } from "@tanstack/react-query";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { emailStepSchema } from "@/features/auth/lib/schemas";
+import { IEmailStepSchema, registerStep } from "@/features/auth/lib/types/auth";
 
-interface UseEmailStepProps {
+interface IUseRegisterEmailStepProps {
   setStep: Dispatch<SetStateAction<registerStep>>;
   setEmail: Dispatch<SetStateAction<string>>;
 }
 
-export function useEmailStep({ setStep, setEmail }: UseEmailStepProps) {
+export function useRegisterEmailStep({
+  setStep,
+  setEmail,
+}: IUseRegisterEmailStepProps) {
   // Initialize form with validation
   const form = useForm<IEmailStepSchema>({
     resolver: zodResolver(emailStepSchema),

@@ -2,23 +2,24 @@
 
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "@tanstack/react-query";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { userInfoStepSchema } from "@/features/auth/lib/schemas";
+import { IUserInfoStepSchema } from "@/features/auth/lib/types/auth";
 
-import { IUserInfoSchema } from "@/features/auth/lib/types/auth";
-import { userInfoSchema } from "@/features/auth/lib/schemas/user-info-step.schema";
-
-interface UseUserInfoStepProps {
+interface IUseRegisterUserInfoStepProps {
   email: string;
 }
 
-export function useUserInfoStep({ email }: UseUserInfoStepProps) {
+export function useRegisterUserInfoStep({
+  email,
+}: IUseRegisterUserInfoStepProps) {
   // Controls step navigation (basic info -> password)
   const [showPasswordStep, setShowPasswordStep] = useState(false);
 
   // Form setup with validation schema
-  const form = useForm<IUserInfoSchema>({
-    resolver: zodResolver(userInfoSchema),
+  const form = useForm<IUserInfoStepSchema>({
+    resolver: zodResolver(userInfoStepSchema),
     defaultValues: {
       email,
       firstName: "",
@@ -32,7 +33,7 @@ export function useUserInfoStep({ email }: UseUserInfoStepProps) {
 
   // Submit user registration
   const mutation = useMutation({
-    mutationFn: async (values: IUserInfoSchema) => {
+    mutationFn: async (values: IUserInfoStepSchema) => {
       const res = await fetch("/api/auth/register/user-info-step", {
         method: "POST",
         body: JSON.stringify(values),
@@ -69,7 +70,7 @@ export function useUserInfoStep({ email }: UseUserInfoStepProps) {
   }
 
   // Final submit (Step 2 only)
-  function onSubmit(values: IUserInfoSchema) {
+  function onSubmit(values: IUserInfoStepSchema) {
     if (!showPasswordStep) return;
 
     mutation.mutate({

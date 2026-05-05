@@ -1,11 +1,10 @@
 "use client";
 
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useMutation } from "@tanstack/react-query";
 import { signIn } from "next-auth/react";
-
-import { loginSchema } from "@/features/auth/lib/schemas/login.schema";
+import { useForm } from "react-hook-form";
+import { useMutation } from "@tanstack/react-query";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { loginSchema } from "@/features/auth/lib/schemas";
 import { ILoginSchema } from "@/features/auth/lib/types/auth";
 
 export function useLoginForm() {

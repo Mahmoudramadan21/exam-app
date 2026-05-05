@@ -1,12 +1,11 @@
 "use client";
 
 import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
-
-import { resetPasswordSchema } from "../lib/schemas/reset-password.schema";
-import { IResetPasswordSchema } from "../lib/types/auth";
+import { useMutation } from "@tanstack/react-query";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { resetPasswordSchema } from "@/features/auth/lib/schemas";
+import { IResetPasswordSchema } from "@/features/auth/lib/types/auth";
 
 interface UseResetPasswordFormProps {
   token: string;
