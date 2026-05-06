@@ -1,10 +1,8 @@
-// features/auth/actions/login.action.ts
-
-// import "server-only";
-import { loginSchema } from "../schemas/login.schema";
-import { ILoginResponse, ILoginSchema } from "../types/auth";
-import { authRequest } from "@/shared/lib/utils/request.util";
+import "server-only";
+import { apiRequest } from "@/shared/lib/utils/request.util";
 import { BACKEND_URL } from "@/shared/lib/constants/api.constant";
+import { loginSchema } from "@/features/auth/lib/schemas/login.schema";
+import { ILoginResponse, ILoginSchema } from "@/features/auth/lib/types/auth";
 
 /**
  * Handles user login request.
@@ -13,7 +11,7 @@ import { BACKEND_URL } from "@/shared/lib/constants/api.constant";
 export const loginAction = async (payload: ILoginSchema) => {
   const validated = loginSchema.parse(payload);
 
-  return authRequest<ILoginResponse>(`${BACKEND_URL}/auth/login`, {
+  return apiRequest<ILoginResponse>(`${BACKEND_URL}/auth/login`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

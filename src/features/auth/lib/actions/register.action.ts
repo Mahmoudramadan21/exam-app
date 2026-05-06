@@ -1,10 +1,10 @@
 import "server-only";
 
-import { emailStepSchema } from "../schemas/email-step.schema";
-import { IOtpStepSchema, IUserInfoSchema } from "../types/auth";
 import { IApiResponse } from "@/shared/lib/types/api";
-import { authRequest } from "@/shared/lib/utils/request.util";
+import { apiRequest } from "@/shared/lib/utils/request.util";
 import { BACKEND_URL } from "@/shared/lib/constants/api.constant";
+import { emailStepSchema } from "@/features/auth/lib/schemas/email-step.schema";
+import { IOtpStepSchema, IUserInfoStepSchema } from "@/features/auth/lib/types/auth";
 
 /**
  * Sends email verification for signup flow.
@@ -12,7 +12,7 @@ import { BACKEND_URL } from "@/shared/lib/constants/api.constant";
 export const sendEmailStepAction = async (email: string) => {
   const parsedEmail = emailStepSchema.parse({ email });
 
-  return authRequest<IApiResponse>(
+  return apiRequest<IApiResponse>(
     `${BACKEND_URL}/auth/send-email-verification`,
     {
       method: "POST",
@@ -28,7 +28,7 @@ export const sendEmailStepAction = async (email: string) => {
  * Confirms OTP code sent to user's email.
  */
 export const confirmOtpStepAction = async (payload: IOtpStepSchema) => {
-  return authRequest<IApiResponse>(
+  return apiRequest<IApiResponse>(
     `${BACKEND_URL}/auth/confirm-email-verification`,
     {
       method: "POST",
@@ -43,17 +43,12 @@ export const confirmOtpStepAction = async (payload: IOtpStepSchema) => {
 /**
  * Final registration step after email verification.
  */
-export const userInfoStepAction = async (payload: IUserInfoSchema) => {
-  const result = await authRequest<IApiResponse>(
-    `${BACKEND_URL}/auth/register`,
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(payload),
+export const userInfoStepAction = async (payload: IUserInfoStepSchema) => {
+  return await apiRequest<IApiResponse>(`${BACKEND_URL}/auth/register`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
     },
-  );
-
-  return result;
+    body: JSON.stringify(payload),
+  });
 };

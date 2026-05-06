@@ -1,5 +1,5 @@
 import "server-only";
-import { authRequest } from "@/shared/lib/utils/request.util";
+import { apiRequest } from "@/shared/lib/utils/request.util";
 import { BACKEND_URL } from "@/shared/lib/constants/api.constant";
 
 /**
@@ -10,7 +10,7 @@ export const resetPasswordAction = async (payload: {
   newPassword: string;
   confirmPassword: string;
 }) => {
-  return authRequest(`${BACKEND_URL}/auth/reset-password`, {
+  return apiRequest(`${BACKEND_URL}/auth/reset-password`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
