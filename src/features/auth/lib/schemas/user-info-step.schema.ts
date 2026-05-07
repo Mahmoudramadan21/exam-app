@@ -5,7 +5,7 @@ import { z } from "zod";
  * Validation schema for user registration info step
  * Includes personal data + authentication credentials
  */
-export const userInfoSchema = z
+export const userInfoStepSchema = z
   .object({
     // ===== Basic identity fields =====
 
