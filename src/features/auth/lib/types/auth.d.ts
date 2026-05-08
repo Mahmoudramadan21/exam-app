@@ -5,7 +5,7 @@ import { z } from "zod";
 import { loginSchema } from "../schemas/login.schema";
 import { emailStepSchema } from "../schemas/email-step.schema";
 import { otpStepSchema } from "../schemas/otp-step.schema";
-import { userInfoSchema } from "../schemas/user-info-step.schema";
+import { userInfoStepSchema } from "../schemas/user-info-step.schema";
 import { resetPasswordSchema } from "../schemas/reset-password.schema";
 
 /**
@@ -17,7 +17,7 @@ import { resetPasswordSchema } from "../schemas/reset-password.schema";
 export type ILoginSchema = z.infer<typeof loginSchema>;
 export type IEmailStepSchema = z.infer<typeof emailStepSchema>;
 export type IOtpStepSchema = z.infer<typeof otpStepSchema>;
-export type IUserInfoSchema = z.infer<typeof userInfoSchema>;
+export type IUserInfoStepSchema = z.infer<typeof userInfoSchema>;
 export type IResetPasswordSchema = z.infer<typeof resetPasswordSchema>;
 
 /**

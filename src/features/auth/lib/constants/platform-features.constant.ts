@@ -9,7 +9,7 @@ import {
  * Single platform feature structure
  * Used to render the promo features list in Auth UI
  */
-export interface PlatformFeature {
+export interface IPlatformFeature {
   id: string;
   icon: LucideIcon;
   title: string;
@@ -20,7 +20,7 @@ export interface PlatformFeature {
  * Static features list for the platform promo section
  * This data drives the AuthPromoPanel UI (no logic here)
  */
-export const PLATFORM_FEATURES: PlatformFeature[] = [
+export const PLATFORM_FEATURES: IPlatformFeature[] = [
   {
     id: "diplomas",
     icon: Brain,
