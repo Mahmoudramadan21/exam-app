@@ -9,25 +9,18 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-} from "@/shared/components/ui/sidebar";
-
-import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/shared/components/ui/dropdown-menu";
-
+} from "@/shared/components/ui";
+import { memo } from "react";
 import Link from "next/link";
 import Image from "next/image";
-
 import { signOut } from "next-auth/react";
-
-import FolderCode from "@/assets/icons/folder-code.svg";
-
-import { useSidebarAuth } from "@/features/dashboard/hooks/use-sidebar-auth";
-import { memo } from "react";
 import { usePathname } from "next/navigation";
+import FolderCode from "@/assets/icons/folder-code.svg";
+import { useSidebarAuth } from "@/features/dashboard/hooks/use-sidebar-auth";
 
 function AppSidebar() {
   const { user, links, dropdownItems } = useSidebarAuth();
@@ -102,11 +95,13 @@ function AppSidebar() {
                     height={54}
                   />
 
-                  <div className="flex flex-col leading-tight flex-1">
-                    <span className="font-medium text-base text-blue-600">
+                  <div className="flex flex-col min-w-0 leading-tight flex-1">
+                    <span className="font-medium text-base text-blue-600 truncate">
                       {user?.firstName || user?.username}
                     </span>
-                    <span className="text-sm text-gray-500">{user?.email}</span>
+                    <span className="text-sm text-gray-500 truncate">
+                      {user?.email}
+                    </span>
                   </div>
 
                   <FolderCode className="w-5 h-5 text-gray-500" />

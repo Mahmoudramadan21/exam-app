@@ -33,12 +33,12 @@ export default function PageBar({
       )}
 
       {/* Page title section */}
-      <div className="h-full flex items-center gap-1 md:gap-3 px-4 bg-blue-600 text-white grow">
+      <div className="h-full flex items-center gap-1 md:gap-3 px-4 bg-blue-600 text-white grow min-w-0">
         {/* Optional page icon */}
         {icon && <div className="text-xl">{icon}</div>}
 
         {/* Page title */}
-        <h1 className="text-xl md:text-2xl lg:text-3xl font-inter font-semibold truncate">
+        <h1 className="text-lg md:text-2xl lg:text-3xl font-inter font-semibold truncate">
           {title}
         </h1>
       </div>

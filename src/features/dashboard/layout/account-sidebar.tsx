@@ -7,37 +7,23 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-} from "@/shared/components/ui/sidebar";
-
-import Link from "next/link";
-import { signOut } from "next-auth/react";
+} from "@/shared/components/ui";
 import { memo } from "react";
+import Link from "next/link";
+import { LogOut } from "lucide-react";
+import { signOut } from "next-auth/react";
 import { usePathname } from "next/navigation";
-
-import { CircleUserIcon, LockIcon, LogOut } from "lucide-react";
+import { ACCOUNT_SIDEBAR_LINKS } from "@/features/dashboard/lib/constants/sidebar.constant";
 
 function AccountSidebar() {
   const pathname = usePathname();
-
-  const links = [
-    {
-      label: "Profile",
-      href: "/account",
-      icon: CircleUserIcon,
-    },
-    {
-      label: "Change Password",
-      href: "/account/change-password",
-      icon: LockIcon,
-    },
-  ];
 
   return (
     <Sidebar className="static w-full h-full">
       {/* ===== Content ===== */}
       <SidebarContent className="p-6 bg-white">
         <SidebarMenu>
-          {links.map((link) => {
+          {ACCOUNT_SIDEBAR_LINKS.map((link) => {
             const Icon = link.icon;
             const isActive = pathname === link.href;
 
