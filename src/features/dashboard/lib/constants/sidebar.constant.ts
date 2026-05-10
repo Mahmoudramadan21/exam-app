@@ -1,18 +1,19 @@
 import {
   GraduationCap,
   UserRound,
-  BoltIcon,
   LogOut,
   LayoutGrid,
-  BookOpen,
-  FileText,
-  Users,
   BookOpenCheck,
   Logs,
+  CircleUserIcon,
+  LockIcon,
 } from "lucide-react";
+import {
+  ISidebarLink,
+  SidebarDropdownItem,
+} from "@/features/dashboard/lib/types/sidebar";
 
-import { ISidebarLink, SidebarDropdownItem } from "../types/sidebar";
-
+// User Sidebar Navigation Links
 export const USER_SIDEBAR_LINKS: ISidebarLink[] = [
   {
     label: "Diplomas",
@@ -26,6 +27,7 @@ export const USER_SIDEBAR_LINKS: ISidebarLink[] = [
   },
 ];
 
+// User Sidebar Dropdown Items
 export const USER_SIDEBAR_DROPDOWN_ITEMS: SidebarDropdownItem[] = [
   {
     label: "Account",
@@ -40,6 +42,7 @@ export const USER_SIDEBAR_DROPDOWN_ITEMS: SidebarDropdownItem[] = [
   },
 ];
 
+// Admin Sidebar Navigation Links
 export const ADMIN_SIDEBAR_LINKS: ISidebarLink[] = [
   {
     label: "Diplomas",
@@ -63,6 +66,7 @@ export const ADMIN_SIDEBAR_LINKS: ISidebarLink[] = [
   },
 ];
 
+// Admin Sidebar Dropdown Items
 export const ADMIN_SIDEBAR_DROPDOWN_ITEMS: SidebarDropdownItem[] = [
   {
     label: "Account",
@@ -80,5 +84,19 @@ export const ADMIN_SIDEBAR_DROPDOWN_ITEMS: SidebarDropdownItem[] = [
     label: "Logout",
     icon: LogOut,
     action: "logout",
+  },
+];
+
+// Account Sidebar Navigation Links
+export const ACCOUNT_SIDEBAR_LINKS: ISidebarLink[] = [
+  {
+    label: "Profile",
+    href: "/account",
+    icon: CircleUserIcon,
+  },
+  {
+    label: "Change Password",
+    href: "/account/change-password",
+    icon: LockIcon,
   },
 ];
