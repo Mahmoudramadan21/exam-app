@@ -1,22 +1,20 @@
 "use client";
 
-import { useSearchParams } from "next/navigation";
-import DiplomaItem from "./diploma-item";
-import { useDiplomas } from "@/features/diplomas/hooks/use-diplomas";
-import { useInfiniteScroll } from "@/shared/hooks/use-infinte-scroll";
-import DiplomaListSkeleton from "../lib/skeletons/diploma-list-skeleton";
 import { useMemo } from "react";
-import { DEFAULT_LIMIT } from "@/shared/lib/constants/pagination.constant";
+import { useInfiniteScroll } from "@/shared/hooks";
+import { useDiplomas } from "@/features/diplomas/hooks";
+import { DiplomaItem } from "@/features/diplomas/components";
+import { DiplomaListSkeleton } from "@/features/diplomas/lib/skeletons";
 
 function DiplomaList() {
-  // Get pagination limit from URL (fallback to DEFAULT_LIMIT)
-  const searchParams = useSearchParams();
-  const limit = Number(searchParams.get("limit")) || DEFAULT_LIMIT;
-
   // Fetch diplomas with infinite pagination
-  const { data, fetchNextPage, hasNextPage, isFetchingNextPage } = useDiplomas({
-    limit,
-  });
+  const {
+    data,
+    isPending,
+    fetchNextPage,
+    hasNextPage,
+    isFetchingNextPage,
+  } = useDiplomas();
 
   // Setup infinite scroll trigger
   const { ref } = useInfiniteScroll({
@@ -27,29 +25,25 @@ function DiplomaList() {
 
   // Flatten paginated response into a single array
   const diplomas = useMemo(() => {
-    return data?.pages.flatMap((page) => page.payload?.data || []) || [];
+    return data?.pages.flatMap((page) => page?.payload?.data || []) || [];
   }, [data]);
 
-  /* ===== Empty State ===== */
-  if (!diplomas.length) {
-    return (
-      <p className="text-center mt-10" role="status">
-        No diplomas found
-      </p>
-    );
+  // Initial Loading Skeleton
+  if (isPending) {
+    return <DiplomaListSkeleton />;
   }
 
   return (
     <section aria-label="Diplomas list">
       {/* ===== Diplomas Grid ===== */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6 mb-6">
         {diplomas.map((item, index) => (
           <DiplomaItem key={item.id} diploma={item} priority={index === 0} />
-        ))}{" "}
+        ))}
       </div>
 
       {/* ===== Loading More (Skeleton) ===== */}
-      {isFetchingNextPage && <DiplomaListSkeleton />}
+      {isFetchingNextPage && <DiplomaListSkeleton count={3} />}
 
       {/* ===== Infinite Scroll Trigger ===== */}
       <div ref={ref} className="h-2" />
