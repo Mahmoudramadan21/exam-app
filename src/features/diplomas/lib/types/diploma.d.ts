@@ -1,4 +1,4 @@
-import { IApiResponse, IDocumentFields } from "@/shared/lib/types/api";
+import { IDocumentFields } from "@/shared/lib/types/api";
 
 // Diploma Entity
 export interface IDiploma extends IDocumentFields {
