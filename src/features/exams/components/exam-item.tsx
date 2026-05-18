@@ -1,11 +1,16 @@
 import Image from "next/image";
-import { IExam } from "../lib/types/exam";
-import { Button } from "@/shared/components/ui/button";
-import { CircleQuestionMark, MoveRight, Timer } from "lucide-react";
-import TruncatedText from "@/shared/components/turncated-text";
 import Link from "next/link";
+import { CircleQuestionMark, MoveRight, Timer } from "lucide-react";
+import {TruncatedText} from "@/shared/components";
+import type { IExam } from "@/features/exams/lib/types/exam";
 
-function ExamItem({ exam, diplomaId }: { exam: IExam; diplomaId: string }) {
+// Component Props
+interface IExamItemProps {
+  exam: IExam;
+  diplomaId: string;
+}
+
+function ExamItem({ exam, diplomaId }: IExamItemProps) {
   return (
     <article className="bg-blue-50 p-4 flex gap-4 group">
       {/* ==== Exam Image ==== */}

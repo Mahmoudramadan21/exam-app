@@ -1,5 +1,4 @@
-import { CheckCircle, XCircle } from "lucide-react";
-
+// Component Props
 interface ExamResultSummaryProps {
   correct: number;
   wrong: number;

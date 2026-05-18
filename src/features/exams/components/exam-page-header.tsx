@@ -1,5 +1,6 @@
 import { memo, useMemo } from "react";
 
+// Component Props
 interface IExamHeaderProps {
   title: string;
   currentIndex: number;

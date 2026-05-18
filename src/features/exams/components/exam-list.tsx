@@ -1,16 +1,13 @@
-import { IExam } from "../lib/types/exam";
-import ExamItem from "./exam-item";
+import type { IExam } from "@/features/exams/lib/types/exam";
+import { ExamItem } from "@/features/exams/components";
 
-function ExamList({ exams, diplomaId }: { exams: IExam[]; diplomaId: string }) {
-  // Empty state: when no exams are available
-  if (!exams?.length) {
-    return (
-      <p className="text-center mt-10" role="status">
-        No exams available
-      </p>
-    );
-  }
+// Component Props
+interface IExamListProps {
+  exams: IExam[];
+  diplomaId: string;
+}
 
+function ExamList({ exams, diplomaId }: IExamListProps) {
   return (
     // Exams grid container
     <section aria-label="Diploma exams">

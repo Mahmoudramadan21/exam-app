@@ -1,6 +1,7 @@
-import { Button } from "@/shared/components/ui/button";
+import { Button } from "@/shared/components/ui";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
+// Component Props
 interface IExamNavigationProps {
   onPrev: () => void;
   onNextOrSubmit: () => void;
@@ -20,15 +21,9 @@ export default function ExamNavigation({
   isSubmitting,
 }: IExamNavigationProps) {
   return (
-    <div className="flex justify-between gap-4">
+    <div className="grid grid-cols-1 md:grid-cols-2 justify-between gap-4">
       {/* Navigate to previous question */}
-      <Button
-        theme="secondary"
-        ui="halfWidth"
-        size="xl"
-        onClick={onPrev}
-        disabled={isFirst || isDisabled}
-      >
+      <Button variant="secondary" size="xl" onClick={onPrev} disabled={isFirst || isDisabled}>
         <ChevronLeft size={18} />
         Previous
       </Button>
@@ -39,13 +34,7 @@ export default function ExamNavigation({
         - Submit exam if last question
         - Shows loading state while submitting
       */}
-      <Button
-        theme="primary"
-        ui="halfWidth"
-        size="xl"
-        onClick={onNextOrSubmit}
-        disabled={isSubmitting}
-      >
+      <Button size="xl" onClick={onNextOrSubmit} disabled={isSubmitting}>
         {isSubmitting ? (
           "Submitting..."
         ) : isLast ? (

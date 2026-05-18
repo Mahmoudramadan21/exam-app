@@ -1,6 +1,7 @@
 import { memo } from "react";
-import { IExamAnalytics } from "../lib/types/exam";
+import type { IExamAnalytics } from "@/features/exams/lib/types/exam";
 
+// Component Props
 interface IExamAnalyticsListProps {
   analytics: IExamAnalytics[];
 }

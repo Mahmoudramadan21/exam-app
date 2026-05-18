@@ -1,11 +1,12 @@
 import { memo } from "react";
 
-interface IExamStatusProps {
+// Component Props
+interface IExamPageStatusProps {
   error?: Error | null;
   isSuccess: boolean;
 }
 
-function ExamStatus({ error, isSuccess }: IExamStatusProps) {
+function ExamPageStatus({ error, isSuccess }: IExamPageStatusProps) {
   // Render nothing when there is no status to show
   if (!error && !isSuccess) return null;
 
@@ -28,4 +29,4 @@ function ExamStatus({ error, isSuccess }: IExamStatusProps) {
   );
 }
 
-export default memo(ExamStatus);
+export default memo(ExamPageStatus);

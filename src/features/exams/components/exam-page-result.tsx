@@ -1,19 +1,19 @@
 "use client";
 
-import { useMemo } from "react";
+import { memo, useMemo } from "react";
 import { IExamSubmissionPayload } from "@/features/exams/lib/types/api";
-
 import {
   ExamResultSummary,
   ExamAnalyticsList,
   ExamResultActions,
 } from "@/features/exams/components";
 
-interface Props {
+// Component Props
+interface IExamPageResultProps {
   data: IExamSubmissionPayload;
 }
 
-export default function ExamResult({ data }: Props) {
+function ExamPageResult({ data }: IExamPageResultProps) {
   const { submission, analytics } = data;
 
   const correct = submission.correctAnswers;
@@ -64,3 +64,5 @@ export default function ExamResult({ data }: Props) {
     </section>
   );
 }
+
+export default memo(ExamPageResult);
