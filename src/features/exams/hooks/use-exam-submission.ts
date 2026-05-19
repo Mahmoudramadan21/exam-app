@@ -1,6 +1,6 @@
 import { useMutation } from "@tanstack/react-query";
 import { IExamAnswer } from "@/features/exams/lib/types/exam";
-import { IExamSubmissionResponse } from "../lib/types/api";
+import { IExamSubmissionResponse } from "@/features/exams/lib/types/api";
 
 interface IUseExamSubmissionProps {
   examId: string;

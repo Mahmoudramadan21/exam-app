@@ -1,18 +1,15 @@
 import { useRef, useCallback } from "react";
-
 import { IExam } from "@/features/exams/lib/types/exam";
 import { IQuestion } from "@/features/questions/lib/types/question";
-
 import {
   useExamTimer,
   useExamAnswers,
   useExamNavigation,
   useExamSubmission,
   useExamActions,
-  useExamGuard,
+  useAutoSubmitOnTimeout,
 } from "@/features/exams/hooks";
-import { useAutoSubmitOnTimeout } from "./use-auto-submit-on-timeout";
-import { formatExamAnswers } from "../lib/utils/format-answers.util";
+import { formatExamAnswers } from "@/features/exams/lib/utils/format-answers.util";
 
 export function useExamController(exam: IExam, examQuestions: IQuestion[]) {
   // Track exam start time for submission

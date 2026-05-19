@@ -1,6 +1,6 @@
 import { useCallback, useMemo } from "react";
-import { IExamAnswer } from "../lib/types/exam";
-import { formatExamAnswers } from "../lib/utils/format-answers.util";
+import { IExamAnswer } from "@/features/exams/lib/types/exam";
+import { formatExamAnswers } from "@/features/exams/lib/utils/format-answers.util";
 
 interface IUseExamActionsProps {
   answers: Record<string, string>;
