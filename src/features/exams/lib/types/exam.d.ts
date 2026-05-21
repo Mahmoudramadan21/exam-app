@@ -1,5 +1,6 @@
 import { IDocumentFields } from "@/shared/lib/types/api";
 
+// Exam Entity
 export interface IExam extends IDocumentFields {
   id: string;
   title: string;
@@ -16,6 +17,7 @@ export interface IExam extends IDocumentFields {
   immutable: boolean | null;
 }
 
+// Exam Submission Entity
 export interface IExamSubmission extends IDocumentFields {
   id: string;
   userId: string;
@@ -35,6 +37,7 @@ export interface IExamSubmission extends IDocumentFields {
   submittedAt: Date;
 }
 
+// Exam Analytics Entity
 export interface IExamAnalytics {
   questionId: string;
   questionText: string;
@@ -49,6 +52,7 @@ export interface IExamAnalytics {
   isCorrect: boolean;
 }
 
+// Exam Answer Entity
 export interface IExamAnswer {
   questionId: string;
   answerId: string;
