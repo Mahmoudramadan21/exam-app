@@ -1,12 +1,9 @@
 "use client";
 
-import React, { memo } from "react";
 import { Control, Controller, FieldValues, Path } from "react-hook-form";
-
+import { Field, FieldError, FieldLabel } from "@/shared/components/ui";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
-
-import { Field, FieldError, FieldLabel } from "@/shared/components/ui/field";
 
 interface IPhoneFormFieldProps<T extends FieldValues> {
   name: Path<T>;
@@ -28,12 +25,7 @@ function PhoneFormField<T extends FieldValues>({
           {/* ===== Field Wrapper ===== */}
           <Field data-invalid={fieldState.invalid}>
             {/* ===== Label ===== */}
-            <FieldLabel
-              htmlFor={String(name)}
-              className="text-gray-800 font-medium text-base"
-            >
-              {label}
-            </FieldLabel>
+            <FieldLabel htmlFor={String(name)}>{label}</FieldLabel>
 
             {/* ===== Phone Input ===== */}
             <PhoneInput

@@ -1,23 +1,35 @@
+"use client";
+
+import React from "react";
 import { Control, Controller, FieldValues, Path } from "react-hook-form";
-import React, { memo } from "react";
+import {
+  Field,
+  FieldError,
+  FieldLabel,
+  Input,
+  Textarea,
+} from "@/shared/components/ui";
 
-import { Field, FieldError, FieldLabel } from "@/shared/components/ui/field";
-
-import { Input } from "@/shared/components/ui/input";
-
-interface IFormFieldsProps<T extends FieldValues>
-  extends React.InputHTMLAttributes<HTMLInputElement> {
+type IBaseProps<T extends FieldValues> = {
   name: Path<T>;
   control: Control<T>;
   label: string | React.ReactNode;
-}
+};
 
-function FormField<T extends FieldValues>({
-  name,
-  control,
-  label,
-  ...inputProps
-}: IFormFieldsProps<T>) {
+type IInputProps = React.ComponentPropsWithoutRef<"input"> & {
+  variant?: "input";
+};
+
+type ITextareaProps = React.ComponentPropsWithoutRef<"textarea"> & {
+  variant: "textarea";
+};
+
+type IFormFieldProps<T extends FieldValues> = IBaseProps<T> &
+  (IInputProps | ITextareaProps);
+
+function FormField<T extends FieldValues>(props: IFormFieldProps<T>) {
+  const { name, control, label, variant = "input", ...rest } = props;
+
   return (
     <Controller
       name={name}
@@ -27,22 +39,27 @@ function FormField<T extends FieldValues>({
           {/* ===== Field Wrapper ===== */}
           <Field data-invalid={fieldState.invalid}>
             {/* ===== Label ===== */}
-            <FieldLabel
-              htmlFor={String(name)}
-              className="text-gray-800 font-medium text-base flex justify-between items-center gap-2"
-            >
-              {label}
-            </FieldLabel>
+            <FieldLabel htmlFor={String(name)}>{label}</FieldLabel>
 
-            {/* ===== Input ===== */}
-            <Input
-              id={String(name)}
-              aria-invalid={fieldState.invalid}
-              aria-describedby={`${name}-error`}
-              {...inputProps}
-              {...field}
-              className={inputProps.className || ""}
-            />
+            {/* Render Input or Textarea based on variant prop */}
+            {variant === "input" ? (
+              <Input
+                id={String(name)}
+                aria-invalid={fieldState.invalid}
+                aria-describedby={`${name}-error`}
+                {...(rest as React.ComponentPropsWithoutRef<"input">)}
+                {...field}
+              />
+            ) : (
+              <Textarea
+                id={String(name)}
+                aria-invalid={fieldState.invalid}
+                aria-describedby={`${name}-error`}
+                rows={5}
+                {...(rest as React.ComponentPropsWithoutRef<"textarea">)}
+                {...field}
+              />
+            )}
 
             {/* ===== Error Message ===== */}
             {fieldState.invalid && (

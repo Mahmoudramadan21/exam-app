@@ -1,20 +1,20 @@
-import React, { memo, useState } from "react";
-import { Path, Control, Controller, FieldValues } from "react-hook-form";
+"use client";
 
+import React, { useState } from "react";
+import { Path, Control, Controller, FieldValues } from "react-hook-form";
 import Link from "next/link";
 import { Eye, EyeOff } from "lucide-react";
-
-import { Field, FieldError, FieldLabel } from "@/shared/components/ui/field";
-
 import {
+  Field,
+  FieldError,
+  FieldLabel,
   InputGroup,
   InputGroupAddon,
   InputGroupInput,
-} from "@/shared/components/ui/input-group";
+} from "@/shared/components/ui";
 
-interface IPasswordFormFieldProps<
-  T extends FieldValues,
-> extends React.InputHTMLAttributes<HTMLInputElement> {
+interface IPasswordFormFieldProps<T extends FieldValues>
+  extends React.InputHTMLAttributes<HTMLInputElement> {
   name: Path<T>;
   control: Control<T>;
   label: string;
@@ -40,12 +40,7 @@ function PasswordFormField<T extends FieldValues>({
           {/* ===== Field Wrapper ===== */}
           <Field data-invalid={fieldState.invalid}>
             {/* ===== Label ===== */}
-            <FieldLabel
-              htmlFor={String(name)}
-              className="text-gray-800 font-medium text-base"
-            >
-              {label}
-            </FieldLabel>
+            <FieldLabel htmlFor={String(name)}>{label}</FieldLabel>
 
             {/* ===== Password Input Group ===== */}
             <InputGroup className={inputProps.className || ""}>

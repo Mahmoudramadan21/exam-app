@@ -12,9 +12,9 @@ function FormError({ message, className = "" }: FormErrorProps) {
   if (!message) return null;
 
   return (
-    <div className={cn("w-full", className)}>
+    <div className={cn("w-full mt-7 md:mt-10", className)}>
       {/* ===== Error Container ===== */}
-      <p className="border border-red-600 bg-red-50 py-2.5 text-center text-red-500 text-sm mt-7 md:mt-10 relative">
+      <p className="border border-red-600 bg-red-50 py-2.5 text-center text-red-500 text-sm relative">
         {message}
 
         {/* Error Icon */}
