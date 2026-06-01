@@ -4,24 +4,22 @@ import * as React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { Slot } from "radix-ui";
 
-import { useIsMobile } from "@/shared/hooks/use-mobile";
+import { useIsMobile } from "@/shared/hooks";
 import { cn } from "@/shared/lib/utils/tailwind-cn";
-import { Button } from "@/shared/components/ui/button";
-import { Input } from "@/shared/components/ui/input";
-import { Separator } from "@/shared/components/ui/separator";
 import {
+  Skeleton,
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+  Input, 
+  Button, 
+  Separator, 
   Sheet,
   SheetContent,
   SheetDescription,
   SheetHeader,
   SheetTitle,
-} from "@/shared/components/ui/sheet";
-import { Skeleton } from "@/shared/components/ui/skeleton";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/shared/components/ui/tooltip";
+} from "@/shared/components/ui";
 import { PanelLeftIcon } from "lucide-react";
 
 const SIDEBAR_COOKIE_NAME = "sidebar_state";
@@ -253,6 +251,7 @@ function Sidebar({
 function SidebarTrigger({
   className,
   onClick,
+  children,
   ...props
 }: React.ComponentProps<typeof Button>) {
   const { toggleSidebar, isMobile } = useSidebar();
@@ -272,6 +271,7 @@ function SidebarTrigger({
       }}
       {...props}
     >
+      {children}
       <PanelLeftIcon />
       <span className="sr-only">Toggle Sidebar</span>
     </Button>}
