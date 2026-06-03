@@ -1,12 +1,13 @@
 // features/auth/lib/request.ts
 
 import { IApiResponse } from "@/shared/lib/types/api";
+import { notFound } from "next/navigation";
 
 /**
  * Generic API request handler for auth endpoints.
  * Handles JSON parsing + basic error normalization.
  */
-export const authRequest = async <TResponse>(
+export const apiRequest = async <TResponse>(
   input: RequestInfo,
   init?: RequestInit,
 ): Promise<TResponse> => {
@@ -21,6 +22,10 @@ export const authRequest = async <TResponse>(
 
   // HTTP + business logic failure fallback
   if (!response.ok || !data.status) {
+    if (data.code === 404) {
+      notFound();
+    }
+
     throw new Error(data.message || "Request failed");
   }
 
