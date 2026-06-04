@@ -1,16 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
-
-import { userInfoStepAction } from "@/features/auth/lib/actions/register.action";
+import { userInfoStepAction } from "@/features/auth/lib/actions";
 
 export async function POST(req: NextRequest) {
   try {
-    // ===== Parse user registration final step payload =====
-    const payload = await req.json();
-
-    console.log(payload);
+    // ===== Parse registration final step body =====
+    const body = await req.json();
 
     // ===== Create user / complete registration process =====
-    const message = await userInfoStepAction(payload);
+    const message = await userInfoStepAction(body);
 
     // ===== Return success response (user created) =====
     return NextResponse.json({

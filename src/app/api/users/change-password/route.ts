@@ -1,13 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
-import { updateProfileAction } from "@/features/users/lib/actions";
+import { updatePasswordAction } from "@/features/users/lib/actions";
 
-export async function PATCH(req: NextRequest) {
+export async function POST(req: NextRequest) {
   try {
     // ===== Extract request body =====
     const body = await req.json();
 
-    // ===== Call domain logic (update profile) =====
-    const data = await updateProfileAction(body);
+    // ===== Call domain logic (update password) =====
+    const data = await updatePasswordAction(body);
 
     // ===== Return successful response =====
     return NextResponse.json(data);

@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-
-import { sendEmailStepAction } from "@/features/auth/lib/actions/register.action";
+import { sendEmailStepAction } from "@/features/auth/lib/actions";
 
 export async function POST(req: NextRequest) {
   try {

@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { deleteAccountAction } from "@/features/user/lib/actions/delete-account";
+import { deleteAccountAction } from "@/features/users/lib/actions";
 
 export async function DELETE() {
   try {

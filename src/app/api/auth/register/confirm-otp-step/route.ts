@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-
-import { confirmOtpStepAction } from "@/features/auth/lib/actions/register.action";
+import { confirmOtpStepAction } from "@/features/auth/lib/actions";
 
 export async function POST(req: NextRequest) {
   try {

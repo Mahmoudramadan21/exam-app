@@ -1,10 +1,10 @@
 import { NextResponse } from "next/server";
-import { getProfileAction } from "@/features/user/lib/actions/get-profile";
+import { getProfile } from "@/features/users/lib/apis";
 
 export async function GET() {
   try {
     // ===== Call domain logic (get profile) =====
-    const data = await getProfileAction();
+    const data = await getProfile();
 
     // ===== Return successful response =====
     return NextResponse.json(data);

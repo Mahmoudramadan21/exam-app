@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-
-import { forgotPasswordAction } from "@/features/auth/lib/actions/forgot-password.action";
+import { forgotPasswordAction } from "@/features/auth/lib/actions";
 
 export async function POST(req: NextRequest) {
   try {

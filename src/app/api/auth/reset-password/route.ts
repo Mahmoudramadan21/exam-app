@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-
-import { resetPasswordAction } from "@/features/auth/lib/actions/reset-password.action";
+import { resetPasswordAction } from "@/features/auth/lib/actions";
 
 export async function POST(req: NextRequest) {
   try {

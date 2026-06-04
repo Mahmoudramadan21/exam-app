@@ -1,20 +1,20 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getExam } from "@/features/exams/lib/apis";
+import { getDiploma } from "@/features/diplomas/lib/apis";
 import {
-  updateExamAction,
-  deleteExamAction,
-} from "@/features/exams/lib/actions";
+  updateDiplomaAction,
+  deleteDiplomaAction,
+} from "@/features/diplomas/lib/actions";
 
 export async function GET(
   req: NextRequest,
   { params }: { params: Promise<{ id: string }> },
 ) {
   try {
-    // ===== Extract exam id from params =====
+    // ===== Extract diploma id from params =====
     const { id } = await params;
 
-    // ===== Call domain logic (get exam) =====
-    const res = await getExam(id);
+    // ===== Call domain logic (get diploma) =====
+    const res = await getDiploma(id);
 
     return NextResponse.json(res);
   } catch (error) {
@@ -35,14 +35,14 @@ export async function PUT(
   { params }: { params: Promise<{ id: string }> },
 ) {
   try {
-    // ===== Extract exam id from params =====
+    // ===== Extract diploma id from params =====
     const { id } = await params;
 
-    // ===== Extract exam data from request body =====
+    // ===== Extract diploma data from request body =====
     const body = await req.json();
 
-    // ===== Call domain logic (update exam) =====
-    const res = await updateExamAction({ examId: id, data: body });
+    // ===== Call domain logic (update diploma) =====
+    const res = await updateDiplomaAction({ diplomaId: id, data: body });
 
     return NextResponse.json(res);
   } catch (error) {
@@ -63,11 +63,11 @@ export async function DELETE(
   { params }: { params: Promise<{ id: string }> },
 ) {
   try {
-    // ===== Extract exam id from params =====
+    // ===== Extract diploma id from params =====
     const { id } = await params;
 
-    // ===== Call domain logic (delete exam) =====
-    const res = await deleteExamAction(id);
+    // ===== Call domain logic (delete diploma) =====
+    const res = await deleteDiplomaAction(id);
 
     return NextResponse.json(res);
   } catch (error) {

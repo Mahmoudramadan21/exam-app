@@ -1,12 +1,12 @@
-import { NextResponse } from "next/server";
-import { confirmUpdateEmailAction } from "@/features/user/lib/actions/update-email";
+import { NextRequest, NextResponse } from "next/server";
+import { confirmUpdateEmailAction } from "@/features/users/lib/actions";
 
-export async function POST(req: Request) {
+export async function POST(req: NextRequest) {
   try {
     // ===== Extract request body =====
     const body = await req.json();
 
-    // ===== Call domain logic (update profile) =====
+    // ===== Call domain logic (confirm update email) =====
     const data = await confirmUpdateEmailAction(body);
 
     // ===== Return successful response =====

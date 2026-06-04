@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
+import { getAllExams } from "@/features/exams/lib/apis";
+import { createExamAction } from "@/features/exams/lib/actions";
 import { getFilters } from "@/shared/lib/utils/get-filters";
-import { getAllDiplomas } from "@/features/diplomas/lib/apis";
-import { createDiplomaAction } from "@/features/diplomas/lib/actions";
 
 export async function GET(req: NextRequest) {
   try {
@@ -11,8 +11,8 @@ export async function GET(req: NextRequest) {
     // ===== Parse filters =====
     const params = getFilters(searchParams);
 
-    // ===== Call domain logic (get all diplomas) =====
-    const res = await getAllDiplomas(params);
+    // ===== Call domain logic (get all exams) =====
+    const res = await getAllExams(params);
 
     return NextResponse.json(res);
   } catch (error) {
@@ -29,11 +29,11 @@ export async function GET(req: NextRequest) {
 
 export async function POST(req: NextRequest) {
   try {
-    // ===== Extract body =====
+    // ===== Extract request body =====
     const body = await req.json();
 
-    // ===== Call domain logic (create diploma) =====
-    const res = await createDiplomaAction(body);
+    // ===== Call domain logic (create exam) =====
+    const res = await createExamAction(body);
 
     return NextResponse.json(res);
   } catch (error) {

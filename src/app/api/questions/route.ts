@@ -1,16 +1,16 @@
 import { NextRequest, NextResponse } from "next/server";
-import { updateProfileAction } from "@/features/users/lib/actions";
+import { createQuestionAction } from "@/features/questions/lib/actions";
 
-export async function PATCH(req: NextRequest) {
+export async function POST(req: NextRequest) {
   try {
     // ===== Extract request body =====
     const body = await req.json();
 
-    // ===== Call domain logic (update profile) =====
-    const data = await updateProfileAction(body);
+    // ===== Call domain logic (create question) =====
+    const res = await createQuestionAction(body);
 
-    // ===== Return successful response =====
-    return NextResponse.json(data);
+    // ===== Return response =====
+    return NextResponse.json(res);
   } catch (error) {
     // ===== Handle unexpected or known errors =====
     return NextResponse.json(
@@ -19,7 +19,7 @@ export async function PATCH(req: NextRequest) {
         message:
           error instanceof Error ? error.message : "Internal Server Error",
       },
-      { status: 400 },
+      { status: 500 },
     );
   }
 }
