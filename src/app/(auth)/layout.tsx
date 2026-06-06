@@ -1,6 +1,5 @@
 import React from "react";
-
-import AuthPromoPanel from "@/features/auth/layout/auth-promo-panel";
+import { AuthPromoPanel } from "@/features/auth/layout";
 
 interface AuthLayoutProps {
   children: React.ReactNode;

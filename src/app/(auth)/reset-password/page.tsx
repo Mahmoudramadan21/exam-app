@@ -1,7 +1,6 @@
 import { redirect } from "next/navigation";
-
-import AuthFormLayout from "@/features/auth/layout/auth-form-layout";
-import ResetPasswordForm from "@/features/auth/components/reset-password-form";
+import { AuthFormLayout } from "@/features/auth/layout";
+import { ResetPasswordForm } from "@/features/auth/components";
 
 interface ResetPasswordPageProps {
   searchParams: Promise<{ token?: string }>;

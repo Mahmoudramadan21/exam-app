@@ -2,11 +2,9 @@
 
 import { useState } from "react";
 import Link from "next/link";
-
-import ForgotPasswordForm from "@/features/auth/components/forgot-password-form";
-import AuthFormLayout from "@/features/auth/layout/auth-form-layout";
+import { AuthFormLayout } from "@/features/auth/layout";
+import { ForgotPasswordForm } from "@/features/auth/components";
 import { forgotPasswordSteps } from "@/features/auth/lib/types/auth";
-
 import { cn } from "@/shared/lib/utils/tailwind-cn";
 
 export default function ForgotPassword() {

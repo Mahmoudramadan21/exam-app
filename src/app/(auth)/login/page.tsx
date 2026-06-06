@@ -1,7 +1,6 @@
 import Link from "next/link";
-
-import LoginForm from "@/features/auth/components/login-form";
-import AuthFormLayout from "@/features/auth/layout/auth-form-layout";
+import { AuthFormLayout } from "@/features/auth/layout";
+import { LoginForm } from "@/features/auth/components";
 
 export default function Login() {
   return (

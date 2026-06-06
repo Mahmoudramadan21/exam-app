@@ -1,14 +1,14 @@
 "use client";
 
 import { useState } from "react";
-
-import EmailStep from "@/features/auth/components/email-step";
-import RegisterOtpStep from "@/features/auth/components/register-otp-step";
-import UserInfoStep from "@/features/auth/components/user-info-step";
-import ProgressSteps from "@/features/auth/components/progress-steps";
-import AuthFormLayout from "@/features/auth/layout/auth-form-layout";
-
+import { ProgressSteps } from "@/shared/components";
+import { AuthFormLayout } from "@/features/auth/layout";
 import { registerStep } from "@/features/auth/lib/types/auth";
+import {
+  RegisterEmailStep,
+  RegisterOtpStep,
+  RegisterUserInfoStep,
+} from "@/features/auth/components";
 
 export default function Register() {
   // ===== Registration flow state (step-based wizard) =====
@@ -34,14 +34,14 @@ export default function Register() {
       <AuthFormLayout title="Create Account">
         {/* ===== Email Step ===== */}
         {step === "email" && (
-          <EmailStep setStep={setStep} setEmail={setEmail} />
+          <RegisterEmailStep setStep={setStep} setEmail={setEmail} />
         )}
 
         {/* ===== OTP Step ===== */}
         {step === "otp" && <RegisterOtpStep setStep={setStep} email={email} />}
 
         {/* ===== User Info Step ===== */}
-        {step === "userInfo" && <UserInfoStep email={email} />}
+        {step === "userInfo" && <RegisterUserInfoStep email={email} />}
       </AuthFormLayout>
     </div>
   );
