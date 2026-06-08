@@ -1,0 +1,110 @@
+import { authOptions } from "@/auth";
+import {BookOpenCheck} from "lucide-react";
+import { getServerSession } from "next-auth";
+import { notFound } from "next/navigation";
+import type { Metadata } from "next";
+import { Suspense } from "react";
+import { PageBar } from "@/features/dashboard/components";
+import { AppBreadcrumb } from "@/features/dashboard/layout";
+import { getDiploma } from "@/features/diplomas/lib/apis";
+import { AdminDiplomaDetails, AdminDiplomaHeader } from "@/features/diplomas/components";
+import { ExamListSkeleton } from "@/features/exams/lib/skeletons";
+import { ExamList } from "@/features/exams/components";
+
+// ===== Metadata =====
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ diplomaId: string }>;
+}): Promise<Metadata> {
+  // Get diploma ID
+  const { diplomaId } = await params;
+  
+  // Fetch diploma
+  const { payload } = await getDiploma(diplomaId);
+  const diploma = payload?.diploma;
+
+  // Not found diploma
+  if (!diploma) {
+    return {
+      title: "Diploma Not Found",
+      description: "The requested diploma could not be found.",
+    };
+  }
+
+  // Return diploma metadata
+  return {
+    title: diploma.title,
+    description:
+      diploma.description ||
+      `View exams and learning materials for ${diploma.title}.`,
+  };
+}
+
+export default async function DiplomaPage({
+  params,
+}: {
+  params: Promise<{ diplomaId: string }>;
+}) {
+  // Get diploma ID
+  const { diplomaId } = await params;
+  
+  // Fetch diploma
+  const { payload: result } = await getDiploma(diplomaId);
+
+  // Not found diploma
+  if (!result?.diploma) {
+    notFound();
+  }
+
+  // Get exams
+  const exams = result?.diploma?.exams || [];
+
+  // Get user session
+  const session = await getServerSession(authOptions);
+  
+  // Check if user is admin
+  const isAdmin = session?.user?.role === "ADMIN";
+
+  return (
+    <>
+      {isAdmin ? (
+        <section className="flex flex-col gap-6">
+          <AppBreadcrumb
+            items={[
+              { label: "Diplomas", href: "/diplomas" },
+              { label: result?.diploma?.title || "Diploma", href: `/diplomas/${diplomaId}` },
+            ]}
+          />
+          {/* ===== Admin Diploma Header ===== */}
+          <AdminDiplomaHeader diploma={result.diploma} />
+
+          {/* ===== Admin Diploma Details ===== */}
+          <AdminDiplomaDetails diploma={result.diploma} />
+        </section>
+      ) : (
+        <>
+          <AppBreadcrumb
+            items={[
+              { label: "Diplomas", href: "/diplomas" },
+              { label: result?.diploma?.title || "Diploma", href: `/diplomas/${diplomaId}` },
+              { label: "Exams"},
+            ]}
+          />
+
+          {/* ===== User Diploma Page Bar ===== */}
+          <PageBar
+            showBack
+            icon={<BookOpenCheck className="size-7 md:size-11" />}
+            title={`${result?.diploma?.title || "Diploma"} Exams`}
+          />
+
+          {/* ===== User Diploma Exams ===== */}
+          <Suspense fallback={<ExamListSkeleton />}>
+            <ExamList exams={exams} diplomaId={diplomaId} />
+          </Suspense>
+        </>
+      )}
+    </>
+  );
+}
