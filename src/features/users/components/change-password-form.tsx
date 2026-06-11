@@ -10,8 +10,11 @@ function ChangePasswordForm() {
   const { form, onSubmit, mutation } = useChangePasswordForm();
 
   return (
-    <section>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="bg-white p-6">
+    <>
+      <form
+        onSubmit={form.handleSubmit(onSubmit)}
+        className="h-full p-6 bg-white"
+      >
         {/* ===== Form Fields ===== */}
         <FieldGroup className="gap-4">
           {/* Username input */}
@@ -49,7 +52,7 @@ function ChangePasswordForm() {
           {mutation.isPending ? "Updating Password..." : "Update Password"}
         </Button>
       </form>
-    </section>
+    </>
   );
 }
 

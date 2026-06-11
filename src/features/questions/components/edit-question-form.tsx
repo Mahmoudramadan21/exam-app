@@ -1,7 +1,7 @@
 "use client";
 
 import { memo } from "react";
-import { FormActions, FormField } from "@/shared/components";
+import { AppContainer, FormActions, FormField } from "@/shared/components";
 import { Controller, FormProvider } from "react-hook-form";
 import { QuestionAnswersSection } from "@/features/questions/components";
 import { ExamFilterSelect } from "@/features/exams/components";
@@ -22,34 +22,36 @@ function EditQuestionForm({ question }: IEditQuestionFormProps) {
       <form onSubmit={form.handleSubmit(onSubmit)}>
         <FormActions isPending={mutation.isPending} />
 
-        <fieldset className="bg-white">
-          <legend className="w-full bg-blue-600 p-3 text-white">
-            Question Information
-          </legend>
+        <AppContainer className="flex flex-col gap-6 mt-6">
+          <fieldset className="bg-white">
+            <legend className="w-full bg-blue-600 p-3 text-white">
+              Question Information
+            </legend>
 
-          <div className="space-y-4 p-4">
-            <Controller
-              control={form.control}
-              name="examId"
-              render={({ field }) => (
-                <ExamFilterSelect
-                  value={field.value}
-                  onChange={field.onChange}
-                  error={form.formState.errors.examId?.message}
-                />
-              )}
-            />
+            <div className="space-y-4 p-4">
+              <Controller
+                control={form.control}
+                name="examId"
+                render={({ field }) => (
+                  <ExamFilterSelect
+                    value={field.value}
+                    onChange={field.onChange}
+                    error={form.formState.errors.examId?.message}
+                  />
+                )}
+              />
 
-            <FormField
-              control={form.control}
-              name="text"
-              label="Question Headline"
-              placeholder="Question headline"
-            />
-          </div>
-        </fieldset>
+              <FormField
+                control={form.control}
+                name="text"
+                label="Question Headline"
+                placeholder="Question headline"
+              />
+            </div>
+          </fieldset>
 
-        <QuestionAnswersSection />
+          <QuestionAnswersSection />
+        </AppContainer>
       </form>
     </FormProvider>
   );

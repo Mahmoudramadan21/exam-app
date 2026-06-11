@@ -20,7 +20,7 @@ export default function PageBar({
   const router = useRouter();
 
   return (
-    <div className={`flex items-center gap-3 h-14 md:h-18 mb-6 ${className}`}>
+    <div className={`flex items-center gap-3 h-14 md:h-18 my-6 ${className}`}>
       {/* Back navigation button (optional) */}
       {showBack && (
         <button

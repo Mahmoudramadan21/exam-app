@@ -8,11 +8,11 @@ export default function AccountLayout({
 }) {
   return (
     <SidebarProvider className="min-h-full h-full min-w-full w-full">
-      <div className="grid grid-cols-1 lg:grid-cols-[282px_1fr] gap-6 w-full h-full">
+      <div className="grid grid-cols-1 lg:grid-cols-[282px_1fr] gap-6 w-full h-full lg:h-[calc(100svh-172px)]">
         {/* ===== Account Sidebar ===== */}
         <AccountSidebar />
 
-        <div className="grow">
+        <div className="grow h-full bg-gray-50">
           {/* ===== Sidebar Trigger ===== */}
           <SidebarTrigger className="absolute top-0 right-0">
             Account Settings

@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { memo } from "react";
 import { CopyPlus } from "lucide-react";
-import { FormField, FormActions } from "@/shared/components";
+import { FormField, FormActions, AppContainer } from "@/shared/components";
 import { Controller, FormProvider } from "react-hook-form";
 import { QuestionAnswersSection } from "@/features/questions/components";
 import { ExamFilterSelect } from "@/features/exams/components";
@@ -20,7 +20,7 @@ function CreateQuestionForm({ examId }: ICreateQuestionFormProps) {
     <FormProvider {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
         {/* ===== Form Actions ===== */}
-        <div className="flex items-center justify-between gap-2 bg-white">
+        <AppContainer className="flex items-center justify-between gap-2 mt-6 bg-white">
           <Link
             href={`?mode=bulk&examId=${examId}`}
             aria-label="Switch to bulk question creation mode"
@@ -30,43 +30,45 @@ function CreateQuestionForm({ examId }: ICreateQuestionFormProps) {
             <CopyPlus size={18} />
           </Link>
           <FormActions isPending={mutation.isPending} />
-        </div>
+        </AppContainer>
 
-        {/* ===== Question Information ===== */}
-        <fieldset className="bg-white">
-          <legend className="w-full bg-blue-600 p-3 font-semibold text-white">
-            Question Information
-          </legend>
+        <AppContainer className="flex flex-col gap-6">
+          {/* ===== Question Information ===== */}
+          <fieldset className="bg-white">
+            <legend className="w-full bg-blue-600 p-3 font-semibold text-white">
+              Question Information
+            </legend>
 
-          <div className="space-y-4 p-4">
-            {/* ===== Exam Select ===== */}
-            <div className="space-y-2">
-              <label className="text-sm font-medium">Exam</label>
+            <div className="space-y-4 p-4">
+              {/* ===== Exam Select ===== */}
+              <div className="space-y-2">
+                <label className="text-sm font-medium">Exam</label>
 
-              <Controller
+                <Controller
+                  control={form.control}
+                  name="examId"
+                  render={({ field }) => (
+                    <ExamFilterSelect
+                      value={field.value}
+                      onChange={field.onChange}
+                      error={form.formState.errors.examId?.message}
+                    />
+                  )}
+                />
+              </div>
+              {/* ===== Question Headline (Single Mode) ===== */}
+              <FormField
                 control={form.control}
-                name="examId"
-                render={({ field }) => (
-                  <ExamFilterSelect
-                    value={field.value}
-                    onChange={field.onChange}
-                    error={form.formState.errors.examId?.message}
-                  />
-                )}
+                name="text"
+                label="Question Headline"
+                placeholder="Question headline"
               />
             </div>
-            {/* ===== Question Headline (Single Mode) ===== */}
-            <FormField
-              control={form.control}
-              name="text"
-              label="Question Headline"
-              placeholder="Question headline"
-            />
-          </div>
-        </fieldset>
+          </fieldset>
 
-        {/* ===== Question Answers (Single Mode) ===== */}
-        <QuestionAnswersSection />
+          {/* ===== Question Answers (Single Mode) ===== */}
+          <QuestionAnswersSection />
+        </AppContainer>
       </form>
     </FormProvider>
   );

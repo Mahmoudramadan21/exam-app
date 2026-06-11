@@ -1,13 +1,11 @@
-import { authOptions } from "@/auth";
 import { imageSchema } from "@/shared/lib/schemes/image.schema";
-import { getServerSession } from "next-auth";
 import { NextRequest, NextResponse } from "next/server";
+import { getToken } from "next-auth/jwt";
 
 export async function POST(req: NextRequest) {
   try {
     // ===== Get Auth Token =====
-    const session = await getServerSession(authOptions);
-    const token = session?.token;
+    const token = (await getToken({ req }))?.token;
 
     // ===== Check if token is valid =====
     if (!token) {

@@ -55,7 +55,7 @@ export default async function EditDiplomaPage({
   const diploma = payload.diploma;
 
   return (
-    <div className="flex flex-col gap-6">
+    <div className="flex flex-col">
       <AppBreadcrumb
         items={[
           { label: "Diplomas", href: "/diplomas" },

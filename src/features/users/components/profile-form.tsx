@@ -27,8 +27,11 @@ function ProfileForm({ initialData }: IProfileFormProps) {
   );
 
   return (
-    <section>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="bg-white p-6">
+    <>
+      <form
+        onSubmit={form.handleSubmit(onSubmit)}
+        className=" h-full p-6 bg-white"
+      >
         {/* ===== Form Fields ===== */}
         <FieldGroup className="gap-4 grid grid-cols-1 md:grid-cols-2">
           {/* First Name Field */}
@@ -113,7 +116,7 @@ function ProfileForm({ initialData }: IProfileFormProps) {
         open={isUpdateEmailModalOpen}
         setOpenEmailModal={setIsUpdateEmailModalOpen}
       />
-    </section>
+    </>
   );
 }
 

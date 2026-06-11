@@ -1,8 +1,8 @@
 "use client";
 
-import { memo } from "react";
+import { memo, Suspense } from "react";
 import { usePagination } from "@/shared/hooks";
-import { Pagination } from "@/shared/components";
+import { AppContainer, Pagination } from "@/shared/components";
 import { Button } from "@/shared/components/ui";
 import { Plus } from "lucide-react";
 import Link from "next/link";
@@ -12,10 +12,13 @@ import {
   ExamsToolbar,
 } from "@/features/exams/components";
 import { useAdminExams } from "@/features/exams/hooks";
+import { AdminExamsTableSkeleton } from "../lib/skeletons";
 
 function AdminExamsTable() {
   // ===== Fetch diplomas =====
-  const { data, isFetching } = useAdminExams();
+  const { data, isFetching, isPending } = useAdminExams();
+
+  console.log("Data: ", data);
 
   // ===== Current page data =====
   const exams = data?.payload?.data ?? [];
@@ -31,11 +34,11 @@ function AdminExamsTable() {
     canGoNext,
     goToPreviousPage,
     goToNextPage,
-  } = usePagination(data.payload?.metadata!);
+  } = usePagination(data?.payload?.metadata!);
 
   return (
     <>
-      <div className="flex flex-col md:flex-row gap-6 items-center justify-center md:justify-between bg-white">
+      <AppContainer className="flex flex-col md:flex-row gap-6 items-center justify-center md:justify-between bg-white">
         {/* ===== Pagination ===== */}
         <Pagination
           currentPage={currentPage}
@@ -60,13 +63,19 @@ function AdminExamsTable() {
             Create Exam
           </Link>
         </Button>
-      </div>
+      </AppContainer>
 
-      {/* ===== Toolbar ===== */}
-      <ExamsToolbar />
+      <AppContainer>
+        {/* ===== Toolbar ===== */}
+        <ExamsToolbar />
 
-      {/* ===== Data table ===== */}
-      <ExamsDataTable columns={ExamsTableColumns} data={exams} />
+        {/* ===== Data table ===== */}
+        {isPending ? (
+          <AdminExamsTableSkeleton />
+        ) : (
+          <ExamsDataTable columns={ExamsTableColumns} data={exams} />
+        )}
+      </AppContainer>
     </>
   );
 }

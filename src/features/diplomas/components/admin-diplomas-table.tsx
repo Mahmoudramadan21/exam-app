@@ -2,7 +2,7 @@
 
 import { memo } from "react";
 import { Button } from "@/shared/components/ui";
-import { Pagination } from "@/shared/components";
+import { AppContainer, Pagination } from "@/shared/components";
 import { Plus } from "lucide-react";
 import Link from "next/link";
 import { usePagination } from "@/shared/hooks";
@@ -36,7 +36,7 @@ function AdminDiplomasTable() {
 
   return (
     <>
-      <div className="flex flex-col md:flex-row gap-6 items-center justify-center md:justify-between bg-white">
+      <AppContainer className="flex flex-col md:flex-row gap-6 items-center justify-center md:justify-between bg-white">
         {/* ===== Pagination ===== */}
         <Pagination
           currentPage={currentPage}
@@ -62,17 +62,19 @@ function AdminDiplomasTable() {
             Create Diploma
           </Link>
         </Button>
-      </div>
+      </AppContainer>
 
-      {/* ===== Toolbar ===== */}
-      <DiplomasToolbar />
+      <AppContainer>
+        {/* ===== Toolbar ===== */}
+        <DiplomasToolbar />
 
-      {/* ===== Data table ===== */}
-      {isPending ? (
-        <AdminDiplomasTableSkeleton />
-      ) : (
-        <DiplomasDataTable columns={DiplomasTableColumns} data={diplomas} />
-      )}
+        {/* ===== Data table ===== */}
+        {isPending ? (
+          <AdminDiplomasTableSkeleton />
+        ) : (
+          <DiplomasDataTable columns={DiplomasTableColumns} data={diplomas} />
+        )}
+      </AppContainer>
     </>
   );
 }

@@ -6,6 +6,7 @@ import { AppBreadcrumb } from "@/features/dashboard/layout";
 import { EditExamForm } from "@/features/exams/components";
 import {AdminQuestionsTable} from "@/features/questions/components";
 import { AdminQuestionsTableSkeleton } from "@/features/questions/lib/skeletons";
+import { AppContainer } from "@/shared/components";
 
 // ===== Metadata =====
 export async function generateMetadata({
@@ -56,7 +57,7 @@ export default async function EditExamPage({
   const exam = payload.exam;
 
   return (
-    <div className="flex flex-col gap-6">
+    <div className="flex flex-col">
       {/* ===== Breadcrumb ===== */}
       <AppBreadcrumb
         items={[
@@ -72,10 +73,12 @@ export default async function EditExamPage({
       {/* ===== Edit Exam Form ===== */}
       <EditExamForm exam={exam} />
 
-      {/* ===== Questions List ===== */}
-      <Suspense fallback={<AdminQuestionsTableSkeleton />}>
-        <AdminQuestionsTable examId={examId} />
-      </Suspense>
+      <AppContainer className="mt-6">
+        {/* ===== Questions List ===== */}
+        <Suspense fallback={<AdminQuestionsTableSkeleton />}>
+          <AdminQuestionsTable examId={examId} />
+        </Suspense>
+      </AppContainer>
     </div>
   );
 }

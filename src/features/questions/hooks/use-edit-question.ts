@@ -8,7 +8,7 @@ import { toast } from "sonner";
 import { createQuestionSchema } from "@/features/questions/lib/schemas/create-question.schema";
 import { IAnswerSchema, ICreateQuestionSchema } from "../lib/types/api";
 import { IQuestion } from "../lib/types/question";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 interface IUseEditQuestionProps {
   question: IQuestion;

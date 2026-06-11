@@ -6,6 +6,7 @@ import { getExamQuestions } from "@/features/questions/lib/apis";
 import { PageBar } from "@/features/dashboard/components";
 import { AppBreadcrumb } from "@/features/dashboard/layout";
 import ExamPageClient from "./exam-page-client";
+import { AppContainer } from "@/shared/components";
 
 export async function generateMetadata({
   params,
@@ -56,6 +57,7 @@ export default async function ExamPage({
 
   return (
     <>
+      {/* ===== App Breadcrumb ===== */}
       <AppBreadcrumb
         items={[
           { label: "Diplomas", href: "/diplomas" },
@@ -69,15 +71,22 @@ export default async function ExamPage({
           },
         ]}
       />
-      <PageBar
-        showBack
-        icon={<CircleQuestionMark className="size-11" />}
-        title={`${examResult?.exam?.title || "Exam"}`}
-      />
-      <ExamPageClient
-        exam={examResult?.exam}
-        examQuestions={questionsResult?.questions}
-      />
+
+      {/* ===== Page Wrapper ===== */}
+      <AppContainer>
+        {/* Page Bar */}
+        <PageBar
+          showBack
+          icon={<CircleQuestionMark className="size-11" />}
+          title={`${examResult?.exam?.title || "Exam"}`}
+        />
+
+        {/* Exam Page Client */}
+        <ExamPageClient
+          exam={examResult?.exam}
+          examQuestions={questionsResult?.questions}
+        />
+      </AppContainer>
     </>
   );
 }

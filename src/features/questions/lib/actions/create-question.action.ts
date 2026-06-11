@@ -2,10 +2,9 @@ import {
   IQuestionResponse,
   ICreateQuestionSchema,
 } from "@/features/questions/lib/types/api";
-import { authOptions } from "@/auth";
-import { getServerSession } from "next-auth";
 import { apiRequest } from "@/shared/lib/utils/request.util";
 import { BACKEND_URL } from "@/shared/lib/constants/api.constant";
+import { getNextAuthToken } from "@/shared/lib/utils/auth.util";
 
 interface ICreateQuestionActionProps {
   examId: string;
@@ -17,8 +16,8 @@ export async function createQuestionAction({
   data,
 }: ICreateQuestionActionProps) {
   // Get Auth Token
-  const session = await getServerSession(authOptions);
-  const token = session?.token;
+  const jwt = await getNextAuthToken();
+  const token = jwt?.token;
 
   // Construct Request URL
   const url = `${BACKEND_URL}/questions/exam/${examId}`;
@@ -45,8 +44,8 @@ export async function createQuestionBulkAction({
   data,
 }: ICreateQuestionActionProps) {
   // Get Auth Token
-  const session = await getServerSession(authOptions);
-  const token = session?.token;
+  const jwt = await getNextAuthToken();
+  const token = jwt?.token;
 
   // Construct Request URL
   const url = `${BACKEND_URL}/questions/exam/${examId}/bulk`;

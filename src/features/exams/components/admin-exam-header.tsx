@@ -3,12 +3,13 @@ import { Button } from "@/shared/components/ui";
 import { IExam } from "@/features/exams/lib/types/exam";
 import { ExternalLink, PenLine, Trash2 } from "lucide-react";
 import { DeleteExamModal, ImmutableExamModal } from "@/features/exams/components";
+import { AppContainer } from "@/shared/components";
 
 function AdminExamHeader({ exam }: { exam: IExam }) {
   return (
     <>
       {/* ===== Exam Header ===== */}
-      <div className="w-full flex flex-col md:flex-row justify-between items-center gap-4 text-center px-4 py-2.5 bg-white overflow-hidden">
+      <AppContainer className="w-full flex flex-col md:flex-row justify-between items-center gap-4 text-center px-4 py-2.5 bg-white overflow-hidden">
         {/* ===== Exam Title & Diploma Name ===== */}
         <div className="flex flex-col items-start">
           {/* Exam Title */}
@@ -54,7 +55,7 @@ function AdminExamHeader({ exam }: { exam: IExam }) {
             }
           />
         </div>
-      </div>
+      </AppContainer>
     </>
   );
 }

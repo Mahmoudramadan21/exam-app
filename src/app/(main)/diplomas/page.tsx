@@ -1,10 +1,10 @@
-import { getServerSession } from "next-auth";
-import { authOptions } from "@/auth";
 import type { Metadata } from "next";
 import { GraduationCap } from "lucide-react";
 import { PageBar } from "@/features/dashboard/components";
 import { AppBreadcrumb } from "@/features/dashboard/layout";
 import {DiplomaList, AdminDiplomasTable} from "@/features/diplomas/components";
+import { AppContainer } from "@/shared/components";
+import { getNextAuthToken } from "@/shared/lib/utils/auth.util";
 
 // ===== Metadata =====
 export const metadata: Metadata = {
@@ -15,10 +15,8 @@ export const metadata: Metadata = {
 
 export default async function Page() {
   // Get user session
-  const session = await getServerSession(authOptions);
-
-  // Check if user is admin
-  const isAdmin = session?.user?.role === "ADMIN";
+  const jwt = await getNextAuthToken();
+  const isAdmin = jwt?.role === "ADMIN";
 
   // ===== Render admin diplomas if user is admin =====
   if (isAdmin) {
@@ -47,15 +45,18 @@ export default async function Page() {
         ]}
       />
 
-      {/* Page Bar */}
-      <PageBar
-        showBack
-        icon={<GraduationCap className="size-11" />}
-        title="Diplomas"
-      />
+      {/* Page Wrapper */}
+      <AppContainer>
+        {/* Page Bar */}
+        <PageBar
+          showBack
+          icon={<GraduationCap className="size-11" />}
+          title="Diplomas"
+        />
 
-      {/* Diploma List */}
-      <DiplomaList />
+        {/* Diploma List */}
+        <DiplomaList />
+      </AppContainer>
     </>
   );
 }

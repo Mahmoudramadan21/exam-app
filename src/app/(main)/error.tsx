@@ -36,8 +36,7 @@ export default function Error({
           </h1>
 
           <p className="mt-5 max-w-xl text-sm md:text-base leading-7 text-gray-600">
-            An unexpected error occurred while loading this page. Please try
-            again.
+            {error.message}
           </p>
         </div>
 

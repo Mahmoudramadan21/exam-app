@@ -6,10 +6,11 @@ import {
   ImmutableDiplomaModal,
   DeleteDiplomaModal,
 } from "@/features/diplomas/components";
+import { AppContainer } from "@/shared/components";
 
 function AdminDiplomaHeader({ diploma }: { diploma: IDiploma }) {
   return (
-    <div className="w-full flex flex-col md:flex-row justify-between items-center gap-4 text-center px-4 py-2.5 bg-white overflow-hidden">
+    <AppContainer className="w-full flex flex-col md:flex-row justify-between items-center gap-4 text-center px-4 py-2.5 bg-white overflow-hidden">
       {/* ===== Diploma Title ===== */}
       <h3 className="font-inter font-semibold text-lg text-black">
         {diploma.title}
@@ -43,7 +44,7 @@ function AdminDiplomaHeader({ diploma }: { diploma: IDiploma }) {
           }
         />
       </div>
-    </div>
+    </AppContainer>
   );
 }
 

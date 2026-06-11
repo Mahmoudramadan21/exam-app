@@ -21,30 +21,49 @@ import { signOut } from "next-auth/react";
 import { usePathname } from "next/navigation";
 import FolderCode from "@/assets/icons/folder-code.svg";
 import { useSidebarAuth } from "@/features/dashboard/hooks/use-sidebar-auth";
+import { cn } from "@/shared/lib/utils/tailwind-cn";
+import { EllipsisVertical } from "lucide-react";
 
-function AppSidebar() {
+interface IAppSidebarProps {
+  isAdmin: boolean;
+}
+
+function AppSidebar({ isAdmin }: IAppSidebarProps) {
   const { user, links, dropdownItems } = useSidebarAuth();
+
+  console.log(isAdmin);
 
   // Get current route path
   const pathname = usePathname();
 
   return (
-    <Sidebar>
+    <Sidebar className={cn(isAdmin ? "bg-gray-800" : "bg-blue-50")}>
       {/* ===== Sidebar Header (logo + app name) ===== */}
       <SidebarHeader className="px-8 pt-8">
         <SidebarMenu>
           <SidebarMenuItem>
-            <SidebarMenuButton className="grid grid-cols-1 gap-2.5 h-fit cursor-pointer">
+            <SidebarMenuButton className="grid grid-cols-1 gap-2.5 h-fit cursor-pointer hover:bg-transparent">
+              {/* I want reverse color of this image if isAdmin is true */}
               <Image
                 src="/images/logo.svg"
                 alt="Logo"
                 width={192}
                 height={237}
+                className={cn(isAdmin && "invert")}
               />
 
               <div className="flex items-center gap-2.5">
-                <FolderCode className="min-w-8 min-h-8" />
-                <p className="font-semibold text-xl text-blue-600">Exam App</p>
+                <FolderCode
+                  className={cn("min-w-8 min-h-8", !isAdmin && "text-blue-600")}
+                />
+                <p
+                  className={cn(
+                    "font-semibold text-xl",
+                    isAdmin ? "text-white" : "text-blue-600",
+                  )}
+                >
+                  Exam App
+                </p>
               </div>
             </SidebarMenuButton>
           </SidebarMenuItem>
@@ -65,8 +84,13 @@ function AppSidebar() {
                 <SidebarMenuItem key={link.href}>
                   <SidebarMenuButton
                     asChild
-                    isActive={isActive}
-                    className="mb-2.5 text-base h-fit flex items-center gap-2 p-4 text-gray-500 transition-colors duration-200 ease-in-out hover:text-gray-600 rounded-none data-active:bg-blue-100 data-active:text-blue-600 data-active:border data-active:border-blue-500"
+                    data-active={isActive}
+                    className={cn(
+                      "mb-2.5 text-base h-fit flex items-center gap-2 p-4 transition-colors duration-200 ease-in-out rounded-none data-active:border",
+                      isAdmin
+                        ? "text-white hover:text-gray-800 data-active:bg-gray-400/10 data-active:text-white data-active:border-gray-400"
+                        : "text-gray-500 hover:text-gray-600 data-active:bg-blue-100 data-active:text-blue-600 data-active:border-blue-500",
+                    )}
                   >
                     <Link href={link.href}>
                       <Icon className="min-w-6 min-h-6" />
@@ -96,15 +120,30 @@ function AppSidebar() {
                   />
 
                   <div className="flex flex-col min-w-0 leading-tight flex-1">
-                    <span className="font-medium text-base text-blue-600 truncate">
+                    <span
+                      className={cn(
+                        "font-medium text-base truncate",
+                        isAdmin ? "text-white" : "text-blue-600",
+                      )}
+                    >
                       {user?.firstName || user?.username}
                     </span>
-                    <span className="text-sm text-gray-500 truncate">
+                    <span
+                      className={cn(
+                        "text-sm truncate",
+                        isAdmin ? "text-white/70" : "text-gray-500",
+                      )}
+                    >
                       {user?.email}
                     </span>
                   </div>
 
-                  <FolderCode className="w-5 h-5 text-gray-500" />
+                  <EllipsisVertical
+                    className={cn(
+                      "w-5 h-5",
+                      isAdmin ? "text-white/70" : "text-gray-500",
+                    )}
+                  />
                 </button>
               </DropdownMenuTrigger>
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { useSuspenseQuery } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import { useSearchParams } from "next/navigation";
 import { buildQuery, getFilters } from "@/shared/lib/utils/get-filters";
 import { IExamsResponse } from "@/features/exams/lib/types/api";
@@ -12,7 +12,7 @@ export function useAdminExams() {
   const queryParams = getFilters(searchParams);
 
   // ===== Fetch exams =====
-  return useSuspenseQuery({
+  return useQuery({
     queryKey: ["exams", buildQuery(queryParams).toString()],
 
     queryFn: async () => {
@@ -27,6 +27,8 @@ export function useAdminExams() {
       if (!res.ok || !data.status) {
         throw new Error(data.message);
       }
+
+      console.log("Data from hook: ", data);
 
       // Return data
       return data;

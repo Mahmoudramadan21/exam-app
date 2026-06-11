@@ -2,7 +2,7 @@ import { NextAuthOptions } from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 
 import { loginSchema } from "./features/auth/lib/schemas/login.schema";
-import { loginAction } from "./features/auth/lib/actions/login.action";
+import { loginAction } from "@/features/auth/lib/actions/login.action";
 
 export const authOptions: NextAuthOptions = {
   // ===== Custom auth pages =====
@@ -79,8 +79,7 @@ export const authOptions: NextAuthOptions = {
     async session({ session, token }) {
       // Map JWT → session object
       session.user = token.user;
-      session.token = token.token;
-
+      // session.token = token.token;
       return session;
     },
   },

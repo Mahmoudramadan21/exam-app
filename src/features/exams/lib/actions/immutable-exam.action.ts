@@ -1,8 +1,7 @@
-import { authOptions } from "@/auth";
 import { BACKEND_URL } from "@/shared/lib/constants/api.constant";
 import { apiRequest } from "@/shared/lib/utils/request.util";
-import { getServerSession } from "next-auth";
 import { IApiResponse } from "@/shared/lib/types/api";
+import { getNextAuthToken } from "@/shared/lib/utils/auth.util";
 
 interface IImmutableExamActionParams {
   id: string;
@@ -14,8 +13,8 @@ export async function immutableExamAction({
   immutable,
 }: IImmutableExamActionParams) {
   // Get Auth Token
-  const session = await getServerSession(authOptions);
-  const token = session?.token;
+  const jwt = await getNextAuthToken();
+  const token = jwt?.token;
 
   // Construct Request URL
   const url = `${BACKEND_URL}/admin/exams/${id}/immutable`;

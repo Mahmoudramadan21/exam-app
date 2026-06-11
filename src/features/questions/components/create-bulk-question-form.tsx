@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { memo } from "react";
 import { CopyPlus } from "lucide-react";
-import { FormActions } from "@/shared/components";
+import { AppContainer, FormActions } from "@/shared/components";
 import { Controller, FormProvider } from "react-hook-form";
 import { ExamFilterSelect } from "@/features/exams/components";
 import { useCreateBulkQuestions } from "@/features/questions/hooks";
@@ -31,36 +31,38 @@ function CreateBulkQuestionForm({ examId }: ICreateBulkQuestionFormProps) {
           <FormActions isPending={mutation.isPending} />
         </div>
 
-        {/* ===== Question Information ===== */}
-        <fieldset className="bg-white">
-          <legend className="w-full bg-blue-600 p-3 font-geist-mono font-semibold text-white">
-            Question Information
-          </legend>
+        <AppContainer>
+          {/* ===== Question Information ===== */}
+          <fieldset className="bg-white">
+            <legend className="w-full bg-blue-600 p-3 font-geist-mono font-semibold text-white">
+              Question Information
+            </legend>
 
-          <div className="space-y-4 p-4">
-            {/* ===== Exam Select ===== */}
-            <div className="space-y-2">
-              <label className="text-sm font-medium" htmlFor="examId">
-                Exam
-              </label>
+            <div className="space-y-4 p-4">
+              {/* ===== Exam Select ===== */}
+              <div className="space-y-2">
+                <label className="text-sm font-medium" htmlFor="examId">
+                  Exam
+                </label>
 
-              <Controller
-                control={form.control}
-                name="examId"
-                render={({ field }) => (
-                  <ExamFilterSelect
-                    value={field.value}
-                    onChange={field.onChange}
-                    error={form.formState.errors.examId?.message}
-                  />
-                )}
-              />
+                <Controller
+                  control={form.control}
+                  name="examId"
+                  render={({ field }) => (
+                    <ExamFilterSelect
+                      value={field.value}
+                      onChange={field.onChange}
+                      error={form.formState.errors.examId?.message}
+                    />
+                  )}
+                />
+              </div>
             </div>
-          </div>
-        </fieldset>
+          </fieldset>
 
-        {/* ===== Answers Section ===== */}
-        <BulkQuestionsAnswersSection />
+          {/* ===== Answers Section ===== */}
+          <BulkQuestionsAnswersSection />
+        </AppContainer>
       </form>
     </FormProvider>
   );

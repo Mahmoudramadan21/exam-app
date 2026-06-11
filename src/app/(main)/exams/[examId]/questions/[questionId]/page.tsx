@@ -6,6 +6,7 @@ import {
   AdminQuestionDetails,
   AdminQuestionHeader,
 } from "@/features/questions/components";
+import { AppContainer } from "@/shared/components";
 
 // ===== Metadata =====
 export async function generateMetadata({
@@ -57,7 +58,7 @@ export default async function Page({ params }: PageProps) {
   }
 
   return (
-    <section className="flex flex-col gap-6">
+    <section className="flex flex-col">
       {/* ===== Breadcrumbs ===== */}
       <AppBreadcrumb
         items={[
@@ -75,7 +76,9 @@ export default async function Page({ params }: PageProps) {
       <AdminQuestionHeader question={question} />
 
       {/* ===== Question Content ===== */}
-      <AdminQuestionDetails question={question} />
+      <AppContainer className="mt-6">
+        <AdminQuestionDetails question={question} />
+      </AppContainer>
     </section>
   );
 }

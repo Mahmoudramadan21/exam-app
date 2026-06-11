@@ -13,7 +13,7 @@ function FormActions({ isPending }: IFormActionsProps) {
   const router = useRouter();
 
   return (
-    <div className="flex justify-end gap-3 bg-white p-4">
+    <div className="flex justify-end gap-3 bg-white">
       {/* Back Button */}
       <Button
         type="button"

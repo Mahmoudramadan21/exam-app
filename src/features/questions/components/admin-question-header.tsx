@@ -6,10 +6,11 @@ import {
 import { Button } from "@/shared/components/ui";
 import { ExternalLink, PenLine, Trash2 } from "lucide-react";
 import { IQuestion } from "@/features/questions/lib/types/question";
+import { AppContainer } from "@/shared/components";
 
 function AdminQuestionHeader({ question }: { question: IQuestion }) {
   return (
-    <div className="w-full flex flex-col md:flex-row justify-between items-center gap-4 text-center px-4 py-2.5 bg-white overflow-hidden">
+    <AppContainer className="w-full flex flex-col md:flex-row justify-between items-center gap-4 text-center px-4 py-2.5 bg-white overflow-hidden">
       {/* Question Title & Exam Name */}
       <div className="flex flex-col items-start">
         {/* Question Title */}
@@ -56,7 +57,7 @@ function AdminQuestionHeader({ question }: { question: IQuestion }) {
           }
         />
       </div>
-    </div>
+    </AppContainer>
   );
 }
 

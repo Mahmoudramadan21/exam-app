@@ -1,15 +1,14 @@
-import { authOptions } from "@/auth";
-import { getServerSession } from "next-auth";
 import { IParams } from "@/shared/lib/types/params";
 import { apiRequest } from "@/shared/lib/utils/request.util";
 import { BACKEND_URL } from "@/shared/lib/constants/api.constant";
 import { IExamQuestionsResponse } from "@/features/questions/lib/types/api";
 import { buildQuestionsQuery } from "@/features/questions/lib/utils/get-filters";
+import { getNextAuthToken } from "@/shared/lib/utils/auth.util";
 
 export async function getExamQuestions(examId: string, params?: IParams) {
   // Get Auth Token
-  const session = await getServerSession(authOptions);
-  const token = session?.token;
+  const jwt = await getNextAuthToken();
+  const token = jwt?.token;
 
   const query = params ? buildQuestionsQuery(params) : "";
 

@@ -97,7 +97,9 @@ export const ExamsTableColumns: ColumnDef<IExam>[] = [
               </Link>
             </DropdownMenuItem>
             <DropdownMenuItem className="cursor-pointer" asChild>
-              <Link href={`/exams/${row.original.id}/questions`}>
+              <Link
+                href={`/exams/create-new-question?examId=${row.original.id}`}
+              >
                 <PlusIcon className="size-4 text-blue-600" />
                 Add Questions
               </Link>

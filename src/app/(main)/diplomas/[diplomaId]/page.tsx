@@ -1,6 +1,4 @@
-import { authOptions } from "@/auth";
 import {BookOpenCheck} from "lucide-react";
-import { getServerSession } from "next-auth";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { Suspense } from "react";
@@ -10,6 +8,8 @@ import { getDiploma } from "@/features/diplomas/lib/apis";
 import { AdminDiplomaDetails, AdminDiplomaHeader } from "@/features/diplomas/components";
 import { ExamListSkeleton } from "@/features/exams/lib/skeletons";
 import { ExamList } from "@/features/exams/components";
+import { AppContainer } from "@/shared/components";
+import { getNextAuthToken } from "@/shared/lib/utils/auth.util";
 
 // ===== Metadata =====
 export async function generateMetadata({
@@ -61,15 +61,15 @@ export default async function DiplomaPage({
   const exams = result?.diploma?.exams || [];
 
   // Get user session
-  const session = await getServerSession(authOptions);
+  const jwt = await getNextAuthToken();
   
   // Check if user is admin
-  const isAdmin = session?.user?.role === "ADMIN";
+  const isAdmin = jwt?.role === "ADMIN";
 
   return (
     <>
       {isAdmin ? (
-        <section className="flex flex-col gap-6">
+        <section className="flex flex-col">
           <AppBreadcrumb
             items={[
               { label: "Diplomas", href: "/diplomas" },
@@ -80,7 +80,9 @@ export default async function DiplomaPage({
           <AdminDiplomaHeader diploma={result.diploma} />
 
           {/* ===== Admin Diploma Details ===== */}
-          <AdminDiplomaDetails diploma={result.diploma} />
+          <AppContainer className="mt-6">
+            <AdminDiplomaDetails diploma={result.diploma} />
+          </AppContainer>
         </section>
       ) : (
         <>
@@ -92,6 +94,7 @@ export default async function DiplomaPage({
             ]}
           />
 
+          <AppContainer>
           {/* ===== User Diploma Page Bar ===== */}
           <PageBar
             showBack
@@ -100,9 +103,10 @@ export default async function DiplomaPage({
           />
 
           {/* ===== User Diploma Exams ===== */}
-          <Suspense fallback={<ExamListSkeleton />}>
-            <ExamList exams={exams} diplomaId={diplomaId} />
-          </Suspense>
+            <Suspense fallback={<ExamListSkeleton />}>
+              <ExamList exams={exams} diplomaId={diplomaId} />
+            </Suspense>
+        </AppContainer>
         </>
       )}
     </>

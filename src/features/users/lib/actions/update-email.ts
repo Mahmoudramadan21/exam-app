@@ -4,18 +4,17 @@ import {
   IEmailStepSchema,
   IOtpStepSchema,
 } from "@/features/auth/lib/types/auth";
-import { authOptions } from "@/auth";
-import { getServerSession } from "next-auth";
 import { IApiResponse } from "@/shared/lib/types/api";
 import { apiRequest } from "@/shared/lib/utils/request.util";
 import { BACKEND_URL } from "@/shared/lib/constants/api.constant";
 import { IProfileResponse } from "@/features/users/lib/types/api";
+import { getNextAuthToken } from "@/shared/lib/utils/auth.util";
 
 // Request to send update email
 export const sendUpdateEmailAction = async (data: IEmailStepSchema) => {
   // Get Auth Token
-  const session = await getServerSession(authOptions);
-  const token = session?.token;
+  const jwt = await getNextAuthToken();
+  const token = jwt?.token;
 
   const url = `${BACKEND_URL}/users/email/request`;
 
@@ -33,8 +32,8 @@ export const sendUpdateEmailAction = async (data: IEmailStepSchema) => {
 
 export const confirmUpdateEmailAction = async (data: IOtpStepSchema) => {
   // Get Auth Token
-  const session = await getServerSession(authOptions);
-  const token = session?.token;
+  const jwt = await getNextAuthToken();
+  const token = jwt?.token;
 
   const url = `${BACKEND_URL}/users/email/confirm`;
 

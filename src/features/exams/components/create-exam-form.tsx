@@ -7,6 +7,7 @@ import {
   FormField,
   ImageField,
   FormActions,
+  AppContainer,
 } from "@/shared/components";
 import { FieldGroup } from "@/shared/components/ui";
 import { DiplomaFilterSelect } from "@/features/diplomas/components";
@@ -20,66 +21,68 @@ function CreateExamForm() {
     <form onSubmit={form.handleSubmit(onSubmit)} className="bg-white">
       <FormActions isPending={mutation.isPending} />
 
-      <h3 className="p-2.5 bg-blue-600 text-white text-base font-geist-mono font-semibold">
-        Exam Information
-      </h3>
+      <AppContainer className="mt-6">
+        <h3 className="p-2.5 bg-blue-600 text-white text-base font-geist-mono font-semibold">
+          Exam Information
+        </h3>
 
-      <FieldGroup className="p-4 gap-4">
-        {/* ===== Title Input ===== */}
-        <FormField
-          name="title"
-          control={form.control}
-          label="Title"
-          placeholder="Exam Title"
-        />
-
-        <div className="flex flex-col gap-2">
-          <label className="text-sm font-medium">Diploma</label>
-          <Controller
+        <FieldGroup className="p-4 gap-4 bg-white">
+          {/* ===== Title Input ===== */}
+          <FormField
+            name="title"
             control={form.control}
-            name="diplomaId"
-            render={({ field }) => (
-              <DiplomaFilterSelect
-                value={field.value}
-                onChange={field.onChange}
-                error={form.formState.errors.diplomaId?.message}
-              />
-            )}
+            label="Title"
+            placeholder="Exam Title"
           />
-        </div>
 
-        {/* ===== Image Input ===== */}
-        <ImageField
-          name="image"
-          control={form.control}
-          setValue={form.setValue}
-          label="Image"
-        />
+          <div className="flex flex-col gap-2">
+            <label className="text-sm font-medium">Diploma</label>
+            <Controller
+              control={form.control}
+              name="diplomaId"
+              render={({ field }) => (
+                <DiplomaFilterSelect
+                  value={field.value}
+                  onChange={field.onChange}
+                  error={form.formState.errors.diplomaId?.message}
+                />
+              )}
+            />
+          </div>
 
-        {/* ===== Description Input ===== */}
-        <FormField
-          name="description"
-          control={form.control}
-          label="Description"
-          placeholder="Exam Description"
-          variant="textarea"
-        />
+          {/* ===== Image Input ===== */}
+          <ImageField
+            name="image"
+            control={form.control}
+            setValue={form.setValue}
+            label="Image"
+          />
 
-        {/* ===== Duration Input ===== */}
-        <FormField
-          name="duration"
-          control={form.control}
-          label="Duration (min)"
-          placeholder="Duration in minutes"
-          type="number"
-          min={1}
-        />
+          {/* ===== Description Input ===== */}
+          <FormField
+            name="description"
+            control={form.control}
+            label="Description"
+            placeholder="Exam Description"
+            variant="textarea"
+          />
 
-        {/* ===== Error Feedback ===== */}
-        {mutation.isError && (
-          <FormError message={(mutation.error as Error).message} />
-        )}
-      </FieldGroup>
+          {/* ===== Duration Input ===== */}
+          <FormField
+            name="duration"
+            control={form.control}
+            label="Duration (min)"
+            placeholder="Duration in minutes"
+            type="number"
+            min={1}
+          />
+
+          {/* ===== Error Feedback ===== */}
+          {mutation.isError && (
+            <FormError message={(mutation.error as Error).message} />
+          )}
+        </FieldGroup>
+      </AppContainer>
     </form>
   );
 }

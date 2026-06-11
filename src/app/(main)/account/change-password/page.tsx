@@ -3,6 +3,8 @@ import { Metadata } from "next";
 import { PageBar } from "@/features/dashboard/components";
 import { AppBreadcrumb } from "@/features/dashboard/layout";
 import { ChangePasswordForm } from "@/features/users/components";
+import { AppContainer } from "@/shared/components";
+import { AccountLayout } from "@/features/users/layout";
 
 // ===== Metadata =====
 export const metadata: Metadata = {
@@ -22,15 +24,20 @@ export default async function ChangePasswordPage() {
         ]}
       />
 
-      {/* ===== Page Bar ===== */}
-      <PageBar
-        showBack
-        icon={<UserRound className="size-7 md:size-9 lg:size-11" />}
-        title="Account Settings"
-      />
+      {/* ===== Container Wrapper  =====*/}
+      <AppContainer>
+        {/* Page Bar */}
+        <PageBar
+          showBack
+          icon={<UserRound className="size-7 md:size-9 lg:size-11" />}
+          title="Account Settings"
+        />
 
-      {/* ===== Change Password Form ===== */}
-      <ChangePasswordForm />
+        {/* Change Password Form */}
+        <AccountLayout>
+          <ChangePasswordForm />
+        </AccountLayout>
+      </AppContainer>
     </>
   );
 }
