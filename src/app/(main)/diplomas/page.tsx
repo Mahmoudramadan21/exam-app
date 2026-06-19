@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 export default async function Page() {
   // Get user session
   const jwt = await getNextAuthToken();
-  const isAdmin = jwt?.role === "ADMIN";
+  const isAdmin = jwt?.user?.role === "ADMIN";
 
   // ===== Render admin diplomas if user is admin =====
   if (isAdmin) {

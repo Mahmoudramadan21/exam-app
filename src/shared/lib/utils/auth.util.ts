@@ -18,8 +18,6 @@ export async function getNextAuthToken() {
       secret: process.env.NEXTAUTH_SECRET!,
     });
 
-    console.log("jwt: ", jwt);
-
     return jwt;
   } catch (error) {
     console.error("Error decoding JWT token:", error);

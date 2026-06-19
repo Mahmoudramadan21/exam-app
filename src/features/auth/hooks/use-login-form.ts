@@ -6,6 +6,7 @@ import { useMutation } from "@tanstack/react-query";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { loginSchema } from "@/features/auth/lib/schemas";
 import { ILoginSchema } from "@/features/auth/lib/types/auth";
+import { useSearchParams } from "next/navigation";
 
 export function useLoginForm() {
   // Initialize form with validation schema
@@ -16,6 +17,9 @@ export function useLoginForm() {
       password: "",
     },
   });
+
+  const searchParams = useSearchParams();
+  const callbackUrl = searchParams.get("callbackUrl") || "/";
 
   // Handle login request
   const mutation = useMutation({
@@ -36,7 +40,7 @@ export function useLoginForm() {
 
     // Redirect after successful login
     onSuccess: () => {
-      window.location.href = "/";
+      window.location.href = callbackUrl;
     },
   });
 

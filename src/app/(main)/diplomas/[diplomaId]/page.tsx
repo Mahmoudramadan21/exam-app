@@ -64,7 +64,7 @@ export default async function DiplomaPage({
   const jwt = await getNextAuthToken();
   
   // Check if user is admin
-  const isAdmin = jwt?.role === "ADMIN";
+  const isAdmin = jwt?.user?.role === "ADMIN";
 
   return (
     <>

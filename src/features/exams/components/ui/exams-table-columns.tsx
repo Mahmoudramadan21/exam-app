@@ -7,6 +7,9 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
 } from "@/shared/components/ui";
 import { ColumnDef } from "@tanstack/react-table";
 import {
@@ -42,11 +45,23 @@ export const ExamsTableColumns: ColumnDef<IExam>[] = [
     header: "Title",
     cell: ({ row }) => {
       const title = row.getValue("title") as string;
+      const shouldShowTooltip = title.length > 20;
 
-      return (
-        <p className="font-geist-mono text-sm text-gray-800 leading-relaxed text-wrap">
+      const content = (
+        <p className="font-geist-mono text-sm text-gray-800 max-w-[20ch] truncate">
           {title}
         </p>
+      );
+
+      if (!shouldShowTooltip) {
+        return content;
+      }
+
+      return (
+        <Tooltip>
+          <TooltipTrigger asChild>{content}</TooltipTrigger>
+          <TooltipContent>{title}</TooltipContent>
+        </Tooltip>
       );
     },
   },

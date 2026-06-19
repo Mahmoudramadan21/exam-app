@@ -26,6 +26,8 @@ export async function getAllDiplomas(params: IParams) {
     },
   });
 
+  console.log("Result: ", result);
+
   if (!result.status) {
     throw new Error(result.message);
   }
