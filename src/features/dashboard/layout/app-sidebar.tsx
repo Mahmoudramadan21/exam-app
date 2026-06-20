@@ -37,7 +37,7 @@ function AppSidebar({ isAdmin }: IAppSidebarProps) {
   return (
     <Sidebar className={cn(isAdmin ? "bg-gray-800" : "bg-blue-50")}>
       {/* ===== Sidebar Header (logo + app name) ===== */}
-      <SidebarHeader className="px-8 pt-8">
+      <SidebarHeader className="px-4 md:px-8 pt-8">
         <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton className="grid grid-cols-1 gap-2.5 h-fit cursor-pointer hover:bg-transparent">
@@ -69,7 +69,7 @@ function AppSidebar({ isAdmin }: IAppSidebarProps) {
       </SidebarHeader>
 
       {/* ===== Sidebar Content (Navigation Links) ===== */}
-      <SidebarContent className="px-8 pt-10">
+      <SidebarContent className="px-4 md:px-8 pt-10">
         <SidebarGroup>
           <SidebarMenu>
             {links.map((link) => {

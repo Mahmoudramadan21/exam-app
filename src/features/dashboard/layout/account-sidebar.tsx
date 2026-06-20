@@ -19,7 +19,7 @@ function AccountSidebar() {
   const pathname = usePathname();
 
   return (
-    <Sidebar className="static w-full h-full">
+    <Sidebar className="lg:static lg:w-full lg:h-full">
       {/* ===== Content ===== */}
       <SidebarContent className="p-6 bg-white">
         <SidebarMenu>
