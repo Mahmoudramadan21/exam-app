@@ -14,8 +14,6 @@ export const getDiploma = cache(async (id: string) => {
   // Construct Request URL
   const url = `${BACKEND_URL}/diplomas/${id}`;
 
-  console.log("Date Now: ", new Date().toDateString());
-
   // Perform Authenticated Request
   const result = await apiRequest<IDiplomaResponse>(url, {
     method: "GET",
@@ -29,8 +27,6 @@ export const getDiploma = cache(async (id: string) => {
   if (!result.status) {
     throw new Error(result.message);
   }
-
-  console.log("Result: ", result);
 
   return result;
 });

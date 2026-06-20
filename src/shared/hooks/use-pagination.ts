@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback } from "react";
-import {useQueryParams} from "@/shared/hooks";
+import { useQueryParams } from "@/shared/hooks";
 import { DEFAULT_LIMIT } from "@/shared/lib/constants/pagination.constant";
 import { IPagination } from "../lib/types/api";
 
@@ -11,8 +11,6 @@ export function usePagination(data: IPagination) {
   const totalPages = data?.totalPages ?? 1;
   const pageSize = data?.limit ?? DEFAULT_LIMIT;
   const totalItems = data?.total ?? 0;
-
-  console.log(totalPages, pageSize, totalItems);
 
   const currentPage = Number(searchParams.get("page") || "1");
 

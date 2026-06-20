@@ -27,8 +27,6 @@ export async function getAllExams(params: IParams) {
     },
   });
 
-  console.log("Result from API: ", result);
-
   if (!result.status) {
     throw new Error(result.message);
   }

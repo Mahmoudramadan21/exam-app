@@ -13,6 +13,11 @@ export const authOptions: NextAuthOptions = {
   // ===== Use JWT instead of database sessions =====
   session: {
     strategy: "jwt",
+    maxAge: 60 * 60 * 24 * 7, // 7 Days
+  },
+
+  jwt: {
+    maxAge: 60 * 60 * 24 * 7, // 7 Days
   },
 
   providers: [

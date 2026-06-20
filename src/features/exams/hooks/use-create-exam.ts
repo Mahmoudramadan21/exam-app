@@ -52,7 +52,6 @@ export function useCreateExam() {
   });
 
   function onSubmit(values: IExamCreateSchema) {
-    console.log("submit", values);
     mutation.mutate(values);
   }
 

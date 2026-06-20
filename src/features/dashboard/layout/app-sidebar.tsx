@@ -31,8 +31,6 @@ interface IAppSidebarProps {
 function AppSidebar({ isAdmin }: IAppSidebarProps) {
   const { user, links, dropdownItems } = useSidebarAuth();
 
-  console.log(isAdmin);
-
   // Get current route path
   const pathname = usePathname();
 

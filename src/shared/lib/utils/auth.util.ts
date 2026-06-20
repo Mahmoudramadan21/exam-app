@@ -20,7 +20,6 @@ export async function getNextAuthToken() {
 
     return jwt;
   } catch (error) {
-    console.error("Error decoding JWT token:", error);
     return null;
   }
 }

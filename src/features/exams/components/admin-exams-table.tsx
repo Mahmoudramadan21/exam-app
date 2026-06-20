@@ -18,8 +18,6 @@ function AdminExamsTable() {
   // ===== Fetch diplomas =====
   const { data, isFetching, isPending } = useAdminExams();
 
-  console.log("Data: ", data);
-
   // ===== Current page data =====
   const exams = data?.payload?.data ?? [];
 

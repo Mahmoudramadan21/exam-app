@@ -2,6 +2,7 @@
 
 import { IApiResponse } from "@/shared/lib/types/api";
 import { notFound } from "next/navigation";
+import { ApiError } from "./error.util";
 
 /**
  * Generic API request handler for auth endpoints.
@@ -26,7 +27,11 @@ export const apiRequest = async <TResponse>(
       notFound();
     }
 
-    throw new Error(data.message || "Request failed");
+    throw new ApiError(
+      data.message || "Request failed",
+      response.status,
+      data.code,
+    );
   }
 
   return data as TResponse;

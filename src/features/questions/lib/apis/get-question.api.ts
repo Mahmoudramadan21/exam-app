@@ -14,8 +14,6 @@ export const getQuestion = cache(async (questionId: string) => {
   // Construct Request URL
   const url = `${BACKEND_URL}/questions/${questionId}`;
 
-  console.log("Date Now: ", new Date().toDateString());
-
   // Fetch question data from API
   const result = await apiRequest<IQuestionResponse>(url, {
     method: "GET",

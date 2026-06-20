@@ -12,12 +12,8 @@ import {
 } from "@/shared/components/ui";
 import { ColumnDef } from "@tanstack/react-table";
 import { EyeIcon, MoreHorizontal, PenLineIcon, Trash2 } from "lucide-react";
-import ExamSortHeader from "@/features/exams/components/ui/exam-sort-header";
 import Link from "next/link";
-import {
-  EXAM_SORT_OPTIONS,
-  QUESTIONS_SORT_OPTIONS,
-} from "@/shared/lib/constants/sort-options.constant";
+import { QUESTIONS_SORT_OPTIONS } from "@/shared/lib/constants/sort-options.constant";
 import { IQuestion } from "@/features/questions/lib/types/question";
 import QuestionSortHeader from "./question-sort-header";
 import DeleteQuestionModal from "../delete-question-modal";

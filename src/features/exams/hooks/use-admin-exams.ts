@@ -28,8 +28,6 @@ export function useAdminExams() {
         throw new Error(data.message);
       }
 
-      console.log("Data from hook: ", data);
-
       // Return data
       return data;
     },

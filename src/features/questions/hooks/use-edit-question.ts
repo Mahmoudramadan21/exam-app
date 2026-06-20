@@ -31,10 +31,6 @@ export function useEditQuestion({ question }: IUseEditQuestionProps) {
     },
   });
 
-  console.log(
-    question
-  );
-
   const mutation = useMutation({
     mutationFn: async (values: ICreateQuestionSchema) => {
       const res = await fetch(`/api/questions/${question.id}`, {

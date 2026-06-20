@@ -10,9 +10,6 @@ export default async function proxy(request: NextRequest) {
   const token = await getToken({ req: request });
   const pathname = request.nextUrl.pathname;
 
-  console.log(token);
-  console.log(pathname);
-
   // Auth Pages
   if (ROUTES.auth.includes(pathname)) {
     if (token) {

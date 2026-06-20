@@ -45,8 +45,6 @@ function ImageField<T extends FieldValues>({
     },
   });
 
-  console.log(defaultValue);
-
   // Extracted business logic
   const {
     uploadedFile,

@@ -17,9 +17,6 @@ export async function updateExamAction({ examId, data }: Props) {
   // Construct Request URL
   const url = `${BACKEND_URL}/exams/${examId}`;
 
-  console.log(url);
-  console.log(data);
-
   // Perform Authenticated Request
   const result = await apiRequest<IExamResponse>(url, {
     method: "PUT",

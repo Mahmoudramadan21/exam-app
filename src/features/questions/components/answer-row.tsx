@@ -52,7 +52,6 @@ function AnswerRow({
           disabled={!answer.text}
           aria-label="Mark this answer as correct"
           onClick={() => {
-            console.log(answer);
             markCorrectAnswer(answer.id);
           }}
         >

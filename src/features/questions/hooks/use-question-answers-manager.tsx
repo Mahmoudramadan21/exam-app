@@ -92,8 +92,6 @@ export function useQuestionAnswersManager({ path, max = DEFAULT_MAX }: Props) {
   const markCorrect = (id: string) => {
     const index = answers.findIndex((a) => a.id === id);
 
-    console.log("Answers: ", answers);
-
     if (index === -1) return;
 
     answers.forEach((a, i) => {
