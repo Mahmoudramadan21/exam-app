@@ -29,19 +29,23 @@ function ExamItem({ exam, diplomaId }: IExamItemProps) {
       {/* ==== Exam Content ==== */}
       <div className="flex flex-col gap-1.5 grow relative">
         {/* === Exam Heading (Title, Questions Count, Duration) === */}
-        <div className="flex justify-between">
+        <div className="flex justify-between gap-2">
           {/* Exam Title */}
-          <h3 className="text-xl font-semibold text-blue-600 font-geist-mono">
+          <h3 className="text-lg md:text-xl font-semibold text-blue-600 font-geist-mono">
             {exam.title}
           </h3>
 
           {/* Questions Count & Duration */}
-          <p className="text-sm text-gray-800 flex items-center gap-2">
-            <CircleQuestionMark className="size-4.5" aria-hidden="true" />
-            {exam.questionsCount} Questions{" "}
-            <span className="bg-gray-300 h-4.5 w-0.25 inline-block"></span>{" "}
-            <Timer className="size-4.5" aria-hidden="true" />
-            {exam.duration} Minutes
+          <p className="text-sm text-gray-800 flex flex-col md:flex-row items-center gap-2">
+            <span className="flex text-nowrap items-center gap-1">
+              <CircleQuestionMark className="size-4.5" aria-hidden="true" />
+              {exam.questionsCount} Questions{" "}
+            </span>
+            <span className="bg-gray-300 h-0.25 w-[75%] md:h-4.5 md:w-0.25 inline-block"></span>{" "}
+            <span className="flex text-nowrap items-center gap-1">
+              <Timer className="size-4.5" aria-hidden="true" />
+              {exam.duration} Minutes
+            </span>
           </p>
         </div>
 
@@ -51,7 +55,7 @@ function ExamItem({ exam, diplomaId }: IExamItemProps) {
         {/* === Start Exam Button === */}
         <Link
           href={`/diplomas/${diplomaId}/${exam.id}`}
-          className="flex items-center justify-center px-4 py-1.5 bg-blue-600 hover:bg-blue-500 text-white absolute bottom-0 right-0 uppercase text-sm opacity-0 group-hover:opacity-100 transition-all duration-200 "
+          className="flex items-center justify-center px-4 py-1.5 mt-5 bg-blue-600 hover:bg-blue-500 text-white absolute bottom-0 right-0 uppercase text-sm opacity-0 group-hover:opacity-100 transition-all duration-200 "
           aria-label={`Start ${exam.title} exam`}
         >
           Start

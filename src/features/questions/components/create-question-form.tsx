@@ -29,7 +29,7 @@ function CreateQuestionForm({ examId }: ICreateQuestionFormProps) {
             Bulk Add Mode
             <CopyPlus size={18} />
           </Link>
-          <FormActions isPending={mutation.isPending} />
+          <FormActions isPending={mutation.isPending} className="md:px-0" />
         </AppContainer>
 
         <AppContainer className="flex flex-col gap-6">

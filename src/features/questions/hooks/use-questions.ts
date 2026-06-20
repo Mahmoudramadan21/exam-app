@@ -2,9 +2,7 @@
 
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { useSearchParams } from "next/navigation";
-import {
-  getFilters,
-} from "@/shared/lib/utils/get-filters";
+import { getFilters } from "@/shared/lib/utils/get-filters";
 import { IExamQuestionsResponse } from "../lib/types/api";
 import { buildQuestionsQuery } from "@/features/questions/lib/utils/get-filters";
 

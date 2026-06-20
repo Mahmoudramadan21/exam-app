@@ -10,7 +10,7 @@ export default function DiplomaItem({
   priority: boolean;
 }) {
   return (
-    <article className="group relative overflow-hidden h-112">
+    <article className="group relative overflow-hidden h-90 md:h-112">
       {/* ==== Diploma Link ==== */}
       <Link
         href={`/diplomas/${diploma.id}`}

@@ -8,7 +8,6 @@ import {
   QuestionsTableColumns,
 } from "@/features/questions/components";
 import { useQuestions } from "@/features/questions/hooks";
-import { AppContainer } from "@/shared/components";
 
 function AdminQuestionsTable({ examId }: { examId: string }) {
   // ===== Fetch diplomas =====

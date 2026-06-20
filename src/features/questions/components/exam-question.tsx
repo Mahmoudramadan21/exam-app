@@ -13,7 +13,7 @@ function ExamQuestion({ question, selectedAnswerId, onSelect }: Props) {
       {/* Question container */}
       <fieldset className="border-0">
         {/* Question text (acts as legend for accessibility grouping) */}
-        <legend className="text-2xl font-geist-mono text-blue-600 font-semibold">
+        <legend className="text-xl md:text-2xl font-geist-mono text-blue-600 font-semibold">
           {question.text}
         </legend>
 

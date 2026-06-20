@@ -8,6 +8,6 @@ export default function AppContainer({
   className?: string;
 }) {
   return (
-    <div className={cn("px-4 md:px-6 bg-gray-50", className)}>{children}</div>
+    <div className={cn("px-3 md:px-6 bg-gray-50", className)}>{children}</div>
   );
 }

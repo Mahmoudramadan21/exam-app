@@ -8,7 +8,7 @@ function AdminDiplomaDetails({ diploma }: { diploma: IDiploma }) {
       className="flex flex-col bg-white p-4 gap-4 font-geist-mono"
     >
       {/* ==== Diploma Image ==== */}
-      <div className="flex flex-col items-center md:items-start gap-1">
+      <div className="flex flex-col gap-1">
         <span className="text-sm text-gray-400">Image</span>
         <div className="relative w-50 h-50 md:w-75 md:h-75">
           <Image
@@ -23,7 +23,7 @@ function AdminDiplomaDetails({ diploma }: { diploma: IDiploma }) {
       {/* ==== Diploma Details ==== */}
       <dl className="flex flex-col gap-4">
         {/* Diploma Title */}
-        <div className="flex flex-col items-center md:items-start text-center md:text-left gap-1">
+        <div className="flex flex-col gap-1">
           <dt className="text-sm text-gray-400">Title</dt>
           <dd id="diploma-title" className="text-sm text-black">
             {diploma.title}
@@ -31,7 +31,7 @@ function AdminDiplomaDetails({ diploma }: { diploma: IDiploma }) {
         </div>
 
         {/* Diploma Description */}
-        <div className="flex flex-col items-center md:items-start text-center md:text-left gap-1">
+        <div className="flex flex-col gap-1">
           <dt className="text-sm text-gray-400">Description</dt>
           <dd className="text-sm leading-6 text-gray-800">
             {diploma.description}

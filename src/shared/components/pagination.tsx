@@ -30,7 +30,7 @@ function Pagination({
   onNext,
 }: IPaginationProps) {
   return (
-    <div className="flex items-center gap-4">
+    <div className="flex flex-col md:flex-row sm:items-center gap-4">
       {/* Page info */}
       <p aria-live="polite" className="text-sm text-muted-foreground">
         {startItem} - {endItem} of {totalItems}

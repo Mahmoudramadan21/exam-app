@@ -11,7 +11,7 @@ interface AuthLayoutProps {
  */
 export default function AuthLayout({ children }: AuthLayoutProps) {
   return (
-    <main className="grid lg:grid-cols-2">
+    <main className="grid lg:grid-cols-2 min-h-screen">
       {/* ===== Left side promo / marketing panel ===== */}
       <AuthPromoPanel />
 

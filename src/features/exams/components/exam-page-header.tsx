@@ -33,7 +33,7 @@ function ExamHeader({
       {/* ==== Left Section: exam info ==== */}
       <div className="flex flex-col gap-1.5 grow pe-6 border-r border-gray-200">
         {/* Title + Question counter */}
-        <div className="flex justify-between">
+        <div className="flex justify-between gap-2">
           <h3 className="text-base font-geist-mono font-semibold text-gray-800">
             {title}
           </h3>

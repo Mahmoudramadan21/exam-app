@@ -6,14 +6,21 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
 } from "@/shared/components/ui";
 import { ColumnDef } from "@tanstack/react-table";
-import { EyeIcon, MoreHorizontal, PenLineIcon, Trash2 } from "lucide-react";
+import {
+  ArrowLeftIcon,
+  EyeIcon,
+  MoreHorizontal,
+  PenLineIcon,
+  Trash2,
+} from "lucide-react";
+import ExamSortHeader from "@/features/exams/components/ui/exam-sort-header";
 import Link from "next/link";
-import { QUESTIONS_SORT_OPTIONS } from "@/shared/lib/constants/sort-options.constant";
+import {
+  EXAM_SORT_OPTIONS,
+  QUESTIONS_SORT_OPTIONS,
+} from "@/shared/lib/constants/sort-options.constant";
 import { IQuestion } from "@/features/questions/lib/types/question";
 import QuestionSortHeader from "./question-sort-header";
 import DeleteQuestionModal from "../delete-question-modal";
@@ -23,24 +30,10 @@ export const QuestionsTableColumns: ColumnDef<IQuestion>[] = [
     accessorKey: "title",
     header: "Title",
     cell: ({ row }) => {
-      const title = row.getValue("title") as string;
-      const shouldShowTooltip = title.length > 20;
-
-      const content = (
-        <p className="font-geist-mono text-sm text-gray-800 max-w-[20ch] truncate">
-          {title}
-        </p>
-      );
-
-      if (!shouldShowTooltip) {
-        return content;
-      }
-
       return (
-        <Tooltip>
-          <TooltipTrigger asChild>{content}</TooltipTrigger>
-          <TooltipContent>{title}</TooltipContent>
-        </Tooltip>
+        <p className="font-geist-mono text-sm text-gray-800 text-wrap">
+          {row.original.text}
+        </p>
       );
     },
   },

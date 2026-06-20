@@ -36,7 +36,7 @@ function AdminExamsTable() {
 
   return (
     <>
-      <AppContainer className="flex flex-col md:flex-row gap-6 items-center justify-center md:justify-between bg-white">
+      <AppContainer className="flex flex-row gap-6 items-end sm:items-center justify-between bg-white">
         {/* ===== Pagination ===== */}
         <Pagination
           currentPage={currentPage}

@@ -21,9 +21,14 @@ export default function ExamNavigation({
   isSubmitting,
 }: IExamNavigationProps) {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 justify-between gap-4">
+    <div className="grid grid-cols-2 justify-between gap-4">
       {/* Navigate to previous question */}
-      <Button variant="secondary" size="xl" onClick={onPrev} disabled={isFirst || isDisabled}>
+      <Button
+        variant="secondary"
+        size="xl"
+        onClick={onPrev}
+        disabled={isFirst || isDisabled}
+      >
         <ChevronLeft size={18} />
         Previous
       </Button>
