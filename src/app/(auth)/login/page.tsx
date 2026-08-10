@@ -2,11 +2,21 @@ import Link from "next/link";
 import { AuthFormLayout } from "@/features/auth/layout";
 import { LoginForm } from "@/features/auth/components";
 
-export default function Login() {
+interface LoginPageProps {
+  searchParams: Promise<{
+    callbackUrl?: string;
+  }>;
+}
+
+export default async function Login({ searchParams }: LoginPageProps) {
+  const params = await searchParams;
+
+  const callbackUrl = params.callbackUrl || "/";
+
   return (
     <AuthFormLayout title="Login">
       {/* ===== Login Form ===== */}
-      <LoginForm />
+      <LoginForm callbackUrl={callbackUrl} />
 
       {/* ===== Footer Link ===== */}
       <div className="w-fit mx-auto text-sm text-muted-foreground font-medium">

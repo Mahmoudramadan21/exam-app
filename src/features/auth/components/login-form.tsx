@@ -4,9 +4,13 @@ import { useLoginForm } from "@/features/auth/hooks";
 import { Button, FieldGroup } from "@/shared/components/ui";
 import { FormField, FormError, PasswordFormField } from "@/shared/components";
 
-function LoginForm() {
+interface ILoginFormProps {
+  callbackUrl?: string;
+}
+
+function LoginForm({ callbackUrl = "/" }: ILoginFormProps) {
   // Handles form state, validation, and login mutation
-  const { form, onSubmit, mutation } = useLoginForm();
+  const { form, onSubmit, mutation } = useLoginForm(callbackUrl);
 
   return (
     <form onSubmit={form.handleSubmit(onSubmit)} className="mt-8">

@@ -6,9 +6,8 @@ import { useMutation } from "@tanstack/react-query";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { loginSchema } from "@/features/auth/lib/schemas";
 import { ILoginSchema } from "@/features/auth/lib/types/auth";
-import { useSearchParams } from "next/navigation";
 
-export function useLoginForm() {
+export function useLoginForm(callbackUrl: string = "/") {
   // Initialize form with validation schema
   const form = useForm<ILoginSchema>({
     resolver: zodResolver(loginSchema),
@@ -17,9 +16,6 @@ export function useLoginForm() {
       password: "",
     },
   });
-
-  const searchParams = useSearchParams();
-  const callbackUrl = searchParams.get("callbackUrl") || "/";
 
   // Handle login request
   const mutation = useMutation({

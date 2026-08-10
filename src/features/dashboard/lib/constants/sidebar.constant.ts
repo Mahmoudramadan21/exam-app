@@ -58,7 +58,7 @@ export const ADMIN_SIDEBAR_LINKS: ISidebarLink[] = [
     label: "Account Settings",
     href: "/account",
     icon: UserRound,
-  }
+  },
 ];
 
 // Super Admin Sidebar Navigation Links
