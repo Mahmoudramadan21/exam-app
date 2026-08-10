@@ -58,6 +58,25 @@ export const ADMIN_SIDEBAR_LINKS: ISidebarLink[] = [
     label: "Account Settings",
     href: "/account",
     icon: UserRound,
+  }
+];
+
+// Super Admin Sidebar Navigation Links
+export const SUPER_ADMIN_SIDEBAR_LINKS: ISidebarLink[] = [
+  {
+    label: "Diplomas",
+    href: "/diplomas",
+    icon: GraduationCap,
+  },
+  {
+    label: "Exams",
+    href: "/exams",
+    icon: BookOpenCheck,
+  },
+  {
+    label: "Account Settings",
+    href: "/account",
+    icon: UserRound,
   },
   {
     label: "Audit Log",
