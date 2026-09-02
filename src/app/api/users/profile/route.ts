@@ -3,13 +3,13 @@ import { getProfile } from "@/features/users/lib/apis";
 
 export async function GET() {
   try {
-    // ===== Call domain logic (get profile) =====
+    // Call domain logic (get profile)
     const data = await getProfile();
 
-    // ===== Return successful response =====
+    // Return successful response
     return NextResponse.json(data);
   } catch (error) {
-    // ===== Handle unexpected or known errors =====
+    // Handle unexpected or known errors
     return NextResponse.json(
       {
         status: false,

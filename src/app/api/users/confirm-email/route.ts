@@ -3,16 +3,16 @@ import { confirmUpdateEmailAction } from "@/features/users/lib/actions";
 
 export async function POST(req: NextRequest) {
   try {
-    // ===== Extract request body =====
+    // Extract request body
     const body = await req.json();
 
-    // ===== Call domain logic (confirm update email) =====
+    // Call domain logic (confirm update email)
     const data = await confirmUpdateEmailAction(body);
 
-    // ===== Return successful response =====
+    // Return successful response
     return NextResponse.json(data);
   } catch (error) {
-    // ===== Handle unexpected or known errors =====
+    // Handle unexpected or known errors
     return NextResponse.json(
       {
         status: false,

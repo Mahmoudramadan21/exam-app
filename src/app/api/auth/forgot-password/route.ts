@@ -3,16 +3,16 @@ import { forgotPasswordAction } from "@/features/auth/lib/actions";
 
 export async function POST(req: NextRequest) {
   try {
-    // ===== Extract request body =====
+    // Extract request body
     const { email } = await req.json();
 
-    // ===== Call domain logic (send reset email) =====
+    // Call domain logic (send reset email)
     const data = await forgotPasswordAction(email);
 
-    // ===== Return successful response =====
+    // Return successful response
     return NextResponse.json(data);
   } catch (error) {
-    // ===== Handle unexpected or known errors =====
+    // Handle unexpected or known errors
     return NextResponse.json(
       {
         status: false,

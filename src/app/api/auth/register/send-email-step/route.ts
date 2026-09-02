@@ -3,16 +3,16 @@ import { sendEmailStepAction } from "@/features/auth/lib/actions";
 
 export async function POST(req: NextRequest) {
   try {
-    // ===== Extract email from request body =====
+    // Extract email from request body
     const { email } = await req.json();
 
-    // ===== Trigger email verification step (registration flow) =====
+    // Trigger email verification step (registration flow)
     const data = await sendEmailStepAction(email);
 
-    // ===== Return success response =====
+    // Return success response
     return NextResponse.json(data);
   } catch (error) {
-    // ===== Handle email step errors =====
+    // Handle email step errors
     return NextResponse.json(
       {
         status: false,

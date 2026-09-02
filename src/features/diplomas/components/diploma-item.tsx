@@ -15,6 +15,7 @@ export default function DiplomaItem({
       <Link
         href={`/diplomas/${diploma.id}`}
         aria-label={`View ${diploma.title} diploma details`}
+        className="relative block h-full w-full"
       >
         {/* ===== Background Image ===== */}
         <Image
@@ -26,6 +27,7 @@ export default function DiplomaItem({
           className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
           sizes="(max-width: 768px) 100vw, 455px"
         />
+
         {/* ===== Overlay Content ===== */}
         <div className="w-[calc(100%-1.25rem)] absolute inset-s-2.5 bottom-2.5 p-4 bg-[#155DFCBF] backdrop-blur-md text-white">
           {/* Title */}

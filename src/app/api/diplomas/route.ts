@@ -5,13 +5,13 @@ import { createDiplomaAction } from "@/features/diplomas/lib/actions";
 
 export async function GET(req: NextRequest) {
   try {
-    // ===== Extract search params =====
+    // Extract search params
     const { searchParams } = new URL(req.url);
 
-    // ===== Parse filters =====
+    // Parse filters
     const params = getFilters(searchParams);
 
-    // ===== Call domain logic (get all diplomas) =====
+    // Call domain logic (get all diplomas)
     const res = await getAllDiplomas(params);
 
     return NextResponse.json(res);
@@ -29,10 +29,10 @@ export async function GET(req: NextRequest) {
 
 export async function POST(req: NextRequest) {
   try {
-    // ===== Extract body =====
+    // Extract body
     const body = await req.json();
 
-    // ===== Call domain logic (create diploma) =====
+    // Call domain logic (create diploma)
     const res = await createDiplomaAction(body);
 
     return NextResponse.json(res);

@@ -8,7 +8,7 @@ import { AdminQuestionsTable } from "@/features/questions/components";
 import { AdminQuestionsTableSkeleton } from "@/features/questions/lib/skeletons";
 import { AppContainer } from "@/shared/components";
 
-// ===== Metadata =====
+// Metadata
 export async function generateMetadata({
   params,
 }: {
@@ -58,7 +58,7 @@ export default async function ExamPage({ params }: ExamPageProps) {
 
   return (
     <section className="flex flex-col">
-      {/* ===== Breadcrumbs ===== */}
+      {/* Breadcrumbs */}
       <AppBreadcrumb
         items={[
           { label: "Exams", href: "/exams" },
@@ -66,14 +66,14 @@ export default async function ExamPage({ params }: ExamPageProps) {
         ]}
       />
 
-      {/* ===== Admin Exam Header ===== */}
+      {/* Admin Exam Header */}
       <AdminExamHeader exam={exam} />
 
       <AppContainer className="flex flex-col gap-6 mt-6">
-        {/* ===== Admin Exam Details ===== */}
+        {/* Admin Exam Details */}
         <AdminExamDetails exam={exam} />
 
-        {/* ===== Questions List ===== */}
+        {/* Questions List */}
         <Suspense fallback={<AdminQuestionsTableSkeleton />}>
           <AdminQuestionsTable examId={examId} />
         </Suspense>

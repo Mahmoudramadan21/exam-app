@@ -65,7 +65,16 @@ export function useCreateBulkQuestions({
         queryKey: ["questions"],
       });
 
-      form.reset();
+      form.reset({
+        examId,
+        questions: [
+          {
+            id: crypto.randomUUID(),
+            text: "",
+            answers: [],
+          },
+        ],
+      });
     },
 
     onError: (error) => {

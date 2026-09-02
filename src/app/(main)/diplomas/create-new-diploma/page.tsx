@@ -2,7 +2,7 @@ import { AppBreadcrumb } from "@/features/dashboard/layout";
 import { CreateDiplomaForm } from "@/features/diplomas/components";
 import type { Metadata } from "next";
 
-// ===== Metadata =====
+// Metadata
 export const metadata: Metadata = {
   title: "Create New Diploma",
   description:

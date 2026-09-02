@@ -57,7 +57,7 @@ export default async function ExamPage({
 
   return (
     <>
-      {/* ===== App Breadcrumb ===== */}
+      {/* App Breadcrumb */}
       <AppBreadcrumb
         items={[
           { label: "Diplomas", href: "/diplomas" },
@@ -72,7 +72,7 @@ export default async function ExamPage({
         ]}
       />
 
-      {/* ===== Page Wrapper ===== */}
+      {/* Page Wrapper */}
       <AppContainer>
         {/* Page Bar */}
         <PageBar

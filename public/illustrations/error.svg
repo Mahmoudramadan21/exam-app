@@ -1,1 +1,463 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="799.031" height="618.112" viewBox="0 0 799.031 618.112" xmlns:xlink="http://www.w3.org/1999/xlink" role="img" artist="Katerina Limpitsouni" source="https://undraw.co/"><g transform="translate(-893 -197)"><path d="M15.18,488.763c0,.872.478,1.573,1.073,1.573h535.1c.6,0,1.073-.7,1.073-1.573s-.478-1.573-1.073-1.573H16.253C15.658,487.191,15.18,487.891,15.18,488.763Z" transform="translate(1007.711 324.776)" fill="#ccc"/><rect width="19.105" height="3.371" transform="translate(1198.162 808.354)" fill="#b6b3c5"/><rect width="19.105" height="3.371" transform="translate(1367.295 808.917)" fill="#b6b3c5"/><path d="M352.955,370.945a27.529,27.529,0,0,1-54.321,0H229.146V521.536h193.3V370.945Z" transform="translate(966.721 287.378)" fill="#d6d6e3"/><rect width="193.296" height="5.242" transform="translate(1196.43 796.983)" fill="#090814"/><path d="M788.255,487.17H10.776A10.788,10.788,0,0,1,0,476.394V32.688A10.788,10.788,0,0,1,10.776,21.911H788.255a10.789,10.789,0,0,1,10.776,10.776V476.394a10.789,10.789,0,0,1-10.776,10.776Z" transform="translate(893 175.089)" fill="#090814"/><rect width="760.822" height="429.297" transform="translate(911.104 213.968)" fill="#fff"/><g transform="translate(20.477 16.308)"><path d="M604.463,379.271H317.442a8.655,8.655,0,0,1-8.645-8.645V273.8a8.655,8.655,0,0,1,8.645-8.645H604.463a8.655,8.655,0,0,1,8.645,8.645v96.826a8.655,8.655,0,0,1-8.645,8.645Z" transform="translate(811.648 85.826)" fill="#6c63ff"/><rect width="76.078" height="8.645" rx="2" transform="translate(1165.4 380.374)" fill="#fff"/><ellipse cx="5.187" cy="5.187" rx="5.187" ry="5.187" transform="translate(1336.576 380.374)" fill="#090814"/><ellipse cx="5.187" cy="5.187" rx="5.187" ry="5.187" transform="translate(1353.865 380.374)" fill="#090814"/><ellipse cx="5.187" cy="5.187" rx="5.187" ry="5.187" transform="translate(1371.156 380.374)" fill="#090814"/></g><ellipse cx="40.952" cy="40.952" rx="40.952" ry="40.952" transform="translate(1404.281 440.452)" fill="#090814"/><path d="M10.863-57.7l-.524-29.6h8.246l-.554,29.6Zm3.613,14.307a4.7,4.7,0,0,1-3.409-1.3,4.368,4.368,0,0,1-1.34-3.278,4.39,4.39,0,0,1,1.34-3.322,4.732,4.732,0,0,1,3.409-1.282,4.732,4.732,0,0,1,3.409,1.282,4.39,4.39,0,0,1,1.34,3.322,4.368,4.368,0,0,1-1.34,3.278A4.7,4.7,0,0,1,14.476-43.394Z" transform="translate(1430.76 546.754)" fill="#fff"/></g></svg>
+<svg
+  width="480"
+  height="360"
+  viewBox="0 0 480 360"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+  role="img"
+  aria-labelledby="error-illustration-title"
+>
+  <title id="error-illustration-title">Error illustration</title>
+
+  <defs>
+    <!-- Background -->
+    <linearGradient
+      id="error-bg"
+      x1="95"
+      y1="45"
+      x2="391"
+      y2="318"
+      gradientUnits="userSpaceOnUse"
+    >
+      <stop stop-color="#EFF6FF" />
+      <stop offset="1" stop-color="#DBEAFE" />
+    </linearGradient>
+
+    <!-- Main object -->
+    <linearGradient
+      id="error-primary"
+      x1="175"
+      y1="155"
+      x2="313"
+      y2="291"
+      gradientUnits="userSpaceOnUse"
+    >
+      <stop stop-color="#60A5FA" />
+      <stop offset="1" stop-color="#2563EB" />
+    </linearGradient>
+
+    <!-- Secondary -->
+    <linearGradient
+      id="error-secondary"
+      x1="206"
+      y1="125"
+      x2="289"
+      y2="201"
+      gradientUnits="userSpaceOnUse"
+    >
+      <stop stop-color="#BFDBFE" />
+      <stop offset="1" stop-color="#93C5FD" />
+    </linearGradient>
+
+    <!-- Soft shadow -->
+    <filter
+      id="error-shadow"
+      x="134"
+      y="205"
+      width="217"
+      height="110"
+      filterUnits="userSpaceOnUse"
+      color-interpolation-filters="sRGB"
+    >
+      <feDropShadow
+        dx="0"
+        dy="10"
+        stdDeviation="10"
+        flood-color="#1E3A8A"
+        flood-opacity="0.14"
+      />
+    </filter>
+
+    <!-- Small shadow -->
+    <filter
+      id="error-small-shadow"
+      x="287"
+      y="119"
+      width="89"
+      height="91"
+      filterUnits="userSpaceOnUse"
+      color-interpolation-filters="sRGB"
+    >
+      <feDropShadow
+        dx="0"
+        dy="6"
+        stdDeviation="6"
+        flood-color="#1E3A8A"
+        flood-opacity="0.12"
+      />
+    </filter>
+  </defs>
+
+  <!-- ========================================================= -->
+  <!-- Background -->
+  <!-- ========================================================= -->
+
+  <path
+    d="M92 62C127 29 184 31 232 50C278 68 309 40 355 57C404 75 423 123 407 165C391 208 419 245 390 281C359 319 302 318 253 305C207 292 168 321 124 302C81 283 61 242 74 198C87 154 59 96 92 62Z"
+    fill="url(#error-bg)"
+  />
+
+  <!-- ========================================================= -->
+  <!-- Decorative elements -->
+  <!-- ========================================================= -->
+
+  <!-- Dots -->
+  <circle
+    cx="106"
+    cy="128"
+    r="5"
+    fill="#BFDBFE"
+  />
+
+  <circle
+    cx="392"
+    cy="128"
+    r="4"
+    fill="#BFDBFE"
+  />
+
+  <circle
+    cx="376"
+    cy="259"
+    r="5"
+    fill="#DBEAFE"
+  />
+
+  <!-- Stars -->
+  <path
+    d="M126 161L129 168L136 171L129 174L126 181L123 174L116 171L123 168L126 161Z"
+    fill="#93C5FD"
+  />
+
+  <path
+    d="M365 176L368 183L375 186L368 189L365 196L362 189L355 186L362 183L365 176Z"
+    fill="#60A5FA"
+  />
+
+  <!-- ========================================================= -->
+  <!-- Clouds -->
+  <!-- ========================================================= -->
+
+  <path
+    d="M94 102C94 92 102 84 112 84C115 73 125 65 137 65C152 65 164 76 164 91C172 91 179 97 179 106H94V102Z"
+    fill="#DBEAFE"
+    opacity="0.9"
+  />
+
+  <path
+    d="M332 89C332 81 339 74 348 74C351 65 359 59 369 59C381 59 391 68 391 81C398 81 403 86 403 94H332V89Z"
+    fill="#BFDBFE"
+    opacity="0.7"
+  />
+
+  <!-- ========================================================= -->
+  <!-- Ground -->
+  <!-- ========================================================= -->
+
+  <ellipse
+    cx="242"
+    cy="303"
+    rx="132"
+    ry="14"
+    fill="#93C5FD"
+    opacity="0.16"
+  />
+
+  <path
+    d="M105 299C158 283 202 286 242 299C284 312 330 287 378 299"
+    stroke="#BFDBFE"
+    stroke-width="4"
+    stroke-linecap="round"
+  />
+
+  <!-- ========================================================= -->
+  <!-- Main broken panel -->
+  <!-- ========================================================= -->
+
+  <g filter="url(#error-shadow)">
+    <!-- Back panel -->
+    <rect
+      x="158"
+      y="151"
+      width="164"
+      height="133"
+      rx="18"
+      fill="white"
+      stroke="#DBEAFE"
+      stroke-width="4"
+    />
+
+    <!-- Panel header -->
+    <rect
+      x="158"
+      y="151"
+      width="164"
+      height="31"
+      rx="18"
+      fill="#EFF6FF"
+    />
+
+    <path
+      d="M158 169H322V182H158V169Z"
+      fill="#EFF6FF"
+    />
+
+    <!-- Window controls -->
+    <circle
+      cx="177"
+      cy="166"
+      r="4"
+      fill="#93C5FD"
+    />
+
+    <circle
+      cx="191"
+      cy="166"
+      r="4"
+      fill="#BFDBFE"
+    />
+
+    <circle
+      cx="205"
+      cy="166"
+      r="4"
+      fill="#DBEAFE"
+    />
+
+    <!-- Content skeleton -->
+    <rect
+      x="181"
+      y="199"
+      width="63"
+      height="8"
+      rx="4"
+      fill="#DBEAFE"
+    />
+
+    <rect
+      x="181"
+      y="216"
+      width="108"
+      height="6"
+      rx="3"
+      fill="#EFF6FF"
+    />
+
+    <rect
+      x="181"
+      y="230"
+      width="87"
+      height="6"
+      rx="3"
+      fill="#EFF6FF"
+    />
+
+    <rect
+      x="181"
+      y="249"
+      width="54"
+      height="18"
+      rx="9"
+      fill="#DBEAFE"
+    />
+
+    <!-- Broken / disconnected area -->
+    <path
+      d="M257 198L270 211L261 220L273 232"
+      stroke="#93C5FD"
+      stroke-width="5"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+
+    <path
+      d="M287 198L274 211L283 220L271 232"
+      stroke="#60A5FA"
+      stroke-width="5"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+
+    <circle
+      cx="270"
+      cy="216"
+      r="5"
+      fill="#2563EB"
+    />
+  </g>
+
+  <!-- ========================================================= -->
+  <!-- Warning / alert symbol -->
+  <!-- ========================================================= -->
+
+  <g filter="url(#error-small-shadow)">
+    <!-- Triangle -->
+    <path
+      d="M330 127C333.464 121 342.536 121 346 127L372 172C375.464 178 371.196 185.5 364.268 185.5H311.732C304.804 185.5 300.536 178 304 172L330 127Z"
+      fill="url(#error-primary)"
+    />
+
+    <!-- Inner triangle -->
+    <path
+      d="M334 137C335.54 134.333 339.46 134.333 341 137L360.918 171.5C362.458 174.167 360.498 177.5 357.418 177.5H317.582C314.502 177.5 312.542 174.167 314.082 171.5L334 137Z"
+      fill="#EFF6FF"
+      opacity="0.95"
+    />
+
+    <!-- Exclamation -->
+    <path
+      d="M337 146V160"
+      stroke="#2563EB"
+      stroke-width="5"
+      stroke-linecap="round"
+    />
+
+    <circle
+      cx="337"
+      cy="169"
+      r="3"
+      fill="#2563EB"
+    />
+  </g>
+
+  <!-- ========================================================= -->
+  <!-- Floating disconnected pieces -->
+  <!-- ========================================================= -->
+
+  <rect
+    x="122"
+    y="205"
+    width="30"
+    height="23"
+    rx="7"
+    transform="rotate(-12 122 205)"
+    fill="#BFDBFE"
+  />
+
+  <path
+    d="M130 215L142 212"
+    stroke="#60A5FA"
+    stroke-width="3"
+    stroke-linecap="round"
+  />
+
+  <rect
+    x="326"
+    y="220"
+    width="35"
+    height="26"
+    rx="7"
+    transform="rotate(12 326 220)"
+    fill="#93C5FD"
+  />
+
+  <path
+    d="M336 231L350 234"
+    stroke="#EFF6FF"
+    stroke-width="3"
+    stroke-linecap="round"
+  />
+
+  <!-- ========================================================= -->
+  <!-- Small gear-like decorative shape -->
+  <!-- ========================================================= -->
+
+  <g opacity="0.8">
+    <circle
+      cx="113"
+      cy="255"
+      r="13"
+      stroke="#93C5FD"
+      stroke-width="4"
+    />
+
+    <path
+      d="M113 237V242"
+      stroke="#93C5FD"
+      stroke-width="4"
+      stroke-linecap="round"
+    />
+
+    <path
+      d="M113 268V273"
+      stroke="#93C5FD"
+      stroke-width="4"
+      stroke-linecap="round"
+    />
+
+    <path
+      d="M95 255H100"
+      stroke="#93C5FD"
+      stroke-width="4"
+      stroke-linecap="round"
+    />
+
+    <path
+      d="M126 255H131"
+      stroke="#93C5FD"
+      stroke-width="4"
+      stroke-linecap="round"
+    />
+  </g>
+
+  <!-- ========================================================= -->
+  <!-- Small ground plants -->
+  <!-- ========================================================= -->
+
+  <path
+    d="M371 296C371 283 369 274 365 266"
+    stroke="#60A5FA"
+    stroke-width="3"
+    stroke-linecap="round"
+  />
+
+  <path
+    d="M369 282C359 278 355 271 356 264C366 265 371 271 369 282Z"
+    fill="#BFDBFE"
+  />
+
+  <path
+    d="M370 277C378 270 385 269 392 272C388 280 380 283 370 277Z"
+    fill="#93C5FD"
+  />
+
+  <path
+    d="M142 297C142 286 144 278 148 270"
+    stroke="#60A5FA"
+    stroke-width="3"
+    stroke-linecap="round"
+  />
+
+  <path
+    d="M145 286C136 282 132 276 133 270C142 271 147 277 145 286Z"
+    fill="#93C5FD"
+  />
+
+  <path
+    d="M146 281C153 275 160 274 166 277C162 284 155 286 146 281Z"
+    fill="#BFDBFE"
+  />
+
+  <!-- ========================================================= -->
+  <!-- Tiny particles -->
+  <!-- ========================================================= -->
+
+  <circle
+    cx="158"
+    cy="117"
+    r="3"
+    fill="#93C5FD"
+  />
+
+  <circle
+    cx="315"
+    cy="106"
+    r="3"
+    fill="#BFDBFE"
+  />
+
+  <path
+    d="M391 219L394 226L401 229L394 232L391 239L388 232L381 229L388 226L391 219Z"
+    fill="#DBEAFE"
+  />
+</svg>

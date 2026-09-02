@@ -8,20 +8,20 @@ export async function GET(
   { params }: { params: Promise<{ examId: string }> },
 ) {
   try {
-    // ===== Extract exam id from params =====
+    // Extract exam id from params
     const { examId } = await params;
 
-    // ===== Extract query params =====
+    // Extract query params
     const { searchParams } = new URL(req.url);
 
     const filters = getFilters(searchParams);
 
-    // ===== Call domain logic (get exam questions) =====
+    // Call domain logic (get exam questions)
     const res = await getExamQuestions(examId, filters);
 
     return NextResponse.json(res);
   } catch (error) {
-    // ===== Handle unexpected or known errors =====
+    // Handle unexpected or known errors
     return NextResponse.json(
       {
         status: false,
@@ -38,19 +38,19 @@ export async function POST(
   { params }: { params: Promise<{ examId: string }> },
 ) {
   try {
-    // ===== Extract exam id from params =====
+    // Extract exam id from params
     const { examId } = await params;
 
-    // ===== Extract request body =====
+    // Extract request body
     const body = await req.json();
 
-    // ===== Call domain logic (create question) =====
+    // Call domain logic (create question)
     const res = await createQuestionAction({ examId, data: body });
 
-    // ===== Return response =====
+    // Return response
     return NextResponse.json(res);
   } catch (error) {
-    // ===== Handle unexpected or known errors =====
+    // Handle unexpected or known errors
     return NextResponse.json(
       {
         status: false,

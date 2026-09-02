@@ -6,7 +6,7 @@ import { ChangePasswordForm } from "@/features/users/components";
 import { AppContainer } from "@/shared/components";
 import { AccountLayout } from "@/features/users/layout";
 
-// ===== Metadata =====
+// Metadata
 export const metadata: Metadata = {
   title: "Change Password",
   description:
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 export default async function ChangePasswordPage() {
   return (
     <>
-      {/* ===== Breadcrumb ===== */}
+      {/* Breadcrumb */}
       <AppBreadcrumb
         items={[
           { label: "Account", href: "/account" },
@@ -24,7 +24,7 @@ export default async function ChangePasswordPage() {
         ]}
       />
 
-      {/* ===== Container Wrapper  =====*/}
+      {/* Container Wrapper */}
       <AppContainer>
         {/* Page Bar */}
         <PageBar

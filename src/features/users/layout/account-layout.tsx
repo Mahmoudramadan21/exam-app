@@ -1,5 +1,6 @@
 import { SidebarProvider, SidebarTrigger } from "@/shared/components/ui";
 import { AccountSidebar } from "@/features/dashboard/layout";
+import { UserRoundCog } from "lucide-react";
 
 export default function AccountLayout({
   children,
@@ -14,9 +15,11 @@ export default function AccountLayout({
 
         <div className="grow h-full bg-gray-50">
           {/* ===== Sidebar Trigger ===== */}
-          <SidebarTrigger className="absolute top-0 right-0">
-            Account Settings
-          </SidebarTrigger>
+          <SidebarTrigger
+            icon={<UserRoundCog className="size-5" />}
+            className="absolute top-1 right-3"
+            label="Open account settings"
+          />
 
           {/* ===== Main Content ===== */}
           {children}

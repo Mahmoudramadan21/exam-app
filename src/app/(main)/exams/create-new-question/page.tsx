@@ -5,7 +5,7 @@ import {
 } from "@/features/questions/components";
 import { AppBreadcrumb } from "@/features/dashboard/layout";
 
-// ===== Metadata =====
+// Metadata
 export const metadata: Metadata = {
   title: "Create New Question",
   description:
@@ -29,13 +29,26 @@ export default async function Page({ searchParams }: PageProps) {
 
   // Render bulk question form if mode is bulk
   if (mode === "bulk") {
-    return <CreateBulkQuestionForm examId={examId} />;
+    return (
+      <>
+        {/* Breadcrumbs */}
+        <AppBreadcrumb
+          items={[
+            { label: "Exams", href: "/exams" },
+            { label: "Create New Question" },
+          ]}
+        />
+
+        {/* Create Bulk Question Form */}
+        <CreateBulkQuestionForm examId={examId} />
+      </>
+    );
   }
 
   // Render single question form if mode is not bulk
   return (
     <>
-      {/* ===== Breadcrumbs ===== */}
+      {/* Breadcrumbs */}
       <AppBreadcrumb
         items={[
           { label: "Exams", href: "/exams" },
@@ -43,7 +56,7 @@ export default async function Page({ searchParams }: PageProps) {
         ]}
       />
 
-      {/* ===== Create Question Form ===== */}
+      {/* Create Question Form */}
       <CreateQuestionForm examId={examId} />
     </>
   );

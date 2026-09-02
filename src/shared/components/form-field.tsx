@@ -49,6 +49,17 @@ function FormField<T extends FieldValues>(props: IFormFieldProps<T>) {
                 aria-describedby={`${name}-error`}
                 {...(rest as React.ComponentPropsWithoutRef<"input">)}
                 {...field}
+                onChange={(e) => {
+                  const inputType = (
+                    rest as React.ComponentPropsWithoutRef<"input">
+                  ).type;
+
+                  field.onChange(
+                    inputType === "number"
+                      ? e.target.valueAsNumber
+                      : e.target.value,
+                  );
+                }}
               />
             ) : (
               <Textarea

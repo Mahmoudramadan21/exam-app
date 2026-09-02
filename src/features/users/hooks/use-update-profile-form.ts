@@ -40,7 +40,7 @@ export function useUpdateProfileForm({
       lastName: initialData.lastName || "",
       username: initialData.username || "",
       email: initialData.email || "",
-      phone: initialData.phone?.replace("0", "+20") || "",
+      phone: initialData.phone || "",
     });
   }, [initialData]);
 

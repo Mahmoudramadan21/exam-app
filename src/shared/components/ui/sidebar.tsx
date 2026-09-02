@@ -11,9 +11,9 @@ import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-  Input, 
-  Button, 
-  Separator, 
+  Input,
+  Button,
+  Separator,
   Sheet,
   SheetContent,
   SheetDescription,
@@ -251,22 +251,30 @@ function Sidebar({
   );
 }
 
+interface SidebarTriggerProps extends React.ComponentProps<typeof Button> {
+  icon?: React.ReactNode;
+  label?: string;
+}
+
 function SidebarTrigger({
   className,
   onClick,
-  children,
+  icon,
+  label = "Open sidebar",
   ...props
-}: React.ComponentProps<typeof Button>) {
+}: SidebarTriggerProps) {
   const { toggleSidebar, isMobile } = useSidebar();
 
+  if (!isMobile) return null;
+
   return (
-    <>
-    {isMobile && <Button
+    <Button
       data-sidebar="trigger"
       data-slot="sidebar-trigger"
       variant="ghost"
-      size="icon-sm"
-      ui="fitContent"
+      size="icon"
+      aria-label={label}
+      title={label}
       className={cn(className)}
       onClick={(event) => {
         onClick?.(event);
@@ -274,11 +282,9 @@ function SidebarTrigger({
       }}
       {...props}
     >
-      {children}
-      <PanelLeftIcon />
-      <span className="sr-only">Toggle Sidebar</span>
-    </Button>}
-    </>
+      {icon}
+      <span className="sr-only">{label}</span>
+    </Button>
   );
 }
 

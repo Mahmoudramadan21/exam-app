@@ -23,6 +23,7 @@ import FolderCode from "@/assets/icons/folder-code.svg";
 import { useSidebarAuth } from "@/features/dashboard/hooks/use-sidebar-auth";
 import { cn } from "@/shared/lib/utils/tailwind-cn";
 import { EllipsisVertical } from "lucide-react";
+import { isNavLinkActive } from "@/shared/lib/utils/is-nav-link-active";
 
 interface IAppSidebarProps {
   isAdmin: boolean;
@@ -47,6 +48,7 @@ function AppSidebar({ isAdmin }: IAppSidebarProps) {
                 alt="Logo"
                 width={192}
                 height={237}
+                priority
                 className={cn(isAdmin && "invert")}
               />
 
@@ -76,7 +78,7 @@ function AppSidebar({ isAdmin }: IAppSidebarProps) {
               const Icon = link.icon;
 
               // Check if current route matches link
-              const isActive = link.href === pathname;
+              const isActive = isNavLinkActive(link.href, pathname);
 
               return (
                 <SidebarMenuItem key={link.href}>

@@ -10,7 +10,7 @@ export default function UnauthorizedPage() {
   return (
     <section className="min-h-[75vh] flex items-center justify-center px-4 py-10">
       <div className="w-full max-w-3xl flex flex-col items-center text-center">
-        {/* ===== Illustration ===== */}
+        {/* Illustration */}
         <div className="relative w-full max-w-sm aspect-square">
           <Image
             src="/illustrations/unauthorized.svg"
@@ -21,7 +21,7 @@ export default function UnauthorizedPage() {
           />
         </div>
 
-        {/* ===== Content ===== */}
+        {/* Content */}
         <div className="mt-2 flex flex-col items-center">
           <span className="text-sm font-medium uppercase tracking-wider text-yellow-600">
             Unauthorized
@@ -37,7 +37,7 @@ export default function UnauthorizedPage() {
           </p>
         </div>
 
-        {/* ===== Actions ===== */}
+        {/* Actions */}
         <div className="mt-8 flex flex-col sm:flex-row items-center gap-3">
           <Button
             onClick={() =>

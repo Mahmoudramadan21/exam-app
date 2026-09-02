@@ -4,7 +4,7 @@ import { getDiploma } from "@/features/diplomas/lib/apis";
 import { AppBreadcrumb } from "@/features/dashboard/layout";
 import { EditDiplomaForm } from "@/features/diplomas/components";
 
-// ===== Metadata =====
+// Metadata
 export async function generateMetadata({
   params,
 }: {

@@ -6,19 +6,19 @@ export async function POST(
   { params }: { params: Promise<{ examId: string }> },
 ) {
   try {
-    // ===== Extract exam id from params =====
+    // Extract exam id from params
     const { examId } = await params;
 
-    // ===== Extract request body =====
+    // Extract request body
     const body = await req.json();
 
-    // ===== Call domain logic (create question bulk) =====
+    // Call domain logic (create question bulk)
     const res = await createQuestionBulkAction({ examId, data: body });
 
-    // ===== Return response =====
+    // Return response
     return NextResponse.json(res);
   } catch (error) {
-    // ===== Handle unexpected or known errors =====
+    // Handle unexpected or known errors
     return NextResponse.json(
       {
         status: false,

@@ -7,7 +7,10 @@ import { ICreateBulkQuestionSchema } from "../lib/types/api";
 export function useBulkQuestions() {
   const form = useFormContext<ICreateBulkQuestionSchema>();
 
-  const { fields, append, remove } = useFieldArray({
+  const { fields, append, remove } = useFieldArray<
+    ICreateBulkQuestionSchema,
+    "questions"
+  >({
     control: form.control,
     name: "questions",
   });
@@ -15,13 +18,15 @@ export function useBulkQuestions() {
   const [activeQuestionIndex, setActiveQuestionIndex] = useState(0);
 
   function addQuestion() {
+    const newIndex = fields.length;
+
     append({
       id: crypto.randomUUID(),
       text: "",
       answers: [],
     });
 
-    setActiveQuestionIndex(fields.length);
+    setActiveQuestionIndex(newIndex);
   }
 
   function removeQuestion(index: number) {

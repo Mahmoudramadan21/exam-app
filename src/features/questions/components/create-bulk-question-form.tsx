@@ -20,16 +20,18 @@ function CreateBulkQuestionForm({ examId }: ICreateBulkQuestionFormProps) {
     <FormProvider {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
         {/* ===== Form Actions ===== */}
-        <div className="flex items-center justify-between gap-2 bg-white">
+        <AppContainer className="flex items-center justify-between gap-2 mt-6 bg-white">
           <Link
-            href="/exams/create-new-question"
+            href={`/exams/create-new-question?examId=${examId}`}
+            aria-label="Switch to single question creation mode"
             className="inline-flex items-center gap-2 font-geist-mono font-medium text-sm bg-blue-600 px-4 py-3 text-white hover:bg-blue-700 transition-colors"
           >
             <CopyPlus size={18} />
             Single Question
           </Link>
-          <FormActions isPending={mutation.isPending} />
-        </div>
+          
+          <FormActions isPending={mutation.isPending} className="md:px-0" />
+        </AppContainer>
 
         <AppContainer>
           {/* ===== Question Information ===== */}

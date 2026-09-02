@@ -24,7 +24,7 @@ export const updateProfileAction = async (data: IUpdateProfileSchema) => {
     body: JSON.stringify({
       firstName: data.firstName,
       lastName: data.lastName,
-      phone: data.phone.replace("+20", "0"),
+      phone: data.phone,
     }),
   });
 

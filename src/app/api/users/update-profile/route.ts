@@ -3,16 +3,16 @@ import { updateProfileAction } from "@/features/users/lib/actions";
 
 export async function PATCH(req: NextRequest) {
   try {
-    // ===== Extract request body =====
+    // Extract request body
     const body = await req.json();
 
-    // ===== Call domain logic (update profile) =====
+    // Call domain logic (update profile)
     const data = await updateProfileAction(body);
 
-    // ===== Return successful response =====
+    // Return successful response
     return NextResponse.json(data);
   } catch (error) {
-    // ===== Handle unexpected or known errors =====
+    // Handle unexpected or known errors
     return NextResponse.json(
       {
         status: false,

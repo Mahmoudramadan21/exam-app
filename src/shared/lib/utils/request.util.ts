@@ -16,6 +16,8 @@ export const apiRequest = async <TResponse>(
 
   const data: IApiResponse = await response.json();
 
+  console.log(data);
+
   // Backend-level validation errors
   if (!data.status && data.errors?.length) {
     throw new Error(data.errors[0].message);

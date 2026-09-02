@@ -4,35 +4,35 @@ import { EditQuestionForm } from "@/features/questions/components";
 import { AppBreadcrumb } from "@/features/dashboard/layout";
 import { Metadata } from "next";
 
-// ===== Metadata =====
-// export async function generateMetadata({
-//   params,
-// }: {
-//   params: Promise<{ questionId: string }>;
-// }): Promise<Metadata> {
-//   // Get Diploma ID
-//   const { questionId } = await params;
+// Metadata
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ questionId: string }>;
+}): Promise<Metadata> {
+  // Get Diploma ID
+  const { questionId } = await params;
 
-//   // Fetch Diploma
-//   const { payload } = await getQuestion(questionId);
+  // Fetch Diploma
+  const { payload } = await getQuestion(questionId);
 
-//   // Get Diploma Data
-//   const question = payload?.question;
+  // Get Diploma Data
+  const question = payload?.question;
 
-//   // Not Found Diploma
-//   if (!question) {
-//     return {
-//       title: "Question Not Found",
-//       description: "The requested question could not be found.",
-//     };
-//   }
+  // Not Found Diploma
+  if (!question) {
+    return {
+      title: "Question Not Found",
+      description: "The requested question could not be found.",
+    };
+  }
 
-//   // Return Metadata
-//   return {
-//     title: `Edit ${question.text}`,
-//     description: question.text || `Update information for ${question.text}.`,
-//   };
-// }
+  // Return Metadata
+  return {
+    title: `Edit ${question.text}`,
+    description: question.text || `Update information for ${question.text}.`,
+  };
+}
 
 export default async function EditQuestionPage({
   params,
@@ -55,7 +55,7 @@ export default async function EditQuestionPage({
 
   return (
     <>
-      {/* ===== Breadcrumbs ===== */}
+      {/* Breadcrumbs */}
       <AppBreadcrumb
         items={[
           { label: "Exams", href: "/exams" },
@@ -67,7 +67,7 @@ export default async function EditQuestionPage({
         ]}
       />
 
-      {/* ===== Edit Question Form ===== */}
+      {/* Edit Question Form */}
       <EditQuestionForm question={question} />
     </>
   );

@@ -2,11 +2,14 @@ import type { Metadata } from "next";
 import { GraduationCap } from "lucide-react";
 import { PageBar } from "@/features/dashboard/components";
 import { AppBreadcrumb } from "@/features/dashboard/layout";
-import {DiplomaList, AdminDiplomasTable} from "@/features/diplomas/components";
+import {
+  DiplomaList,
+  AdminDiplomasTable,
+} from "@/features/diplomas/components";
 import { AppContainer } from "@/shared/components";
 import { getNextAuthToken } from "@/shared/lib/utils/auth.util";
 
-// ===== Metadata =====
+// Metadata
 export const metadata: Metadata = {
   title: "Diplomas",
   description:
@@ -18,32 +21,24 @@ export default async function Page() {
   const jwt = await getNextAuthToken();
   const isAdmin = jwt?.user?.role === "ADMIN";
 
-  // ===== Render admin diplomas if user is admin =====
+  // Render admin diplomas if user is admin
   if (isAdmin) {
     return (
       <>
         {/* BreadCrumb */}
-        <AppBreadcrumb
-          items={[
-            { label: "Diplomas", href: "/diplomas" },
-          ]}
-        />
-        
+        <AppBreadcrumb items={[{ label: "Diplomas", href: "/diplomas" }]} />
+
         {/* Admin Diplomas Table */}
         <AdminDiplomasTable />
       </>
     );
   }
 
-  // ===== Render user diplomas if user is not admin =====
+  // Render user diplomas if user is not admin
   return (
     <>
       {/* BreadCrumb */}
-      <AppBreadcrumb
-        items={[
-          { label: "Diplomas", href: "/diplomas" },
-        ]}
-      />
+      <AppBreadcrumb items={[{ label: "Diplomas", href: "/diplomas" }]} />
 
       {/* Page Wrapper */}
       <AppContainer>

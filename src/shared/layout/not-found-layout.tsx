@@ -18,16 +18,18 @@ export default function NotFoundLayout({
   imageAlt,
 }: INotFoundLayoutProps) {
   return (
-    <section className="min-h-[75vh] flex items-center justify-center px-4 py-10">
+    <section className="min-h-[75vh] h-full flex items-center justify-center px-4">
       <div className="w-full max-w-3xl flex flex-col items-center text-center">
         {/* ===== Illustration ===== */}
-        <div className="relative w-full max-w-sm aspect-square">
+        <div className="w-full max-w-80 sm:max-w-95 md:max-w-110 lg:max-w-125">
           <Image
             src="/illustrations/not-found.svg"
             alt={imageAlt}
-            fill
+            width={500}
+            height={400}
             priority
-            className="object-contain"
+            sizes="(max-width: 640px) 320px, (max-width: 768px) 380px, (max-width: 1024px) 440px, 500px"
+            className="w-full h-auto object-contain"
           />
         </div>
 

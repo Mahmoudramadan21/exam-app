@@ -8,7 +8,7 @@ import {
 } from "@/features/questions/components";
 import { AppContainer } from "@/shared/components";
 
-// ===== Metadata =====
+// Metadata
 export async function generateMetadata({
   params,
 }: {
@@ -59,7 +59,7 @@ export default async function Page({ params }: PageProps) {
 
   return (
     <section className="flex flex-col">
-      {/* ===== Breadcrumbs ===== */}
+      {/* Breadcrumbs */}
       <AppBreadcrumb
         items={[
           { label: "Exams", href: "/exams" },
@@ -72,10 +72,10 @@ export default async function Page({ params }: PageProps) {
         ]}
       />
 
-      {/* ===== Question Header ===== */}
+      {/* Question Header */}
       <AdminQuestionHeader question={question} />
 
-      {/* ===== Question Content ===== */}
+      {/* Question Content */}
       <AppContainer className="mt-6">
         <AdminQuestionDetails question={question} />
       </AppContainer>

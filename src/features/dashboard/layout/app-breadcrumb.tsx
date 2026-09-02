@@ -22,33 +22,31 @@ type AppBreadcrumbProps = {
 
 export function AppBreadcrumb({ items }: AppBreadcrumbProps) {
   return (
-    <AppContainer className="py-4 bg-white">
+    <AppContainer className="bg-white py-4">
       <Breadcrumb>
         <BreadcrumbList>
           {items.map((item, index) => {
             const isLast = index === items.length - 1;
 
             return (
-              <BreadcrumbItem
-                key={item.label + index}
-                className="flex items-center"
-              >
-                {isLast || !item.href ? (
-                  <BreadcrumbPage className="text-blue-600">
-                    {item.label}
-                  </BreadcrumbPage>
-                ) : (
-                  <>
+              <div key={item.label + index} className="contents">
+                <BreadcrumbItem className="flex items-center">
+                  {isLast || !item.href ? (
+                    <BreadcrumbPage className="text-blue-600">
+                      {item.label}
+                    </BreadcrumbPage>
+                  ) : (
                     <BreadcrumbLink
                       className="text-gray-400 hover:text-blue-600"
                       asChild
                     >
                       <Link href={item.href}>{item.label}</Link>
                     </BreadcrumbLink>
-                    <BreadcrumbSeparator className="text-gray-400" />
-                  </>
-                )}
-              </BreadcrumbItem>
+                  )}
+                </BreadcrumbItem>
+
+                {!isLast && <BreadcrumbSeparator className="text-gray-400" />}
+              </div>
             );
           })}
         </BreadcrumbList>

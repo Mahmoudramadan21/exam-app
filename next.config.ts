@@ -13,6 +13,7 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "exam-app.elevate-bootcamp.cloud",
       },
+      
     ],
   },
 

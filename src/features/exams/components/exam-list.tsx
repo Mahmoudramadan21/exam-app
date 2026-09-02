@@ -15,7 +15,7 @@ function ExamList({ exams, diplomaId }: IExamListProps) {
         {/* Renders list of available exams */}
         <div className="grid grid-cols-1 gap-6">
           {exams.map((exam) => (
-            <ExamItem exam={exam} diplomaId={diplomaId} />
+            <ExamItem key={exam.id} exam={exam} diplomaId={diplomaId} />
           ))}
         </div>
       </section>

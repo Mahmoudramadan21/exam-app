@@ -5,12 +5,12 @@ import { loginSchema } from "./features/auth/lib/schemas/login.schema";
 import { loginAction } from "@/features/auth/lib/actions/login.action";
 
 export const authOptions: NextAuthOptions = {
-  // ===== Custom auth pages =====
+  // Custom auth pages
   pages: {
     signIn: "/login",
   },
 
-  // ===== Use JWT instead of database sessions =====
+  // Use JWT instead of database sessions
   session: {
     strategy: "jwt",
     maxAge: 60 * 60 * 24 * 7, // 7 Days
@@ -59,17 +59,15 @@ export const authOptions: NextAuthOptions = {
   ],
 
   callbacks: {
-    // =====================================================
     // JWT callback → runs on sign in + token updates
-    // =====================================================
     async jwt({ token, user, trigger, session }) {
-      // ===== First login: persist user in token =====
+      // First login: persist user in token
       if (user) {
         token.user = user.user;
         token.token = user.token;
       }
 
-      // ===== Session update (e.g. profile update) =====
+      // Session update (e.g. profile update)
       if (trigger === "update" && session) {
         token.user = session.user;
         token.token = session.token;
@@ -78,9 +76,7 @@ export const authOptions: NextAuthOptions = {
       return token;
     },
 
-    // =====================================================
     // Session callback → expose data to client
-    // =====================================================
     async session({ session, token }) {
       // Map JWT → session object
       session.user = token.user;

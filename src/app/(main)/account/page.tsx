@@ -7,7 +7,7 @@ import { AppContainer } from "@/shared/components";
 import { UserRound } from "lucide-react";
 import { Metadata } from "next";
 
-// ===== Metadata =====
+// Metadata
 export const metadata: Metadata = {
   title: "Account Settings",
   description:
@@ -20,18 +20,18 @@ export default async function AccountPage() {
 
   return (
     <>
-      {/* ===== Breadcrumb ===== */}
+      {/* Breadcrumb */}
       <AppBreadcrumb items={[{ label: "Account", href: "/account" }]} />
 
       <AppContainer>
-        {/* ===== Page Bar =====*/}
+        {/* Page Bar*/}
         <PageBar
           showBack
           icon={<UserRound className="size-7 md:size-9 lg:size-11" />}
           title="Account Settings"
         />
 
-        {/* ===== Update Profile Form ===== */}
+        {/* Update Profile Form */}
         <AccountLayout>
           <UpdateProfileForm initialData={data.payload?.user} />
         </AccountLayout>

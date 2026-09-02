@@ -6,16 +6,16 @@ export async function PATCH(
   { params }: { params: Promise<{ id: string }> },
 ) {
   try {
-    // ===== Extract diploma id from params and body =====
+    // Extract diploma id from params and body
     const { id } = await params;
     const body = await req.json();
 
-    // ===== Call domain logic (immutable diploma) =====
+    // Call domain logic (immutable diploma)
     const res = await immutableDiplomaAction({ id, immutable: body.immutable });
 
     return NextResponse.json(res);
   } catch (error) {
-    // ===== Handle unexpected or known errors =====
+    // Handle unexpected or known errors
     return NextResponse.json(
       {
         status: false,

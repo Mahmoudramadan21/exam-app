@@ -4,10 +4,10 @@ import { getToken } from "next-auth/jwt";
 
 export async function POST(req: NextRequest) {
   try {
-    // ===== Get Auth Token =====
+    // Get Auth Token
     const token = (await getToken({ req }))?.token;
 
-    // ===== Check if token is valid =====
+    // Check if token is valid
     if (!token) {
       return NextResponse.json(
         {
@@ -20,16 +20,16 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // ===== Parse Form Data =====
+    // Parse Form Data
     const formData = await req.formData();
     const file = formData.get("image");
 
-    // ===== Validate Image =====
+    // Validate Image
     const validation = imageSchema.safeParse({
       file,
     });
 
-    // ===== Handle validation errors =====
+    // Handle validation errors
     if (!validation.success) {
       return NextResponse.json(
         {
@@ -40,7 +40,7 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // ===== Check if file is a File instance =====
+    // Check if file is a File instance
     if (!(file instanceof File)) {
       return NextResponse.json(
         { status: false, message: "Invalid file" },
@@ -48,12 +48,12 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // ===== Create Backend Form Data =====
+    // Create Backend Form Data
     const validatedFile = validation.data.file;
     const backendFormData = new FormData();
     backendFormData.append("image", validatedFile);
 
-    // ===== Upload Image =====
+    // Upload Image
     const response = await fetch(`${process.env.BACKEND_URL}/upload`, {
       method: "POST",
       headers: {
@@ -62,15 +62,15 @@ export async function POST(req: NextRequest) {
       body: backendFormData,
     });
 
-    // ===== Parse backend response =====
+    // Parse backend response
     const data = await response.json();
 
-    // ===== Return response =====
+    // Return response
     return NextResponse.json(data, {
       status: response.status,
     });
   } catch (error) {
-    // ===== Handle unexpected errors =====
+    // Handle unexpected errors
     return NextResponse.json(
       {
         status: false,

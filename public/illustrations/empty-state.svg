@@ -1,0 +1,289 @@
+<svg
+  width="480"
+  height="360"
+  viewBox="0 0 480 360"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+  role="img"
+  aria-labelledby="empty-state-title"
+>
+  <title id="empty-state-title">Empty state illustration</title>
+
+  <defs>
+    <linearGradient
+      id="empty-bg"
+      x1="96"
+      y1="36"
+      x2="390"
+      y2="324"
+      gradientUnits="userSpaceOnUse"
+    >
+      <stop stop-color="#EFF6FF" />
+      <stop offset="1" stop-color="#DBEAFE" />
+    </linearGradient>
+
+    <linearGradient
+      id="empty-primary"
+      x1="184"
+      y1="178"
+      x2="302"
+      y2="292"
+      gradientUnits="userSpaceOnUse"
+    >
+      <stop stop-color="#60A5FA" />
+      <stop offset="1" stop-color="#2563EB" />
+    </linearGradient>
+
+    <linearGradient
+      id="empty-secondary"
+      x1="285"
+      y1="245"
+      x2="365"
+      y2="300"
+      gradientUnits="userSpaceOnUse"
+    >
+      <stop stop-color="#BFDBFE" />
+      <stop offset="1" stop-color="#93C5FD" />
+    </linearGradient>
+
+    <filter
+      id="empty-shadow"
+      x="115"
+      y="198"
+      width="268"
+      height="128"
+      filterUnits="userSpaceOnUse"
+      color-interpolation-filters="sRGB"
+    >
+      <feDropShadow
+        dx="0"
+        dy="10"
+        stdDeviation="10"
+        flood-color="#1E3A8A"
+        flood-opacity="0.12"
+      />
+    </filter>
+  </defs>
+
+  <!-- Background shape -->
+  <path
+    d="M92 64C126 28 188 30 238 48C287 66 313 38 358 55C409 74 425 126 405 170C385 213 415 245 387 281C357 320 294 316 248 303C204 291 165 321 121 301C77 281 58 239 72 197C87 152 57 101 92 64Z"
+    fill="url(#empty-bg)"
+  />
+
+  <!-- Decorative dots -->
+  <circle cx="112" cy="116" r="5" fill="#BFDBFE" />
+  <circle cx="382" cy="116" r="4" fill="#BFDBFE" />
+  <circle cx="370" cy="250" r="6" fill="#DBEAFE" />
+
+  <!-- Decorative stars -->
+  <path
+    d="M123 166L126 173L133 176L126 179L123 186L120 179L113 176L120 173L123 166Z"
+    fill="#93C5FD"
+  />
+  <path
+    d="M369 157L372 164L379 167L372 170L369 177L366 170L359 167L366 164L369 157Z"
+    fill="#60A5FA"
+  />
+
+  <!-- Plant -->
+  <ellipse
+    cx="126"
+    cy="290"
+    rx="42"
+    ry="9"
+    fill="#BFDBFE"
+    opacity="0.55"
+  />
+
+  <path
+    d="M126 282C126 254 125 224 119 203"
+    stroke="#2563EB"
+    stroke-width="4"
+    stroke-linecap="round"
+  />
+
+  <path
+    d="M124 247C107 240 99 226 101 214C114 216 125 226 124 247Z"
+    fill="#93C5FD"
+  />
+
+  <path
+    d="M122 231C133 216 146 211 158 213C154 227 141 236 122 231Z"
+    fill="#60A5FA"
+  />
+
+  <path
+    d="M125 264C109 261 100 252 97 241C111 240 122 247 125 264Z"
+    fill="#BFDBFE"
+  />
+
+  <path
+    d="M125 253C136 240 148 236 159 239C155 251 143 259 125 253Z"
+    fill="#93C5FD"
+  />
+
+  <!-- Main empty box shadow -->
+  <ellipse
+    cx="240"
+    cy="298"
+    rx="105"
+    ry="14"
+    fill="#93C5FD"
+    opacity="0.28"
+  />
+
+  <!-- Box -->
+  <g filter="url(#empty-shadow)">
+    <!-- Front -->
+    <path
+      d="M178 211H300V287C300 292.523 295.523 297 290 297H188C182.477 297 178 292.523 178 287V211Z"
+      fill="url(#empty-primary)"
+    />
+
+    <!-- Left side -->
+    <path
+      d="M178 211L138 194V265L178 287V211Z"
+      fill="#3B82F6"
+    />
+
+    <!-- Right side -->
+    <path
+      d="M300 211L340 194V265L300 287V211Z"
+      fill="#1D4ED8"
+    />
+
+    <!-- Top flaps -->
+    <path
+      d="M138 194L178 166L239 183L178 211L138 194Z"
+      fill="#93C5FD"
+    />
+
+    <path
+      d="M239 183L300 166L340 194L300 211L239 183Z"
+      fill="#60A5FA"
+    />
+
+    <!-- Inner opening -->
+    <path
+      d="M178 166L239 151L300 166L239 183L178 166Z"
+      fill="#1D4ED8"
+      opacity="0.9"
+    />
+
+    <path
+      d="M178 166L239 183L239 193L178 175V166Z"
+      fill="#2563EB"
+    />
+
+    <path
+      d="M239 183L300 166V175L239 193V183Z"
+      fill="#1E40AF"
+    />
+  </g>
+
+  <!-- Document floating above -->
+  <g transform="rotate(-7 240 119)">
+    <rect
+      x="194"
+      y="75"
+      width="98"
+      height="78"
+      rx="10"
+      fill="white"
+      stroke="#DBEAFE"
+      stroke-width="3"
+    />
+
+    <!-- Document corner -->
+    <path
+      d="M269 75V91C269 94.314 271.686 97 275 97H292"
+      fill="#EFF6FF"
+    />
+
+    <!-- Checklist -->
+    <rect x="209" y="96" width="13" height="13" rx="3" fill="#DBEAFE" />
+    <path
+      d="M212 102L215 105L220 99"
+      stroke="#2563EB"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+
+    <rect x="228" y="98" width="48" height="6" rx="3" fill="#DBEAFE" />
+
+    <rect x="209" y="119" width="13" height="13" rx="3" fill="#DBEAFE" />
+    <path
+      d="M212 125L215 128L220 122"
+      stroke="#2563EB"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+
+    <rect x="228" y="121" width="39" height="6" rx="3" fill="#E0ECFF" />
+  </g>
+
+  <!-- Floating paper plane -->
+  <g transform="rotate(-10 335 104)">
+    <path
+      d="M308 108L359 82L342 128L331 111L308 108Z"
+      fill="#2563EB"
+    />
+    <path
+      d="M308 108L331 111L359 82L324 116L308 108Z"
+      fill="#60A5FA"
+    />
+  </g>
+
+  <!-- Small books -->
+  <ellipse
+    cx="333"
+    cy="298"
+    rx="57"
+    ry="8"
+    fill="#93C5FD"
+    opacity="0.25"
+  />
+
+  <path
+    d="M287 269H367C371.418 269 375 272.582 375 277V284H295C290.582 284 287 280.418 287 276V269Z"
+    fill="#2563EB"
+  />
+
+  <path
+    d="M293 255H368C372.418 255 376 258.582 376 263V269H301C296.582 269 293 265.418 293 261V255Z"
+    fill="url(#empty-secondary)"
+  />
+
+  <path
+    d="M301 255H368"
+    stroke="white"
+    stroke-width="2"
+    stroke-linecap="round"
+    opacity="0.7"
+  />
+
+  <path
+    d="M304 269H360"
+    stroke="#DBEAFE"
+    stroke-width="2"
+    stroke-linecap="round"
+  />
+
+  <!-- Bookmark -->
+  <path
+    d="M349 269V291L356 286L363 291V269H349Z"
+    fill="#1D4ED8"
+  />
+
+  <!-- Ground -->
+  <path
+    d="M104 303C164 289 316 289 376 303"
+    stroke="#BFDBFE"
+    stroke-width="3"
+    stroke-linecap="round"
+    opacity="0.7"
+  />
+</svg>

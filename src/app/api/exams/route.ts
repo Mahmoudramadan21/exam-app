@@ -5,13 +5,13 @@ import { getFilters } from "@/shared/lib/utils/get-filters";
 
 export async function GET(req: NextRequest) {
   try {
-    // ===== Extract search params =====
+    // Extract search params
     const { searchParams } = new URL(req.url);
 
-    // ===== Parse filters =====
+    // Parse filters
     const params = getFilters(searchParams);
 
-    // ===== Call domain logic (get all exams) =====
+    // Call domain logic (get all exams)
     const res = await getAllExams(params);
 
     return NextResponse.json(res);
@@ -29,10 +29,10 @@ export async function GET(req: NextRequest) {
 
 export async function POST(req: NextRequest) {
   try {
-    // ===== Extract request body =====
+    // Extract request body
     const body = await req.json();
 
-    // ===== Call domain logic (create exam) =====
+    // Call domain logic (create exam)
     const res = await createExamAction(body);
 
     return NextResponse.json(res);

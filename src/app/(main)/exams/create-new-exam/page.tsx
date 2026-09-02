@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import { AppBreadcrumb } from "@/features/dashboard/layout";
 import { CreateExamForm } from "@/features/exams/components";
 
-// ===== Metadata =====
+// Metadata
 export const metadata: Metadata = {
   title: "Create New Exam",
   description:
@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 export default function CreateExamPage() {
   return (
     <>
-      {/* ===== Breadcrumbs ===== */}
+      {/* Breadcrumbs */}
       <AppBreadcrumb
         items={[
           { label: "Exams", href: "/exams" },
@@ -20,7 +20,7 @@ export default function CreateExamPage() {
         ]}
       />
 
-      {/* ===== Create Exam Form ===== */}
+      {/* Create Exam Form */}
       <CreateExamForm />
     </>
   );

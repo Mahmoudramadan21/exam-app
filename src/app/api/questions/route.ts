@@ -3,16 +3,16 @@ import { createQuestionAction } from "@/features/questions/lib/actions";
 
 export async function POST(req: NextRequest) {
   try {
-    // ===== Extract request body =====
+    // Extract request body
     const body = await req.json();
 
-    // ===== Call domain logic (create question) =====
+    // Call domain logic (create question)
     const res = await createQuestionAction(body);
 
-    // ===== Return response =====
+    // Return response
     return NextResponse.json(res);
   } catch (error) {
-    // ===== Handle unexpected or known errors =====
+    // Handle unexpected or known errors
     return NextResponse.json(
       {
         status: false,

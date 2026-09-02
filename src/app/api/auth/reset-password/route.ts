@@ -3,16 +3,16 @@ import { resetPasswordAction } from "@/features/auth/lib/actions";
 
 export async function POST(req: NextRequest) {
   try {
-    // ===== Parse request body =====
+    // Parse request body
     const body = await req.json();
 
-    // ===== Execute reset password domain logic =====
+    // Execute reset password domain logic
     const data = await resetPasswordAction(body);
 
-    // ===== Return success response =====
+    // Return success response
     return NextResponse.json(data);
   } catch (error) {
-    // ===== Handle errors consistently across auth APIs =====
+    // Handle errors consistently across auth APIs
     return NextResponse.json(
       {
         status: false,

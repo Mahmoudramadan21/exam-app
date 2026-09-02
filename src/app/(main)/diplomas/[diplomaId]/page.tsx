@@ -1,17 +1,21 @@
-import {BookOpenCheck} from "lucide-react";
+import { BookOpenCheck } from "lucide-react";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import { PageBar } from "@/features/dashboard/components";
 import { AppBreadcrumb } from "@/features/dashboard/layout";
 import { getDiploma } from "@/features/diplomas/lib/apis";
-import { AdminDiplomaDetails, AdminDiplomaHeader } from "@/features/diplomas/components";
+import {
+  AdminDiplomaDetails,
+  AdminDiplomaHeader,
+} from "@/features/diplomas/components";
 import { ExamListSkeleton } from "@/features/exams/lib/skeletons";
 import { ExamList } from "@/features/exams/components";
 import { AppContainer } from "@/shared/components";
 import { getNextAuthToken } from "@/shared/lib/utils/auth.util";
+import EmptyStateLayout from "@/shared/layout/empty-state-layout";
 
-// ===== Metadata =====
+// Metadata
 export async function generateMetadata({
   params,
 }: {
@@ -19,7 +23,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   // Get diploma ID
   const { diplomaId } = await params;
-  
+
   // Fetch diploma
   const { payload } = await getDiploma(diplomaId);
   const diploma = payload?.diploma;
@@ -48,7 +52,7 @@ export default async function DiplomaPage({
 }) {
   // Get diploma ID
   const { diplomaId } = await params;
-  
+
   // Fetch diploma
   const { payload: result } = await getDiploma(diplomaId);
 
@@ -62,7 +66,7 @@ export default async function DiplomaPage({
 
   // Get user session
   const jwt = await getNextAuthToken();
-  
+
   // Check if user is admin
   const isAdmin = jwt?.user?.role === "ADMIN";
 
@@ -73,13 +77,16 @@ export default async function DiplomaPage({
           <AppBreadcrumb
             items={[
               { label: "Diplomas", href: "/diplomas" },
-              { label: result?.diploma?.title || "Diploma", href: `/diplomas/${diplomaId}` },
+              {
+                label: result?.diploma?.title || "Diploma",
+                href: `/diplomas/${diplomaId}`,
+              },
             ]}
           />
-          {/* ===== Admin Diploma Header ===== */}
+          {/* Admin Diploma Header */}
           <AdminDiplomaHeader diploma={result.diploma} />
 
-          {/* ===== Admin Diploma Details ===== */}
+          {/* Admin Diploma Details */}
           <AppContainer className="mt-6">
             <AdminDiplomaDetails diploma={result.diploma} />
           </AppContainer>
@@ -89,24 +96,37 @@ export default async function DiplomaPage({
           <AppBreadcrumb
             items={[
               { label: "Diplomas", href: "/diplomas" },
-              { label: result?.diploma?.title || "Diploma", href: `/diplomas/${diplomaId}` },
-              { label: "Exams"},
+              {
+                label: result?.diploma?.title || "Diploma",
+                href: `/diplomas/${diplomaId}`,
+              },
+              { label: "Exams" },
             ]}
           />
 
           <AppContainer>
-          {/* ===== User Diploma Page Bar ===== */}
-          <PageBar
-            showBack
-            icon={<BookOpenCheck className="size-7 md:size-11" />}
-            title={`${result?.diploma?.title || "Diploma"} Exams`}
-          />
+            {/* User Diploma Page Bar */}
+            <PageBar
+              showBack
+              icon={<BookOpenCheck className="size-7 md:size-11" />}
+              title={`${result?.diploma?.title || "Diploma"} Exams`}
+            />
 
-          {/* ===== User Diploma Exams ===== */}
-            <Suspense fallback={<ExamListSkeleton />}>
-              <ExamList exams={exams} diplomaId={diplomaId} />
-            </Suspense>
-        </AppContainer>
+            {/* User Diploma Exams */}
+            {exams.length > 0 ? (
+              <Suspense fallback={<ExamListSkeleton />}>
+                <ExamList exams={exams} diplomaId={diplomaId} />
+              </Suspense>
+            ) : (
+              <EmptyStateLayout
+                title="No Exams Available"
+                description="There are currently no exams available for this diploma. Please check back later."
+                primaryHref="/diplomas"
+                primaryLabel="Browse Diplomas"
+                imageAlt="No exams available illustration"
+              />
+            )}
+          </AppContainer>
         </>
       )}
     </>

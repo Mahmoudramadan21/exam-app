@@ -12,10 +12,10 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <>
-      {/* ===== Breadcrumbs ===== */}
+      {/* Breadcrumbs */}
       <AppBreadcrumb items={[{ label: "Exams" }]} />
 
-      {/* ===== Exams Table ===== */}
+      {/* Exams Table */}
       <AdminExamsTable />
     </>
   );

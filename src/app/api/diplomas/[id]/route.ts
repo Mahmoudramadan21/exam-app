@@ -10,15 +10,15 @@ export async function GET(
   { params }: { params: Promise<{ id: string }> },
 ) {
   try {
-    // ===== Extract diploma id from params =====
+    // Extract diploma id from params
     const { id } = await params;
 
-    // ===== Call domain logic (get diploma) =====
+    // Call domain logic (get diploma)
     const res = await getDiploma(id);
 
     return NextResponse.json(res);
   } catch (error) {
-    // ===== Handle unexpected or known errors =====
+    // Handle unexpected or known errors
     return NextResponse.json(
       {
         status: false,
@@ -35,18 +35,18 @@ export async function PUT(
   { params }: { params: Promise<{ id: string }> },
 ) {
   try {
-    // ===== Extract diploma id from params =====
+    // Extract diploma id from params
     const { id } = await params;
 
-    // ===== Extract diploma data from request body =====
+    // Extract diploma data from request body
     const body = await req.json();
 
-    // ===== Call domain logic (update diploma) =====
+    // Call domain logic (update diploma)
     const res = await updateDiplomaAction({ diplomaId: id, data: body });
 
     return NextResponse.json(res);
   } catch (error) {
-    // ===== Handle unexpected or known errors =====
+    // Handle unexpected or known errors
     return NextResponse.json(
       {
         status: false,
@@ -63,15 +63,15 @@ export async function DELETE(
   { params }: { params: Promise<{ id: string }> },
 ) {
   try {
-    // ===== Extract diploma id from params =====
+    // Extract diploma id from params
     const { id } = await params;
 
-    // ===== Call domain logic (delete diploma) =====
+    // Call domain logic (delete diploma)
     const res = await deleteDiplomaAction(id);
 
     return NextResponse.json(res);
   } catch (error) {
-    // ===== Handle unexpected or known errors =====
+    // Handle unexpected or known errors
     return NextResponse.json(
       {
         status: false,

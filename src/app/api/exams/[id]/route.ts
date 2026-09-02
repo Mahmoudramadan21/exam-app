@@ -10,15 +10,15 @@ export async function GET(
   { params }: { params: Promise<{ id: string }> },
 ) {
   try {
-    // ===== Extract exam id from params =====
+    // Extract exam id from params
     const { id } = await params;
 
-    // ===== Call domain logic (get exam) =====
+    // Call domain logic (get exam)
     const res = await getExam(id);
 
     return NextResponse.json(res);
   } catch (error) {
-    // ===== Handle unexpected or known errors =====
+    // Handle unexpected or known errors
     return NextResponse.json(
       {
         status: false,
@@ -35,18 +35,18 @@ export async function PUT(
   { params }: { params: Promise<{ id: string }> },
 ) {
   try {
-    // ===== Extract exam id from params =====
+    // Extract exam id from params
     const { id } = await params;
 
-    // ===== Extract exam data from request body =====
+    // Extract exam data from request body
     const body = await req.json();
 
-    // ===== Call domain logic (update exam) =====
+    // Call domain logic (update exam)
     const res = await updateExamAction({ examId: id, data: body });
 
     return NextResponse.json(res);
   } catch (error) {
-    // ===== Handle unexpected or known errors =====
+    // Handle unexpected or known errors
     return NextResponse.json(
       {
         status: false,
@@ -63,15 +63,15 @@ export async function DELETE(
   { params }: { params: Promise<{ id: string }> },
 ) {
   try {
-    // ===== Extract exam id from params =====
+    // Extract exam id from params
     const { id } = await params;
 
-    // ===== Call domain logic (delete exam) =====
+    // Call domain logic (delete exam)
     const res = await deleteExamAction(id);
 
     return NextResponse.json(res);
   } catch (error) {
-    // ===== Handle unexpected or known errors =====
+    // Handle unexpected or known errors
     return NextResponse.json(
       {
         status: false,

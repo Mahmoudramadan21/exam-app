@@ -26,10 +26,12 @@ export function useQuestionAnswersManager({ path, max = DEFAULT_MAX }: Props) {
     name: path,
   });
 
-  const answers: IAnswer[] = useWatch({
-    control: form.control,
-    name: path,
-  });
+  const answers: IAnswer[] =
+    useWatch({
+      control: form.control,
+      name: path,
+      defaultValue: [],
+    }) ?? [];
 
   const canAddMore = answers.length < max;
 
