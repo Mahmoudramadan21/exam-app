@@ -1,5 +1,3 @@
-Viewed use-diplomas-filters.ts:1-39
-
 # Exam App
 
 A modern web application for managing and taking online exams and diploma programs.
