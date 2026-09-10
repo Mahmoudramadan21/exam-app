@@ -22,7 +22,7 @@ interface IDiplomaFilterSelectProps {
   error?: string;
 }
 
-// ===== Diploma Filter Select =====
+// Diploma Filter Select
 function DiplomaFilterSelect({
   value,
   selectedTitle,
@@ -55,7 +55,7 @@ function DiplomaFilterSelect({
   return (
     <Field>
       <DropdownMenu>
-        {/* ===== Dropdown Menu Trigger ===== */}
+        {/* Dropdown Menu Trigger */}
         <DropdownMenuTrigger asChild>
           <Button
             variant="outline"
@@ -68,7 +68,7 @@ function DiplomaFilterSelect({
           </Button>
         </DropdownMenuTrigger>
 
-        {/* ===== Dropdown Menu Content ===== */}
+        {/* Dropdown Menu Content */}
         <DropdownMenuContent>
           {/* Diplomas List */}
           {diplomas.map((diploma) => (

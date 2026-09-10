@@ -12,18 +12,18 @@ function CreateDiplomaForm() {
 
   return (
     <form onSubmit={form.handleSubmit(onSubmit)}>
-      {/* ===== Form Actions ===== */}
+      {/* Form Actions */}
       <FormActions isPending={mutation.isPending} />
 
-      {/* ===== Main Form Fields ===== */}
+      {/* Main Form Fields */}
       <AppContainer>
         <FieldGroup className="mt-6 p-4 gap-4 bg-white">
-          {/* ===== Legend ===== */}
+          {/* Legend */}
           <legend className="w-full p-2.5 bg-blue-600 text-white text-base font-geist-mono font-semibold">
             Diploma Information
           </legend>
 
-          {/* ===== Image Input ===== */}
+          {/* Image Input */}
           <ImageField
             name="image"
             control={form.control}
@@ -31,7 +31,7 @@ function CreateDiplomaForm() {
             label="Image"
           />
 
-          {/* ===== Title Input ===== */}
+          {/* Title Input */}
           <FormField
             name="title"
             control={form.control}
@@ -39,7 +39,7 @@ function CreateDiplomaForm() {
             placeholder="Diploma Title"
           />
 
-          {/* ===== Description Input ===== */}
+          {/* Description Input */}
           <FormField
             name="description"
             control={form.control}
@@ -48,7 +48,7 @@ function CreateDiplomaForm() {
             variant="textarea"
           />
 
-          {/* ===== Error Feedback ===== */}
+          {/* Error Feedback */}
           {mutation.isError && (
             <FormError message={(mutation.error as Error).message} />
           )}

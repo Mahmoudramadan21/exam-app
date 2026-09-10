@@ -15,13 +15,13 @@ import {
 import { AdminDiplomasTableSkeleton } from "@/features/diplomas/lib/skeletons";
 
 function AdminDiplomasTable() {
-  // ===== Fetch diplomas =====
+  // Fetch diplomas
   const { data, isFetching, isPending } = useAdminDiplomas();
 
-  // ===== Current page data =====
+  // Current page data
   const diplomas = data?.payload?.data ?? [];
 
-  // ===== Pagination logic =====
+  // Pagination logic
   const {
     totalPages,
     totalItems,
@@ -37,7 +37,7 @@ function AdminDiplomasTable() {
   return (
     <>
       <AppContainer className="flex flex-row gap-6 items-end sm:items-center justify-between bg-white">
-        {/* ===== Pagination ===== */}
+        {/* Pagination */}
         <Pagination
           currentPage={currentPage}
           totalPages={totalPages}
@@ -65,10 +65,10 @@ function AdminDiplomasTable() {
       </AppContainer>
 
       <AppContainer>
-        {/* ===== Toolbar ===== */}
+        {/* Toolbar */}
         <DiplomasToolbar />
 
-        {/* ===== Data table ===== */}
+        {/* Data table */}
         {isPending ? (
           <AdminDiplomasTableSkeleton />
         ) : (

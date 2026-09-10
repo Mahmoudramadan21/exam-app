@@ -24,18 +24,18 @@ function EditDiplomaForm({
 
   return (
     <form onSubmit={form.handleSubmit(onSubmit)}>
-      {/* ===== Form Actions ===== */}
+      {/* Form Actions */}
       <FormActions isPending={mutation.isPending} />
 
-      {/* ===== Main Form Fields ===== */}
+      {/* Main Form Fields */}
       <AppContainer>
         <FieldGroup className="mt-6 p-4 gap-4 bg-white">
-          {/* ===== Form Legend ===== */}
+          {/* Form Legend */}
           <legend className="w-full p-2.5 bg-blue-600 text-white text-base font-geist-mono font-semibold">
             Diploma Information
           </legend>
 
-          {/* ===== Image ===== */}
+          {/* Image */}
           <ImageField
             name="image"
             control={form.control}
@@ -44,7 +44,7 @@ function EditDiplomaForm({
             label="Image"
           />
 
-          {/* ===== Title ===== */}
+          {/* Title */}
           <FormField
             name="title"
             control={form.control}
@@ -52,7 +52,7 @@ function EditDiplomaForm({
             placeholder="Diploma Title"
           />
 
-          {/* ===== Description ===== */}
+          {/* Description */}
           <FormField
             name="description"
             control={form.control}
@@ -61,7 +61,7 @@ function EditDiplomaForm({
             variant="textarea"
           />
 
-          {/* ===== Error ===== */}
+          {/* Error */}
           {mutation.isError && (
             <FormError
               message={(mutation.error as Error).message}

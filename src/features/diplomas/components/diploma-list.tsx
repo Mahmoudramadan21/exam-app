@@ -31,7 +31,7 @@ function DiplomaList() {
 
   return (
     <section aria-label="Diplomas list">
-      {/* ===== Empty State ===== */}
+      {/* Empty State */}
       {diplomas.length === 0 ? (
         <EmptyStateLayout
           title="No Diplomas Yet"
@@ -41,7 +41,7 @@ function DiplomaList() {
         />
       ) : (
         <>
-          {/* ===== Diplomas Grid ===== */}
+          {/* Diplomas Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 mb-6">
             {diplomas.map((item, index) => (
               <DiplomaItem
@@ -52,13 +52,13 @@ function DiplomaList() {
             ))}
           </div>
 
-          {/* ===== Loading More ===== */}
+          {/* Loading More */}
           {isFetchingNextPage && <DiplomaListSkeleton count={3} />}
 
-          {/* ===== Infinite Scroll Trigger ===== */}
+          {/* Infinite Scroll Trigger */}
           <div ref={ref} className="h-2" />
 
-          {/* ===== End of List ===== */}
+          {/* End of List */}
           {!hasNextPage && (
             <p className="text-center mt-4 text-gray-400">End of list</p>
           )}

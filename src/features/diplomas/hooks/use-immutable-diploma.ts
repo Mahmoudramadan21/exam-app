@@ -1,6 +1,7 @@
 "use client";
-import { IApiResponse } from "@/shared/lib/types/api";
+
 import { useMutation } from "@tanstack/react-query";
+import { immutableDiplomaAction } from "@/features/diplomas/lib/actions";
 
 interface IUseImmutableDiplomaParams {
   id: string;
@@ -10,20 +11,8 @@ interface IUseImmutableDiplomaParams {
 export function useImmutableDiploma() {
   // Patch mutation for immutable diploma
   const mutation = useMutation({
-    mutationFn: async ({ id, immutable }: IUseImmutableDiplomaParams) => {
-      const res = await fetch(`/api/diplomas/${id}/immutable`, {
-        method: "PATCH",
-        body: JSON.stringify({ immutable }),
-      });
-      const data: IApiResponse = await res.json();
-
-      if (!res.ok) {
-        throw new Error(data.message);
-      }
-
-      // Return data
-      return data;
-    },
+    mutationFn: ({ id, immutable }: IUseImmutableDiplomaParams) =>
+      immutableDiplomaAction({ id, immutable }),
   });
 
   // Return mutation

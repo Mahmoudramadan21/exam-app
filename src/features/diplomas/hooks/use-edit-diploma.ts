@@ -6,8 +6,9 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
 import type { IDiploma } from "@/features/diplomas/lib/types/diploma";
-import type { IDiplomaCreateSchema, IDiplomaResponse } from "@/features/diplomas/lib/types/api";
+import type { IDiplomaCreateSchema } from "@/features/diplomas/lib/types/api";
 import { createDiplomaSchema } from "@/features/diplomas/lib/schemes/create-diploma.schema";
+import { updateDiplomaAction } from "@/features/diplomas/lib/actions/update-diploma.action";
 
 // Props interface
 interface UseEditDiplomaProps {
@@ -15,10 +16,7 @@ interface UseEditDiplomaProps {
   diploma: IDiploma;
 }
 
-export function useEditDiploma({
-  diplomaId,
-  diploma,
-}: UseEditDiplomaProps) {
+export function useEditDiploma({ diplomaId, diploma }: UseEditDiplomaProps) {
   const router = useRouter();
   const queryClient = useQueryClient();
 
@@ -32,20 +30,8 @@ export function useEditDiploma({
   });
 
   const mutation = useMutation({
-    mutationFn: async (values: IDiplomaCreateSchema) => {
-      const res = await fetch(`/api/diplomas/${diplomaId}`, {
-        method: "PUT",
-        body: JSON.stringify(values),
-      });
-
-      const data: IDiplomaResponse = await res.json();
-
-      if (!data.status) {
-        throw new Error(data.message);
-      }
-    
-      return data;
-    },
+    mutationFn: async (values: IDiplomaCreateSchema) =>
+      updateDiplomaAction({ diplomaId, data: values }),
 
     onSuccess: () => {
       toast.success("Diploma updated successfully");

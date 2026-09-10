@@ -7,18 +7,13 @@ import { z } from "zod";
  */
 export const userInfoStepSchema = z
   .object({
-    // ===== Basic identity fields =====
-
+    // Basic identity fields
     email: z.email("Invalid email"),
-
     firstName: z.string().min(2, "First name must be at least 2 characters"),
-
     lastName: z.string().min(2, "Last name must be at least 2 characters"),
-
     username: z.string().min(2, "Username must be at least 2 characters"),
 
-    // ===== Phone validation =====
-
+    // Phone validation
     phone: z
       .string()
       .min(1, "Phone number is required")
@@ -29,8 +24,7 @@ export const userInfoStepSchema = z
         message: "Invalid Egyptian mobile number",
       }),
 
-    // ===== Password rules =====
-
+    // Password rules
     password: z
       .string()
       .min(8, "Password must be at least 8 characters")
@@ -38,11 +32,10 @@ export const userInfoStepSchema = z
         /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).*$/,
         "Password must contain uppercase, lowercase, number and special character",
       ),
-
-    confirmPassword: z.string(),
+      confirmPassword: z.string(),
   })
 
-  // ===== Cross-field validation =====
+  // Cross-field validation
   .refine((data) => data.password === data.confirmPassword, {
     message: "Passwords do not match",
     path: ["confirmPassword"],

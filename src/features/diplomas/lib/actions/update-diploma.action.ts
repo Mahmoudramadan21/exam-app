@@ -1,3 +1,5 @@
+"use server";
+
 import { BACKEND_URL } from "@/shared/lib/constants/api.constant";
 import { apiRequest } from "@/shared/lib/utils/request.util";
 import {

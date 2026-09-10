@@ -22,7 +22,7 @@ function RegisterUserInfoStep({ email }: { email: string }) {
 
   return (
     <>
-      {/* ===== Step Header ===== */}
+      {/*  Step Header  */}
       <h3 className="text-2xl text-blue-600 font-bold mt-4">
         {showPasswordStep
           ? "Create a strong password"
@@ -30,7 +30,7 @@ function RegisterUserInfoStep({ email }: { email: string }) {
       </h3>
 
       <form onSubmit={form.handleSubmit(onSubmit)} className="mt-6">
-        {/* ================= STEP 1: User Basic Info ================= */}
+        {/* STEP 1: User Basic Info */}
         {!showPasswordStep && (
           <>
             <FieldGroup className="gap-4 grid grid-cols-2">
@@ -88,7 +88,7 @@ function RegisterUserInfoStep({ email }: { email: string }) {
           </>
         )}
 
-        {/* ================= STEP 2: Password Setup ================= */}
+        {/* STEP 2: Password Setup */}
         {showPasswordStep && (
           <>
             <FieldGroup className="mt-4">

@@ -11,12 +11,12 @@ import { AppContainer } from "@/shared/components";
 function AdminDiplomaHeader({ diploma }: { diploma: IDiploma }) {
   return (
     <AppContainer className="w-full flex flex-row flex-wrap justify-between items-center gap-4 px-4 py-2.5 bg-white overflow-hidden">
-      {/* ===== Diploma Title ===== */}
+      {/* Diploma Title */}
       <h3 className="font-inter font-semibold text-lg text-black">
         {diploma.title}
       </h3>
 
-      {/* ===== Diploma Actions ===== */}
+      {/* Diploma Actions */}
       <div className="flex *:w-fit flex-wrap items-center gap-2.5 ml-auto">
         {/* Immtable Diploma */}
         <ImmutableDiplomaModal

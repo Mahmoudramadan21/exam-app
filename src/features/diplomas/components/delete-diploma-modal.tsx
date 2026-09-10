@@ -11,7 +11,7 @@ interface IDeleteDiplomaModalProps {
   trigger: ReactNode;
 }
 
-// ===== Delete Diploma Modal =====
+// Delete Diploma Modal
 function DeleteDiplomaModal({ diplomaId, trigger }: IDeleteDiplomaModalProps) {
   const { mutation } = useDeleteDiploma();
 

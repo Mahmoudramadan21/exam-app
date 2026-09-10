@@ -1,8 +1,9 @@
 "use client";
-import { IApiResponse } from "@/shared/lib/types/api";
+
 import { useQueryClient, useMutation } from "@tanstack/react-query";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
+import { deleteDiplomaAction } from "@/features/diplomas/lib/actions";
 
 export function useDeleteDiploma() {
   const queryClient = useQueryClient();
@@ -10,19 +11,7 @@ export function useDeleteDiploma() {
 
   // Deletion mutation
   const mutation = useMutation({
-    mutationFn: async (diplomaId: string) => {
-      const res = await fetch(`/api/diplomas/${diplomaId}`, {
-        method: "DELETE",
-      });
-      const data: IApiResponse = await res.json();
-
-      if (!res.ok) {
-        throw new Error(data.message);
-      }
-
-      // Return data
-      return data;
-    },
+    mutationFn: (diplomaId: string) => deleteDiplomaAction(diplomaId),
 
     onSuccess: (data) => {
       // Invalidate diplomas cache to refetch data

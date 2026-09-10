@@ -11,7 +11,7 @@ export function useAdminDiplomas() {
   // Get pagination and search parameters
   const queryParams = getFilters(searchParams);
 
-  // ===== Fetch diplomas =====
+  // Fetch diplomas
   return useQuery({
     queryKey: ["diplomas", buildQuery(queryParams).toString()],
 

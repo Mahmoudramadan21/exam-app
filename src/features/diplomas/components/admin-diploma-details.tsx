@@ -7,7 +7,7 @@ function AdminDiplomaDetails({ diploma }: { diploma: IDiploma }) {
       aria-labelledby="diploma-title"
       className="flex flex-col bg-white p-4 gap-4 font-geist-mono"
     >
-      {/* ==== Diploma Image ==== */}
+      {/* Diploma Image */}
       <div className="flex flex-col gap-1">
         <span className="text-sm text-gray-400">Image</span>
         <div className="relative w-50 h-50 md:w-75 md:h-75">
@@ -20,7 +20,7 @@ function AdminDiplomaDetails({ diploma }: { diploma: IDiploma }) {
         </div>
       </div>
 
-      {/* ==== Diploma Details ==== */}
+      {/* Diploma Details */}
       <dl className="flex flex-col gap-4">
         {/* Diploma Title */}
         <div className="flex flex-col gap-1">

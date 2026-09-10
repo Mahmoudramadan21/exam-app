@@ -14,7 +14,7 @@ function LoginForm({ callbackUrl = "/" }: ILoginFormProps) {
 
   return (
     <form onSubmit={form.handleSubmit(onSubmit)} className="mt-8">
-      {/* ===== Form Fields ===== */}
+      {/* Form Fields */}
       <FieldGroup className="gap-4">
         {/* Username input */}
         <FormField
@@ -34,12 +34,12 @@ function LoginForm({ callbackUrl = "/" }: ILoginFormProps) {
         />
       </FieldGroup>
 
-      {/* ===== Error Feedback ===== */}
+      {/* Error Feedback */}
       {mutation.isError && (
         <FormError message={(mutation.error as Error).message} />
       )}
 
-      {/* ===== Submit Action ===== */}
+      {/* Submit Action */}
       <Button type="submit" size="xl" disabled={mutation.isPending}>
         {mutation.isPending ? "Logging in..." : "Login"}
       </Button>

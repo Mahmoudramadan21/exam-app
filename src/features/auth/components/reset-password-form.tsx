@@ -11,7 +11,7 @@ function ResetPasswordForm({ token }: { token: string }) {
 
   return (
     <>
-      {/* ===== Reset Password Form ===== */}
+      {/* Reset Password Form */}
       <form onSubmit={form.handleSubmit(onSubmit)} className="mt-9">
         {/* Password Fields Group */}
         <FieldGroup className="gap-4">
@@ -30,12 +30,12 @@ function ResetPasswordForm({ token }: { token: string }) {
           />
         </FieldGroup>
 
-        {/* ===== Error Feedback ===== */}
+        {/* Error Feedback */}
         {mutation.isError && (
           <FormError message={(mutation.error as Error).message} />
         )}
 
-        {/* ===== Submit Action ===== */}
+        {/* Submit Action */}
         <Button type="submit" size="xl" disabled={mutation.isPending}>
           {mutation.isPending ? "Resetting..." : "Reset Password"}
         </Button>

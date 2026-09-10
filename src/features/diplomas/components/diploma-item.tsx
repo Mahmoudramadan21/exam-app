@@ -11,13 +11,13 @@ export default function DiplomaItem({
 }) {
   return (
     <article className="group relative overflow-hidden h-90 md:h-112">
-      {/* ==== Diploma Link ==== */}
+      {/* Diploma Link */}
       <Link
         href={`/diplomas/${diploma.id}`}
         aria-label={`View ${diploma.title} diploma details`}
         className="relative block h-full w-full"
       >
-        {/* ===== Background Image ===== */}
+        {/* Background Image */}
         <Image
           src={diploma.image || "/placeholder.jpg"}
           alt={`${diploma.title} diploma cover`}
@@ -28,7 +28,7 @@ export default function DiplomaItem({
           sizes="(max-width: 768px) 100vw, 455px"
         />
 
-        {/* ===== Overlay Content ===== */}
+        {/* Overlay Content */}
         <div className="w-[calc(100%-1.25rem)] absolute inset-s-2.5 bottom-2.5 p-4 bg-[#155DFCBF] backdrop-blur-md text-white">
           {/* Title */}
           <h3 className="text-xl font-semibold mb-1">{diploma.title}</h3>
@@ -42,7 +42,7 @@ export default function DiplomaItem({
                 transition-[max-height] duration-500 ease-in-out
                 max-h-10.5
                 group-hover:max-h-40 group-focus-within:max-h-40
-        "
+                "
             >
               {diploma.description}
             </p>
