@@ -34,10 +34,10 @@ function RegisterOtpStep({ setStep, email }: IRegisterOtpStepProps) {
 
   return (
     <>
-      {/* ===== Header Section ===== */}
+      {/* Header Section */}
       <h3 className="text-2xl text-blue-600 font-bold mt-4">Verify OTP</h3>
 
-      {/* ===== Instructions + Edit Email ===== */}
+      {/* Instructions + Edit Email */}
       <p className="mt-3 mb-7 text-gray-500">
         Please enter the 6-digits code we have sent to:{" "}
         <span className="text-black">{email}. </span>
@@ -50,7 +50,7 @@ function RegisterOtpStep({ setStep, email }: IRegisterOtpStepProps) {
         </button>
       </p>
 
-      {/* ===== OTP Form ===== */}
+      {/* OTP Form */}
       <form onSubmit={form.handleSubmit(onSubmit)}>
         {/* OTP Input (controlled by react-hook-form) */}
         <Controller
@@ -77,7 +77,7 @@ function RegisterOtpStep({ setStep, email }: IRegisterOtpStepProps) {
           )}
         />
 
-        {/* ===== Timer / Resend Section ===== */}
+        {/* Timer / Resend Section */}
         {timer > 0 ? (
           <p className="mx-auto w-fit text-gray-500">
             You can request another code in: {timer}s
@@ -96,10 +96,10 @@ function RegisterOtpStep({ setStep, email }: IRegisterOtpStepProps) {
           </p>
         )}
 
-        {/* ===== Error Feedback ===== */}
+        {/* Error Feedback */}
         <FormError message={errorMessage} />
 
-        {/* ===== Submit Action ===== */}
+        {/* Submit Action */}
         <Button
           type="submit"
           theme="outlineCustom"

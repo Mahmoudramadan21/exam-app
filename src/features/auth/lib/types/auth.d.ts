@@ -9,9 +9,7 @@ import { userInfoStepSchema } from "../schemas/user-info-step.schema";
 import { resetPasswordSchema } from "../schemas/reset-password.schema";
 
 /**
- * =========================
  * Auth Form Schemas (inferred types)
- * =========================
  */
 
 export type ILoginSchema = z.infer<typeof loginSchema>;
@@ -21,9 +19,7 @@ export type IUserInfoStepSchema = z.infer<typeof userInfoStepSchema>;
 export type IResetPasswordSchema = z.infer<typeof resetPasswordSchema>;
 
 /**
- * =========================
  * API Response Types
- * =========================
  */
 
 export interface ILoginPayload {
@@ -34,9 +30,7 @@ export interface ILoginPayload {
 export type ILoginResponse = IApiResponse<ILoginPayload>;
 
 /**
- * =========================
  * Auth Flow States
- * =========================
  */
 
 // Registration multi-step flow

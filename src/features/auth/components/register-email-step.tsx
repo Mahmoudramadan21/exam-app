@@ -20,7 +20,7 @@ function RegisterEmailStep({ setStep, setEmail }: IRegisterEmailStep) {
 
   return (
     <>
-      {/* ===== Email Form ===== */}
+      {/* Email Form */}
       <form onSubmit={form.handleSubmit(onSubmit)} className="mt-4">
         {/* Email input */}
         <FormField
@@ -30,12 +30,12 @@ function RegisterEmailStep({ setStep, setEmail }: IRegisterEmailStep) {
           placeholder="user@example.com"
         />
 
-        {/* ===== Error Feedback ===== */}
+        {/* Error Feedback */}
         {mutation.isError && (
           <FormError message={(mutation.error as Error).message} />
         )}
 
-        {/* ===== Submit Action ===== */}
+        {/* Submit Action */}
         <Button
           variant="outline"
           size="xl"
@@ -47,7 +47,7 @@ function RegisterEmailStep({ setStep, setEmail }: IRegisterEmailStep) {
         </Button>
       </form>
 
-      {/* ===== Secondary Action (Login Redirect) ===== */}
+      {/* Secondary Action (Login Redirect) */}
       <div className="w-fit mx-auto text-sm text-muted-foreground font-medium">
         Already have an account?{" "}
         <Link

@@ -21,7 +21,7 @@ function ForgotPasswordForm({ setStep, setEmail }: IForgotPasswordFormProps) {
 
   return (
     <>
-      {/* ===== Forgot Password Form ===== */}
+      {/* Forgot Password Form */}
       <form onSubmit={form.handleSubmit(onSubmit)} className="mt-8">
         {/* Email Input */}
         <FormField
@@ -31,12 +31,12 @@ function ForgotPasswordForm({ setStep, setEmail }: IForgotPasswordFormProps) {
           placeholder="user@example.com"
         />
 
-        {/* ===== Error Feedback ===== */}
+        {/* Error Feedback */}
         {mutation.isError && (
           <FormError message={(mutation.error as Error).message} />
         )}
 
-        {/* ===== Submit Action ===== */}
+        {/* Submit Action */}
         <Button type="submit" size="xl" disabled={mutation.isPending}>
           {mutation.isPending ? "Loading..." : "Next"}
           <ChevronRight width={16} height={16} className="shrink-0 w-4 h-4" />
