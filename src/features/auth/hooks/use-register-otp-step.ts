@@ -7,6 +7,7 @@ import { useMutation } from "@tanstack/react-query";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { otpStepSchema } from "@/features/auth/lib/schemas";
 import { IOtpStepSchema, registerStep } from "@/features/auth/lib/types/auth";
+import { confirmOtpStepAction } from "@/features/auth/lib/actions/register.action";
 
 interface IUseRegisterOtpStepProps {
   email: string;
@@ -30,24 +31,7 @@ export function useRegisterOtpStep({
 
   // Verify OTP code
   const verifyOtpMutation = useMutation({
-    mutationFn: async (values: IOtpStepSchema) => {
-      const res = await fetch("/api/auth/register/confirm-otp-step", {
-        method: "POST",
-        body: JSON.stringify(values),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-
-      const data = await res.json();
-
-      // Normalize API errors
-      if (!res.ok || !data.status) {
-        throw new Error(data.message || "Invalid OTP");
-      }
-
-      return data;
-    },
+    mutationFn: (values: IOtpStepSchema) => confirmOtpStepAction(values),
 
     // Move to next step after success
     onSuccess: () => {

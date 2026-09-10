@@ -9,6 +9,7 @@ import { Dispatch, SetStateAction } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { emailStepSchema } from "@/features/auth/lib/schemas";
+import { forgotPasswordAction } from "@/features/auth/lib/actions/forgot-password.action";
 
 interface UseForgotPasswordFormProps {
   setStep: Dispatch<SetStateAction<forgotPasswordSteps>>;
@@ -27,22 +28,8 @@ export function useForgotPasswordForm({
 
   // Send forgot password request
   const mutation = useMutation({
-    mutationFn: async (values: IEmailStepSchema) => {
-      const data = await fetch("/api/auth/forgot-password", {
-        method: "POST",
-        body: JSON.stringify(values),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }).then((res) => res.json());
-
-      // Normalize API error handling
-      if (!data.status) {
-        throw new Error(data.message || "Request failed");
-      }
-
-      return data;
-    },
+    mutationFn: (values: IEmailStepSchema) =>
+      forgotPasswordAction(values.email),
 
     // Move to next step after successful request
     onSuccess: () => {

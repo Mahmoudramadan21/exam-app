@@ -6,6 +6,7 @@ import { useMutation } from "@tanstack/react-query";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { emailStepSchema } from "@/features/auth/lib/schemas";
 import { IEmailStepSchema, registerStep } from "@/features/auth/lib/types/auth";
+import { sendEmailStepAction } from "@/features/auth/lib/actions/register.action";
 
 interface IUseRegisterEmailStepProps {
   setStep: Dispatch<SetStateAction<registerStep>>;
@@ -24,22 +25,7 @@ export function useRegisterEmailStep({
 
   // API call to send email (OTP step)
   const mutation = useMutation({
-    mutationFn: async (values: IEmailStepSchema) => {
-      const data = await fetch("/api/auth/register/send-email-step", {
-        method: "POST",
-        body: JSON.stringify(values),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }).then((res) => res.json());
-
-      // Throw error to let React Query handle it
-      if (!data.status) {
-        throw new Error(data.message);
-      }
-
-      return data;
-    },
+    mutationFn: (values: IEmailStepSchema) => sendEmailStepAction(values.email),
 
     // Move to next step on success
     onSuccess: () => {

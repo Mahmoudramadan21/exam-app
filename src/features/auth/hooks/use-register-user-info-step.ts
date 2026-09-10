@@ -6,6 +6,11 @@ import { useMutation } from "@tanstack/react-query";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { userInfoStepSchema } from "@/features/auth/lib/schemas";
 import { IUserInfoStepSchema } from "@/features/auth/lib/types/auth";
+import { userInfoStepAction } from "@/features/auth/lib/actions/register.action";
+import {
+  REGISTER_STEP_ONE_FIELDS,
+  REGISTER_STEP_TWO_FIELDS,
+} from "@/features/auth/lib/constants/register-form.constant";
 
 interface IUseRegisterUserInfoStepProps {
   email: string;
@@ -33,27 +38,52 @@ export function useRegisterUserInfoStep({
 
   // Submit user registration
   const mutation = useMutation({
-    mutationFn: async (values: IUserInfoStepSchema) => {
-      const res = await fetch("/api/auth/register/user-info-step", {
-        method: "POST",
-        body: JSON.stringify(values),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-
-      const data = await res.json();
-
-      if (!res.ok || !data.status) {
-        throw new Error(data.message || "Request failed");
-      }
-
-      return data;
-    },
+    mutationFn: (values: IUserInfoStepSchema) => userInfoStepAction(values),
 
     // Redirect after success
     onSuccess: () => {
       window.location.href = "/login";
+    },
+
+    onError: (error: Error) => {
+      const message = error.message;
+
+      // Step 1 error
+      if (
+        REGISTER_STEP_ONE_FIELDS.some((field) =>
+          message.toLowerCase().includes(field.toLowerCase()),
+        )
+      ) {
+        setShowPasswordStep(false);
+
+        // Example: username error
+        if (message.toLowerCase().includes("username")) {
+          form.setError("username", {
+            type: "server",
+            message,
+          });
+        }
+
+        return;
+      }
+
+      // Step 2 error
+      if (
+        REGISTER_STEP_TWO_FIELDS.some((field) =>
+          message.toLowerCase().includes(field.toLowerCase()),
+        )
+      ) {
+        setShowPasswordStep(true);
+
+        if (message.toLowerCase().includes("password")) {
+          form.setError("password", {
+            type: "server",
+            message,
+          });
+        }
+
+        return;
+      }
     },
   });
 

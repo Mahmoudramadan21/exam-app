@@ -1,4 +1,4 @@
-import "server-only";
+"use server";
 import { apiRequest } from "@/shared/lib/utils/request.util";
 import { BACKEND_URL } from "@/shared/lib/constants/api.constant";
 
